@@ -66,9 +66,9 @@ class Multilista{
 		bool multilistaVacia();
 		void guardarJugadoresArchivo(string nombreArchivo);
 		void leerJugadoresArchivo(string nombreArchivo);
-		//Lista<jugadores> mostrarEquipo(int equipo);
-		//Lista<jugadores> mostrarGolesPorEquipo(int equipo);
-		//Lista<jugadores> mostrarGolesGlobal();
+		Lista<futbolista> mostrarEquipo(int equipo);
+		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
+		Lista<futbolista> mostrarGolesGlobal();
 		futbolista getFutbolista(int pos);
 		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
 };
@@ -90,13 +90,15 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
     f.numCamiseta=numCamiseta;
     f.cantGoles=cantGoles;
     f.pos=pos;
+    f.sigCompanero =-1;
+    f.sigCantGoles =-1;
 
 	int k;
 	int i=0;
 	while(datos[i].nombre != "" && i<835){
 		i++;
 	}
-
+	
 	//insertar en la lista de datos
 	datos[i]=f;
 	//insertar en la lista de cabeceras a partir de la posicion del equipo
@@ -116,46 +118,57 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 	}
 	else{
 		k=cabeceras[32];
-		cantGoles=datos[k].cantGoles;
-		while(datos[k].sigCantGoles != -1 && datos[k].cantGoles < cantGoles){
+		cantGoles=datos[i].cantGoles;
+		int anterior=k;
+		while(datos[k].sigCantGoles != -1 && datos[k].cantGoles > cantGoles){
+			anterior=k;
 			k=datos[k].sigCantGoles;
 		}
-		datos[i].sigCantGoles=datos[k].sigCantGoles;
-		datos[k].sigCantGoles=i;
+		if(anterior==k && datos[k].cantGoles <= cantGoles){
+			datos[i].sigCantGoles=k;
+			cabeceras[32]=i;
+		}else if(datos[k].sigCantGoles == -1 && datos[k].cantGoles > cantGoles){
+			datos[k].sigCantGoles = i;
+		}else{
+			datos[i].sigCantGoles=k;
+			datos[anterior].sigCantGoles=i;
+		}
+		 
+		
 	}
 	tam++;
 	return true;
 }
-/*
-Lista<jugadores> Multilista::mostrarEquipo(int equipo){
-	Lista l;
+
+Lista<futbolista> Multilista::mostrarEquipo(int equipo){
+	Lista<futbolista> l;
 	int k=cabeceras[equipo];
 	while(k!=-1){
-		l.Insertar(datos[k].nombre);
+		l.Insertar(datos[k]);
 		k=datos[k].sigCompanero;
 	}
 	return l;
 }
 //crear un metodo que muestre los jugadores de un equipo en orden ascendente de goles
-Lista<jugadores> Multilista::mostrarGolesPorEquipo(int equipo){
-	Lista l;
+Lista<futbolista> Multilista::mostrarGolesPorEquipo(int equipo){
+	Lista<futbolista> l;
 	int k=cabeceras[equipo];
 	while(k!=-1){
-		l.Insertar(datos[k].cantGoles);
+		l.Insertar(datos[k]);
 		k=datos[k].sigCantGoles;
 	}
 	return l;
 }
 //crear un metodo que muestre todos los jugadores en orden ascendente de goles
-Lista<jugadores> Multilista::mostrarGolesGlobal(){
-	Lista l;
+Lista<futbolista> Multilista::mostrarGolesGlobal(){
+	Lista<futbolista> l;
 	int k=cabeceras[32];
 	while(k!=-1){
-		l.Insertar(datos[k].cantGoles);
+		l.Insertar(datos[k]);
 		k=datos[k].sigCantGoles;
 	}
 	return l;
-}*/
+}
 //se crea un metodo que retorne la estructura futbolista acorde a la posicion que se le pase
 futbolista Multilista::getFutbolista(int pos){
 	return datos[pos];
@@ -176,7 +189,7 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 	datos[tam]=f;
 }
 
-//Función para guardar los jugadores en el archivo
+//Funciï¿½n para guardar los jugadores en el archivo
 void Multilista::guardarJugadoresArchivo(string nombreArchivo){
  	ofstream archivo;
 	string frase;
