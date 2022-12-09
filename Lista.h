@@ -32,6 +32,7 @@ class Lista
 		bool ListaVacia();
 		int TamLista();
 		bool Insertar(T dato, int pos);
+		bool Insertar(T dato);
 		bool InsertarFinal(T dato);
 		T Eliminar(int pos);
 		T ObtenerDatos(int pos);
@@ -101,6 +102,7 @@ bool Lista<T>::Insertar(T dato, int pos){
 	return true;
 }
 
+template < class T > 
 bool Lista<T>::Insertar(T dato){//insertar al final de la lista
 	//se crea nuevo nodo y variables auxiliares necesarias
 	Nodo<T> *n_n = new Nodo<T>;
