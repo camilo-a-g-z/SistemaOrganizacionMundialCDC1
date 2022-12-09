@@ -123,7 +123,7 @@ bool Lista<T>::Insertar(T dato){//insertar al final de la lista
 
 //metodo para modificar recibiendo un dato y una posicion
 template < class T >
-void Lista::modificar(int pos, T dato){
+void Lista<T>::modificar(int pos, T dato){
 	Nodo<T> *aux;
 	aux = cab->sig;
 	for(int i = 1; i < pos; i++){aux = aux->sig;}

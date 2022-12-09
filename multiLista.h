@@ -76,13 +76,13 @@ class Multilista{
 		bool multilistaLLena();
 		bool multilistaVacia();
 		void guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo);
-		void  Multilista::leerJugadoresArchivo(string nombreArchivo)
+		void leerJugadoresArchivo(string nombreArchivo);
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
 		Lista<futbolista> sacarEquipo(int equipo);
 		futbolista getFutbolista(int pos);
-		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
+		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti);
 };
 
 //metodo para devolver todos los futbolistas de un equipo y eliminarlos de la multilista
@@ -249,45 +249,48 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
             /* X represents to read the string from stringstream, T use for store the token string and, 
             '-' - represents to split the string where - is found. */  
             string nombre, pos;
-            int edad, numCamiseta, cantGoles, equipo, sigCantGoles, sigCompanero;
+            int edad, numCamiseta, cantGoles, equipo, sigCantGoles, sigCompanero, sigCampoLibre, posMulti;
             switch(i)
             {
-                case 0: 
+				case 0: //posicion en la multilista
+					sscanf(T.c_str(), "%d", &posMulti); 
+                case 1:  //nombre
                     nombre = T;
                 break;
-                case 1: 
+                case 2: //posicion
                     pos = T;
                 break;
-                case 2: 
+                case 3: //edad
                 	sscanf(T.c_str(), "%d", &edad);                   
                 break;
-                case 3: 
+                case 4: //numero de camiseta
                 	sscanf(T.c_str(), "%d", &numCamiseta);
                 break;
-                case 4:
+                case 5: //Cantidad de goles
 		            sscanf(T.c_str(), "%d", &cantGoles);
 		        break;
-		        case 5: 
+		        case 6: //siguiente cantidad de goles
 		            sscanf(T.c_str(), "%d", &sigCantGoles);
 		        break;
-		        case 6: 
+		        case 7: //siguiente companero
 		            sscanf(T.c_str(), "%d", &sigCompanero);
 		        break;
-                
+				case 8: //siguiente campo libre
+		            sscanf(T.c_str(), "%d", &sigCampoLibre);
+				break;     
             }
-            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, equipo, sigCantGoles, sigCompanero);
+            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, equipo, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
             i++; 
         }  
 	}	
 	archivo.close(); //Cerramos el archivo
 }
 
-//Funci�n para guardar los jugadores en el archivo
+//Función para guardar los jugadores en el archivo
 void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo){
  	ofstream archivo;
 	string frase;
-	char rpt;
-	
+	char rpt;	
 	archivo.open(nombreArchivo.c_str(),ios::out); //Creamos el archivo
 	
 	if(archivo.fail()){ //Si a ocurrido algun error
@@ -298,15 +301,16 @@ void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nom
 	do{
 		
 		fflush(stdin);
-		
+		cout<<"tam: "<<tam<<endl;
         for(int i=0; i<tam; i++){
 			stringstream fr;
-            fr << datos[i].nombre << "-" << datos[i].pos << "-" << datos[i].edad << "-"<< datos[i].numCamiseta << "-" << datos[i].cantGoles << "-" << datos[i].sigCantGoles << "-" << datos[i].sigCompanero;
+			futbolista f = jugadores.ObtenerDatos(i);
+            fr << i <<"-" << f.nombre << "-" << f.pos << "-" <<f.edad << "-"<< f.numCamiseta << "-" << f.cantGoles << "-" << f.sigCantGoles << "-" << f.sigCompanero << "-" << f.sigCampoLibre;
             frase = fr.str();
+            cout<<frase;
             archivo<<frase<<endl;           
-
         }
-		
+		Multilista();
 		
 		cout<<"\nDesea agregar otra frase(S/N): ";
 		cin>>rpt;
