@@ -15,6 +15,7 @@ struct futbolista {
 	int cantGoles;
     int sigCantGoles;
     int sigCompanero;
+    int sigCampoLibre;
 };
 
 //Creaci?n de la clase Multilista
@@ -24,10 +25,11 @@ class Multilista{
 		int *cabeceras;
 		futbolista *datos;
 		int tam;
-		
+		int sigPosLibre;
 	public:
 		//Metodo Constructor (inicializacion de los atributos de la Multilista)
 		Multilista(){
+			sigPosLibre = 0;
 			cabeceras=new int[50];
 			/*
 			* 0: equipo/pais 1
@@ -42,7 +44,7 @@ class Multilista{
             for(int i=0; i<50; i++){
                 cabeceras[i]=-1;
             }
-			for(int i=0; i<835; i++){
+			for(int i=0; i<834; i++){
                 datos[i].nombre="";
                 datos[i].edad=0;
                 datos[i].numCamiseta=0;
@@ -50,7 +52,16 @@ class Multilista{
                 datos[i].pos="";
                 datos[i].sigCantGoles=-1;
                 datos[i].sigCompanero=-1;
+                datos[i].sigCampoLibre=i+1;
             }
+            datos[834].nombre="";
+            datos[834].edad=0;
+            datos[834].numCamiseta=0;
+            datos[834].cantGoles=0;
+            datos[834].pos="";
+            datos[834].sigCantGoles=-1;
+            datos[834].sigCompanero=-1;
+            datos[834].sigCampoLibre=-1;
 		}
 		
 		//Destructor
@@ -94,12 +105,8 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
     f.sigCantGoles =-1;
 
 	int k;
-	int i=0;
-	while(datos[i].nombre != "" && i<835){
-		i++;
-	}
-	
-	//insertar en la lista de datos
+	int i=sigPosLibre;
+	sigPosLibre = datos[i].sigCampoLibre;
 	datos[i]=f;
 	//insertar en la lista de cabeceras a partir de la posicion del equipo
 	if(cabeceras[equipo]==-1){
