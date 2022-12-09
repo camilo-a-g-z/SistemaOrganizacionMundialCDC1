@@ -2,6 +2,9 @@
 #ifndef MULTILISTA_H
 #define MULTILISTA_H
 #include "Lista.h"
+#include<fstream>
+#include <sstream>  
+#include <iostream>
 
 using namespace std;
 
@@ -57,15 +60,17 @@ class Multilista{
 		}
 		
 		//Metodos (acciones) de la Multilista
-		bool insertar(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo);
+		bool insertar(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo);
 		bool eliminar(int pos);
 		bool multilistaLLena();
 		bool multilistaVacia();
-		Lista<jugadores> mostrarEquipo(int equipo);
-		Lista<jugadores> mostrarGolesPorEquipo(int equipo);
-		Lista<jugadores> mostrarGolesGlobal();
+		void guardarJugadoresArchivo(string nombreArchivo);
+		void leerJugadoresArchivo(string nombreArchivo);
+		//Lista<jugadores> mostrarEquipo(int equipo);
+		//Lista<jugadores> mostrarGolesPorEquipo(int equipo);
+		//Lista<jugadores> mostrarGolesGlobal();
 		futbolista getFutbolista(int pos);
-		void insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
+		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
 };
 
 bool Multilista :: multilistaVacia(){
@@ -76,7 +81,7 @@ bool Multilista :: multilistaLLena(){
 	return tam==835;
 }
 
-bool Multilista :: insertar(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo){
+bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo){
 	if(multilistaLLena()) return false;
 	
 	futbolista f;
@@ -121,6 +126,7 @@ bool Multilista :: insertar(string nombre, string edad, int numCamiseta, int can
 	tam++;
 	return true;
 }
+/*
 Lista<jugadores> Multilista::mostrarEquipo(int equipo){
 	Lista l;
 	int k=cabeceras[equipo];
@@ -149,13 +155,13 @@ Lista<jugadores> Multilista::mostrarGolesGlobal(){
 		k=datos[k].sigCantGoles;
 	}
 	return l;
-}
+}*/
 //se crea un metodo que retorne la estructura futbolista acorde a la posicion que se le pase
 futbolista Multilista::getFutbolista(int pos){
 	return datos[pos];
 }
 //funcion para insertar en la lista de datos de la multilista
-void Multilista::insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero){
+void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero){
 	futbolista f;
 	f.nombre=nombre;
 	f.edad=edad;
@@ -170,4 +176,94 @@ void Multilista::insertarDatosArchivo(string nombre, string edad, int numCamiset
 	datos[tam]=f;
 }
 
+//Función para guardar los jugadores en el archivo
+void Multilista::guardarJugadoresArchivo(string nombreArchivo){
+ 	ofstream archivo;
+	string frase;
+	char rpt;
+	
+	archivo.open(nombreArchivo.c_str(),ios::out); //Creamos el archivo
+	
+	if(archivo.fail()){ //Si a ocurrido algun error
+		cout<<"No se pudo abrir el archivo";
+		exit(1);
+	}
+	
+	do{
+		
+		fflush(stdin);
+		
+        for(int i=0; i<tam; i++){
+			stringstream fr;
+            fr << datos[i].nombre << "-" << datos[i].pos << "-" << datos[i].edad << "-"<< datos[i].numCamiseta << "-" << datos[i].cantGoles << "-" << datos[i].sigCantGoles << "-" << datos[i].sigCompanero;
+            frase = fr.str();
+            archivo<<frase<<endl;           
+
+        }
+		
+		
+		cout<<"\nDesea agregar otra frase(S/N): ";
+		cin>>rpt;
+	}while((rpt == 'S') || (rpt == 's'));
+	
+	archivo.close(); //Cerramos el archivo
+
+}
+
+//Funcion para leer los jugadores del archivo y guardarlos en la multilista
+void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacion del archivo o fichiero
+    ifstream archivo;
+	string texto, T;
+	
+	
+	archivo.open(nombreArchivo.c_str(),ios::in); //Abrimos el archivo en modo lectura
+	
+	if(archivo.fail()){
+		cout<<"No se pudo abrir el archivo";
+		exit(1);
+	}
+	tam=0;
+	while(!archivo.eof()){ //mientras no sea final del archivo
+		getline(archivo,texto);
+        
+        
+        stringstream X(texto); // X is an object of stringstream that references the S string  
+        int i=0;
+        // use while loop to check the getline() function condition  
+        while (getline(X, T, '-')) {  
+            /* X represents to read the string from stringstream, T use for store the token string and, 
+            '-' - represents to split the string where - is found. */  
+            switch(i)
+            {
+                case 0: 
+                    datos[tam].nombre = T;
+                break;
+                case 1: 
+                    datos[tam].pos = T;
+                break;
+                case 2: 
+                	sscanf(T.c_str(), "%d", &datos[tam].edad);                   
+                break;
+                case 3: 
+                	sscanf(T.c_str(), "%d", &datos[tam].numCamiseta);
+                break;
+                case 4:
+		            sscanf(T.c_str(), "%d", &datos[tam].cantGoles);
+		        break;
+		        case 5: 
+		            sscanf(T.c_str(), "%d", &datos[tam].sigCantGoles);
+		        break;
+		        case 6: 
+		            sscanf(T.c_str(), "%d", &datos[tam].sigCompanero);
+		        break;
+                
+            }
+            i++; 
+        }  
+
+        tam++;
+	}
+	
+	archivo.close(); //Cerramos el archivo
+}
 #endif
