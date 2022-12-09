@@ -11,7 +11,7 @@ struct futbolista {
 	int edad, numCamiseta;
 	int cantGoles;
     int sigCantGoles;
-    int sigCompañero;
+    int sigCompanero;
 };
 
 //Creaci?n de la clase Multilista
@@ -46,7 +46,7 @@ class Multilista{
                 datos[i].cantGoles=0;
                 datos[i].pos="";
                 datos[i].sigCantGoles=-1;
-                datos[i].sigCompañero=-1;
+                datos[i].sigCompanero=-1;
             }
 		}
 		
@@ -65,7 +65,7 @@ class Multilista{
 		Lista<jugadores> mostrarGolesPorEquipo(int equipo);
 		Lista<jugadores> mostrarGolesGlobal();
 		futbolista getFutbolista(int pos);
-		void insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompañero);
+		void insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
 };
 
 bool Multilista :: multilistaVacia(){
@@ -100,10 +100,10 @@ bool Multilista :: insertar(string nombre, string edad, int numCamiseta, int can
 	}
 	else{
 		k=cabeceras[equipo];
-		while(datos[k].sigCompañero != -1){
-			k=datos[k].sigCompañero;
+		while(datos[k].sigCompanero != -1){
+			k=datos[k].sigCompanero;
 		}
-		datos[k].sigCompañero=i;
+		datos[k].sigCompanero=i;
 	}
 	//insertar en la lista de cabeceras a partir de la posicion de la cantidad de goles en orden ascendente
 	if(cabeceras[32]==-1){
@@ -126,7 +126,7 @@ Lista<jugadores> Multilista::mostrarEquipo(int equipo){
 	int k=cabeceras[equipo];
 	while(k!=-1){
 		l.Insertar(datos[k].nombre);
-		k=datos[k].sigCompañero;
+		k=datos[k].sigCompanero;
 	}
 	return l;
 }
@@ -155,7 +155,7 @@ futbolista Multilista::getFutbolista(int pos){
 	return datos[pos];
 }
 //funcion para insertar en la lista de datos de la multilista
-void Multilista::insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompañero){
+void Multilista::insertarDatosArchivo(string nombre, string edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero){
 	futbolista f;
 	f.nombre=nombre;
 	f.edad=edad;
@@ -163,7 +163,7 @@ void Multilista::insertarDatosArchivo(string nombre, string edad, int numCamiset
 	f.cantGoles=cantGoles;
 	f.pos=pos;
 	f.sigCantGoles=sigCantGoles;
-	f.sigCompañero=sigCompañero;
+	f.sigCompanero=sigCompanero;
 	while(datos[tam].nombre != ""){
 		tam++;
 	}
