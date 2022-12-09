@@ -38,7 +38,7 @@ class Equipos
             tam=0;
             idEquipoActual=0;
         }
-        int insertar(string nombre, string confederacion, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
+        int insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
@@ -48,7 +48,25 @@ class Equipos
         }
 };
 
-int Equipos::insertar(string nombre, string confederacion, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador){
+int Equipos::insertar(Equipo e){
+    e.puntos=0;
+    e.partidosJugados=0;
+    e.partidosGanados=0;
+    e.partidosEmpatados=0;
+    e.partidosPerdidos=0;
+    e.golesFavor=0;
+    e.golesContra=0;
+    e.tarjetasAmarillas=0;
+    e.tarjetasRojas=0;
+    e.idEquipo=idEquipoActual;
+    idEquipoActual++;
+    e.numEnLista=tam+1;
+    equipos.insertar(e);
+    tam++;
+    return e.idEquipo;
+}
+
+int Equipos::insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador){
     Equipo equipo;
     equipo.nombre=nombre;
     equipo.confederacion=confederacion;
