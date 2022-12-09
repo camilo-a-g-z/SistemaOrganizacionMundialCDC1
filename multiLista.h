@@ -75,8 +75,8 @@ class Multilista{
 		bool eliminar(int pos);
 		bool multilistaLLena();
 		bool multilistaVacia();
-		void guardarJugadoresArchivo(string nombreArchivo);
-		void leerJugadoresArchivo(string nombreArchivo);
+		void guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo);
+		void  Multilista::leerJugadoresArchivo(string nombreArchivo)
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
@@ -226,8 +226,64 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 	datos[posMulti]=f;
 }
 
+//Funcion para leer los jugadores del archivo y guardarlos en la multilista
+void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacion del archivo o fichiero
+    ifstream archivo;
+	string texto, T;
+	
+	
+	archivo.open(nombreArchivo.c_str(),ios::in); //Abrimos el archivo en modo lectura
+	
+	if(archivo.fail()){
+		cout<<"No se pudo abrir el archivo";
+		exit(1);
+	}
+	while(!archivo.eof()){ //mientras no sea final del archivo
+		getline(archivo,texto);
+        
+        
+        stringstream X(texto); // X is an object of stringstream that references the S string  
+        int i=0;
+        // use while loop to check the getline() function condition  
+        while (getline(X, T, '-')) {  
+            /* X represents to read the string from stringstream, T use for store the token string and, 
+            '-' - represents to split the string where - is found. */  
+            string nombre, pos;
+            int edad, numCamiseta, cantGoles, equipo, sigCantGoles, sigCompanero;
+            switch(i)
+            {
+                case 0: 
+                    nombre = T;
+                break;
+                case 1: 
+                    pos = T;
+                break;
+                case 2: 
+                	sscanf(T.c_str(), "%d", &edad);                   
+                break;
+                case 3: 
+                	sscanf(T.c_str(), "%d", &numCamiseta);
+                break;
+                case 4:
+		            sscanf(T.c_str(), "%d", &cantGoles);
+		        break;
+		        case 5: 
+		            sscanf(T.c_str(), "%d", &sigCantGoles);
+		        break;
+		        case 6: 
+		            sscanf(T.c_str(), "%d", &sigCompanero);
+		        break;
+                
+            }
+            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, equipo, sigCantGoles, sigCompanero);
+            i++; 
+        }  
+	}	
+	archivo.close(); //Cerramos el archivo
+}
+
 //Funci�n para guardar los jugadores en el archivo
-void Multilista::guardarJugadoresArchivo(string nombreArchivo){
+void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo){
  	ofstream archivo;
 	string frase;
 	char rpt;
@@ -260,60 +316,6 @@ void Multilista::guardarJugadoresArchivo(string nombreArchivo){
 
 }
 
-//Funcion para leer los jugadores del archivo y guardarlos en la multilista
-void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacion del archivo o fichiero
-    ifstream archivo;
-	string texto, T;
-	
-	
-	archivo.open(nombreArchivo.c_str(),ios::in); //Abrimos el archivo en modo lectura
-	
-	if(archivo.fail()){
-		cout<<"No se pudo abrir el archivo";
-		exit(1);
-	}
-	tam=0;
-	while(!archivo.eof()){ //mientras no sea final del archivo
-		getline(archivo,texto);
-        
-        
-        stringstream X(texto); // X is an object of stringstream that references the S string  
-        int i=0;
-        // use while loop to check the getline() function condition  
-        while (getline(X, T, '-')) {  
-            /* X represents to read the string from stringstream, T use for store the token string and, 
-            '-' - represents to split the string where - is found. */  
-            switch(i)
-            {
-                case 0: 
-                    datos[tam].nombre = T;
-                break;
-                case 1: 
-                    datos[tam].pos = T;
-                break;
-                case 2: 
-                	sscanf(T.c_str(), "%d", &datos[tam].edad);                   
-                break;
-                case 3: 
-                	sscanf(T.c_str(), "%d", &datos[tam].numCamiseta);
-                break;
-                case 4:
-		            sscanf(T.c_str(), "%d", &datos[tam].cantGoles);
-		        break;
-		        case 5: 
-		            sscanf(T.c_str(), "%d", &datos[tam].sigCantGoles);
-		        break;
-		        case 6: 
-		            sscanf(T.c_str(), "%d", &datos[tam].sigCompanero);
-		        break;
-                
-            }
-            i++; 
-        }  
 
-        tam++;
-	}
-	
-	archivo.close(); //Cerramos el archivo
-}
+
 #endif
