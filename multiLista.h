@@ -211,7 +211,7 @@ futbolista Multilista::getFutbolista(int pos){
 	return datos[pos];
 }
 //funcion para insertar en la lista de datos de la multilista
-void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero){
+void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti){
 	futbolista f;
 	f.nombre=nombre;
 	f.edad=edad;
@@ -220,9 +220,10 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 	f.pos=pos;
 	f.sigCantGoles=sigCantGoles;
 	f.sigCompanero=sigCompanero;
+	f.sigCampoLibre= sigCampoLibre;
 	int i=sigPosLibre;
 	sigPosLibre = datos[i].sigCampoLibre;
-	datos[i]=f;
+	datos[posMulti]=f;
 }
 
 //Funci�n para guardar los jugadores en el archivo
