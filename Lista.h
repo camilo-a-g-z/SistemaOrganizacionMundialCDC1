@@ -37,6 +37,7 @@ class Lista
 		T Eliminar(int pos);
 		T ObtenerDatos(int pos);
 		void mostrar();
+		void modificar(int pos, T dato);
 };
 
 template < class T >  
@@ -118,6 +119,15 @@ bool Lista<T>::Insertar(T dato){//insertar al final de la lista
 	
 	tam++;
 	return true;
+}
+
+//metodo para modificar recibiendo un dato y una posicion
+template < class T >
+void Lista::modificar(int pos, T dato){
+	Nodo<T> *aux;
+	aux = cab->sig;
+	for(int i = 1; i < pos; i++){aux = aux->sig;}
+	aux->info = dato;
 }
 
 #endif
