@@ -39,6 +39,9 @@ class Equipos
             idEquipoActual=0;
         }
         int insertar(string nombre, string confederacion, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
+        Equipo obtenerEquipo(int id);
+        Equipo obtenerEquipoPorPosicion(int pos);
+        void modificarEquipo(int id, Equipo equipo);
         //destructor
         ~Equipos(){
             equipos.~Lista();
