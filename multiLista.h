@@ -80,9 +80,38 @@ class Multilista{
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
+		Lista<futbolista> sacarEquipo(int equipo);
 		futbolista getFutbolista(int pos);
 		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero);
 };
+
+//metodo para devolver todos los futbolistas de un equipo y eliminarlos de la multilista
+Lista<futbolista> Multilista :: sacarEquipo(int equipo){
+	Lista<futbolista> lista;
+	int pos=cabeceras[equipo];
+	int aux;
+	while(pos!=-1){
+		lista.Insertar(datos[pos]);
+		aux=pos;
+		pos=datos[pos].sigCompanero;
+		datos[aux].nombre="";
+		datos[aux].edad=0;
+		datos[aux].numCamiseta=0;
+		datos[aux].cantGoles=0;
+		datos[aux].pos="";
+		datos[aux].sigCantGoles=-1;
+		datos[aux].sigCompanero=-1;
+		datos[aux].sigCampoLibre=sigPosLibre;
+		sigPosLibre=aux;
+		tam --;
+	}
+	if(tam==0){
+		cabeceras[32] =-1;
+	}
+	cabeceras[equipo]=-1;
+	return lista;
+}
+
 
 bool Multilista :: multilistaVacia(){
 	return tam==0;
@@ -156,6 +185,7 @@ Lista<futbolista> Multilista::mostrarEquipo(int equipo){
 	}
 	return l;
 }
+
 //crear un metodo que muestre los jugadores de un equipo en orden ascendente de goles
 Lista<futbolista> Multilista::mostrarGolesPorEquipo(int equipo){
 	Lista<futbolista> l;
@@ -190,10 +220,9 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 	f.pos=pos;
 	f.sigCantGoles=sigCantGoles;
 	f.sigCompanero=sigCompanero;
-	while(datos[tam].nombre != ""){
-		tam++;
-	}
-	datos[tam]=f;
+	int i=sigPosLibre;
+	sigPosLibre = datos[i].sigCampoLibre;
+	datos[i]=f;
 }
 
 //Funci�n para guardar los jugadores en el archivo
