@@ -6,6 +6,13 @@ using namespace std;
 
 int main(){
 	Multilista jugadores;
+	
+	jugadores.leerJugadoresArchivo("jugadores.txt");
+	cout<<jugadores.multilistaVacia();
+	for(int i=0;i<20;i++){
+		jugadores.getFutbolista(i).nombre;
+	}
+	/*
 	for(int i=0;i<20;i++){
 		jugadores.insertar("pepe",17+i,i,25,"delantero",0);
 	}
@@ -24,13 +31,14 @@ int main(){
 		futbolista f = l2.ObtenerDatos(i);
 		cout<<"cant goles: "<<f.cantGoles<<endl;
 	}
-	cout<<l2.TamLista();
-	jugadores.guardarJugadoresArchivo(l2, "jugadores.txt");
+	//cout<<l2.TamLista();
+	
+	jugadores.guardarJugadoresArchivo(l2, "jugadores.txt");*/
 
-	/*
 	cout<<"Ahora le vamos a pedir que nos vuelva a mostrar: "<<endl;
 	Lista<futbolista> l = jugadores.mostrarGolesGlobal();
-	for(int i = 1; i<=l.TamLista();i++){
+	//for(int i = 1; i<=l.TamLista();i++){
+	/*
 		futbolista f = l.ObtenerDatos(i);
 		cout<<"cant goles: "<<f.cantGoles<<endl;
 	}*/

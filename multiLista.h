@@ -82,7 +82,7 @@ class Multilista{
 		Lista<futbolista> mostrarGolesGlobal();
 		Lista<futbolista> sacarEquipo(int equipo);
 		futbolista getFutbolista(int pos);
-		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti);
+		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti);
 };
 
 //metodo para devolver todos los futbolistas de un equipo y eliminarlos de la multilista
@@ -211,7 +211,7 @@ futbolista Multilista::getFutbolista(int pos){
 	return datos[pos];
 }
 //funcion para insertar en la lista de datos de la multilista
-void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti){
+void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti){
 	futbolista f;
 	f.nombre=nombre;
 	f.edad=edad;
@@ -224,6 +224,7 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 	int i=sigPosLibre;
 	sigPosLibre = datos[i].sigCampoLibre;
 	datos[posMulti]=f;
+	tam++;
 }
 
 //Funcion para leer los jugadores del archivo y guardarlos en la multilista
@@ -245,7 +246,7 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
         stringstream X(texto); // X is an object of stringstream that references the S string  
         int i=0;
         // use while loop to check the getline() function condition  
-        while (getline(X, T, '-')) {  
+        while (getline(X, T, '*')) {  
             /* X represents to read the string from stringstream, T use for store the token string and, 
             '-' - represents to split the string where - is found. */  
             string nombre, pos;
@@ -279,7 +280,8 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
 		            sscanf(T.c_str(), "%d", &sigCampoLibre);
 				break;     
             }
-            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, equipo, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
+             cout<< nombre<< edad<< numCamiseta<<cantGoles<<sigCantGoles<<sigCompanero<<sigCampoLibre<<posMulti<<endl;
+            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
             i++; 
         }  
 	}	
@@ -302,10 +304,10 @@ void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nom
 		
 		fflush(stdin);
 		cout<<"tam: "<<tam<<endl;
-        for(int i=0; i<tam; i++){
+        for(int i=1; i<=tam; i++){
 			stringstream fr;
 			futbolista f = jugadores.ObtenerDatos(i);
-            fr << i <<"-" << f.nombre << "-" << f.pos << "-" <<f.edad << "-"<< f.numCamiseta << "-" << f.cantGoles << "-" << f.sigCantGoles << "-" << f.sigCompanero << "-" << f.sigCampoLibre;
+            fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
             frase = fr.str();
             cout<<frase;
             archivo<<frase<<endl;           
