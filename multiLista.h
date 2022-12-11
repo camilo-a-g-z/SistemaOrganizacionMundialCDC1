@@ -241,7 +241,8 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
 	}
 	while(!archivo.eof()){ //mientras no sea final del archivo
 		getline(archivo,texto);
-        
+        string nombre, pos;
+    	int edad, numCamiseta, cantGoles, equipo, sigCantGoles, sigCompanero, sigCampoLibre, posMulti;
         
         stringstream X(texto); // X is an object of stringstream that references the S string  
         int i=0;
@@ -249,41 +250,50 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
         while (getline(X, T, '*')) {  
             /* X represents to read the string from stringstream, T use for store the token string and, 
             '-' - represents to split the string where - is found. */  
-            string nombre, pos;
-            int edad, numCamiseta, cantGoles, equipo, sigCantGoles, sigCompanero, sigCampoLibre, posMulti;
+            
             switch(i)
             {
 				case 0: //posicion en la multilista
 					sscanf(T.c_str(), "%d", &posMulti); 
+					
                 case 1:  //nombre
                     nombre = T;
+                   
                 break;
                 case 2: //posicion
                     pos = T;
+                    
                 break;
                 case 3: //edad
-                	sscanf(T.c_str(), "%d", &edad);                   
+                	sscanf(T.c_str(), "%d", &edad);  
+					              
                 break;
                 case 4: //numero de camiseta
                 	sscanf(T.c_str(), "%d", &numCamiseta);
+                   
                 break;
                 case 5: //Cantidad de goles
 		            sscanf(T.c_str(), "%d", &cantGoles);
+		            
 		        break;
 		        case 6: //siguiente cantidad de goles
 		            sscanf(T.c_str(), "%d", &sigCantGoles);
+		             
 		        break;
 		        case 7: //siguiente companero
 		            sscanf(T.c_str(), "%d", &sigCompanero);
 		        break;
 				case 8: //siguiente campo libre
-		            sscanf(T.c_str(), "%d", &sigCampoLibre);
+		            sscanf(T.c_str(), "%d", &sigCampoLibre); 
 				break;     
             }
-             cout<< nombre<< edad<< numCamiseta<<cantGoles<<sigCantGoles<<sigCompanero<<sigCampoLibre<<posMulti<<endl;
-            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
+            
             i++; 
         }  
+        //cout<<nombre<<endl;
+            cout<<"linea: "<< nombre<<pos<< edad<< numCamiseta<<cantGoles<<sigCantGoles<<sigCompanero<<sigCampoLibre<<posMulti<<endl;
+            
+            insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
 	}	
 	archivo.close(); //Cerramos el archivo
 }
