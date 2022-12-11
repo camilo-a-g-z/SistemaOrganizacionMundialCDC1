@@ -45,10 +45,7 @@ class Equipos
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
         int insertar(Equipo e);
-        //destructor
-        ~Equipos(){
-            equipos.~Lista();
-        }
+        
 };
 
 int Equipos::insertar(Equipo e){

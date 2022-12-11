@@ -64,12 +64,6 @@ class Multilista{
             datos[834].sigCampoLibre=-1;
 		}
 		
-		//Destructor
-		~Multilista(){
-			delete[] datos;
-			delete[] cabeceras;
-		}
-		
 		//Metodos (acciones) de la Multilista
 		bool insertar(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo);
 		bool eliminar(int pos);

@@ -38,10 +38,7 @@ class Cronograma
         Lista<partido> obtenerPartidosPorEtapaYSeccion(string etapa, string seccion);
         Lista<partido> obtenerPartidosPorFecha(string fecha);
         void modificarPartido(int posEnLista, partido partido);
-        //destructor
-        ~Cronograma(){
-            partidos.~Lista();
-        }
+        
         
 };
 

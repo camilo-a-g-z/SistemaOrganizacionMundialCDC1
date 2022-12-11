@@ -1,6 +1,7 @@
 #ifndef M_PRINCIPAL_H
 #define M_PRINCIPAL_H
 #include <iostream>
+#include<stdlib.h>
 #include "Lista.h"
 #include "multiLista.h"
 #include "Estadios.h"
@@ -23,8 +24,7 @@ class MaestroPrincipal
         void inicio();
         //getter
         
-        //destructor
-        ~MaestroPrincipal(){}
+        
 };
 
 void MaestroPrincipal::inicio(){
@@ -33,8 +33,11 @@ void MaestroPrincipal::inicio(){
 
     }else{
         MaestroInserccion mI;
-        mI.insertarDesdeCero();;
+        mI.insertarDesdeCero();
+        cout<<"Se ha insertado desde cero"<<endl;
+        system("pause");
     }
+    cout<<"paso a aca"<<endl;
 }
 
 #endif

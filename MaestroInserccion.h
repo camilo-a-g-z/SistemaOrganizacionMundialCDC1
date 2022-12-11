@@ -18,6 +18,7 @@ class MaestroInserccion
         Cronograma cronograma;
         string posEquipos[32];
         int grupoEquipos[32];//del 0 al 3 grupo A, del 4 al 7 grupo B, del 8 al 11 grupo C, del 12 al 15 grupo D, del 16 al 19 grupo E, del 20 al 23 grupo F, del 24 al 27 grupo G, del 28 al 31 grupo H
+        int estadiosIDS[8];
 	public:
         //constructor
         MaestroInserccion(){
@@ -34,13 +35,7 @@ class MaestroInserccion
         Cronograma getCronograma(){return cronograma;}
         string *getPosEquipos(){return posEquipos;}
         int *getGrupoEquipos(){return grupoEquipos;}
-        //destructores
-        ~MaestroInserccion(){
-            jugadores.~Multilista();
-            estadios.~Estadios();
-            equipos.~Equipos();
-            cronograma.~Cronograma();
-        }
+        
         
 };
 
@@ -144,10 +139,19 @@ void MaestroInserccion::insertarEstadios(){
     cout<<"\n\nAhora insertaremos los estadios del mundial\n\n";
     Estadio e;
     for(int i=0;i<8;i++){
-        cout<<"Estadio "<<i+1<<" a insertar"<<endl;
+        //ingreso de datos normal
+        /*cout<<"Estadio "<<i+1<<" a insertar"<<endl;
         cout<<"Ingrese el nombre del estadio: ";cin>>e.nombre;
         cout<<"Ingrese la ciudad en la que se encuentra: ";cin>>e.ciudad;
-        cout<<"Ingrese la capacidad del estadio: ";cin>>e.capacidad;
+        cout<<"Ingrese la capacidad del estadio: ";cin>>e.capacidad;*/
+        //ingreso de datos para testeo
+        cout<<"Estadio "<<i+1<<" a insertar"<<endl;
+        cout<<"Ingrese el nombre del estadio: "<<endl;e.nombre = "Estadio"+i;
+        cout<<"Ingrese la ciudad en la que se encuentra: "<<endl;e.ciudad = "Ciudad"+i;
+        cout<<"Ingrese la capacidad del estadio: "<<endl;e.capacidad = i;
+        estadiosIDS[i] = estadios.insertar(e.nombre,e.ciudad,e.capacidad);
+
+        cout<<"Estadio insertado con exito"<<endl;
     }
 }
 //getters y setters
