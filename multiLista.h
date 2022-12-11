@@ -298,7 +298,7 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
 	archivo.close(); //Cerramos el archivo
 }
 
-//Función para guardar los jugadores en el archivo
+//Funcion para guardar los jugadores en el archivo
 void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo){
  	ofstream archivo;
 	string frase;
@@ -309,29 +309,20 @@ void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nom
 		cout<<"No se pudo abrir el archivo";
 		exit(1);
 	}
-	
-	do{
+			
+	fflush(stdin);
+    for(int i=1; i<=tam; i++){
+		stringstream fr;
+		futbolista f = jugadores.ObtenerDatos(i);
+        fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
+        frase = fr.str();
+        cout<<frase;
+        archivo<<frase<<endl;           
+    }
+	Multilista();
 		
-		fflush(stdin);
-		cout<<"tam: "<<tam<<endl;
-        for(int i=1; i<=tam; i++){
-			stringstream fr;
-			futbolista f = jugadores.ObtenerDatos(i);
-            fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
-            frase = fr.str();
-            cout<<frase;
-            archivo<<frase<<endl;           
-        }
-		Multilista();
-		
-		cout<<"\nDesea agregar otra frase(S/N): ";
-		cin>>rpt;
-	}while((rpt == 'S') || (rpt == 's'));
 	
 	archivo.close(); //Cerramos el archivo
 
 }
-
-
-
 #endif

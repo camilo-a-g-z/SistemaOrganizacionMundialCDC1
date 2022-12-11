@@ -1,17 +1,23 @@
 #include<iostream>
 #include"multiLista.h"
 #include"Lista.h"
+#include"Equipos.h"
 
 using namespace std;
 
 int main(){
 	Multilista jugadores;
-	
-	jugadores.leerJugadoresArchivo("jugadores.txt");
-	cout<<jugadores.multilistaVacia();
-	for(int i=0;i<20;i++){
-		jugadores.getFutbolista(i).nombre;
-	}
+	Equipos equipos;
+
+
+	equipos.insertar("Argentina","CONMEBOL","Simeone","Diego","Argentina");
+	equipos.insertar("Brasil","CONMEBOL","Tite","Adenor","Brasil");
+	equipos.insertar("Chile","CONMEBOL","Pizzi","Reinaldo","Chile");
+	equipos.insertar("Colombia","CONMEBOL","Pekerman","Jose","Colombia");
+	equipos.insertar("Ecuador","CONMEBOL","Ramirez","Ismael","Ecuador");
+
+	equipos.guardarEquiposArchivo("equipos.txt");
+	//jugadores.leerJugadoresArchivo("jugadores.txt");
 	/*
 	for(int i=0;i<20;i++){
 		jugadores.insertar("pepe",17+i,i,25,"delantero",0);
@@ -36,7 +42,7 @@ int main(){
 	jugadores.guardarJugadoresArchivo(l2, "jugadores.txt");*/
 
 	cout<<"Ahora le vamos a pedir que nos vuelva a mostrar: "<<endl;
-	Lista<futbolista> l = jugadores.mostrarGolesGlobal();
+
 	//for(int i = 1; i<=l.TamLista();i++){
 	/*
 		futbolista f = l.ObtenerDatos(i);

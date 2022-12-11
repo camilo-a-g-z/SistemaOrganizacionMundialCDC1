@@ -7,7 +7,7 @@ using namespace std;
 struct Equipo{
     //datos del equipo
     string nombre;//pais
-    String confederacion;
+    string confederacion;
     int puntos;
     int partidosJugados;
     int partidosGanados;
@@ -24,7 +24,7 @@ struct Equipo{
     //numero identificador para asociar con multilista
     int idEquipo;
     int numEnLista;
-}
+};
 
 class Equipos
 {
@@ -39,9 +39,12 @@ class Equipos
             idEquipoActual=0;
         }
         int insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
+        void insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista);
+        void guardarEquiposArchivo(string nombreArchivo);
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
+        int insertar(Equipo e);
         //destructor
         ~Equipos(){
             equipos.~Lista();
@@ -61,7 +64,7 @@ int Equipos::insertar(Equipo e){
     e.idEquipo=idEquipoActual;
     idEquipoActual++;
     e.numEnLista=tam+1;
-    equipos.insertar(e);
+    insertar(e);
     tam++;
     return e.idEquipo;
 }
@@ -87,7 +90,7 @@ int Equipos::insertar(string nombre, string confederacion, string nombreEntrenad
     equipo.numEnLista=tam+1;
     equipos.Insertar(equipo);
     tam++;
-    retun equipo.idEquipo;
+    return equipo.idEquipo;
 }
 
 //metodo para obtener un equipo por su id
@@ -113,6 +116,61 @@ void Equipos::modificarEquipo(int id, Equipo equipo){
             equipos.modificar(i,equipo);
         }
     }
+}
+ 
+void Equipos::insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista){
+    Equipos();
+    Equipo equipo;
+    equipo.nombre=nombre;
+    equipo.confederacion=confederacion;
+    equipo.puntos=puntos;
+    equipo.partidosJugados=partidosJugados;
+    equipo.partidosGanados=partidosGanados;
+    equipo.partidosEmpatados=partidosEmpatados;
+    equipo.partidosPerdidos=partidosPerdidos;
+    equipo.golesFavor=golesFavor;
+    equipo.golesContra=golesContra;
+    equipo.tarjetasAmarillas=tarjetasAmarillas;
+    equipo.tarjetasRojas=tarjetasRojas;
+    equipo.nombreEntrenador=nombreEntrenador;
+    equipo.apellidoEntrenador=apellidoEntrenador;
+    equipo.nacionalidadEntrenador=nacionalidadEntrenador;
+    equipo.idEquipo=idEquipo;
+    idEquipoActual++;
+    equipo.numEnLista=tam+1;
+    equipos.Insertar(equipo);
+    tam++;
+}
+
+//Funcion para guardar los equipos en el archivo
+void Equipos::guardarEquiposArchivo(string nombreArchivo){
+ 	ofstream archivo;
+	string frase;
+	char rpt;	
+	archivo.open(nombreArchivo.c_str(),ios::out); //Creamos el archivo
+	
+	if(archivo.fail()){ //Si a ocurrido algun error
+		cout<<"No se pudo abrir el archivo";
+		exit(1);
+	}
+		
+	fflush(stdin);
+	
+    for(int i=1; i<=tam; i++){
+		stringstream fr;
+		Equipo e = obtenerEquipoPorPosicion(i);
+        
+        fr << i-1 <<"*" << e.nombre << "*" << e.confederacion << "*" << e.nombreEntrenador << "*" << e.apellidoEntrenador << "*" << e.nacionalidadEntrenador << "*" << e.puntos << "*" << e.partidosJugados << "*" << e.partidosGanados << "*" << e.partidosEmpatados << "*" << e.partidosPerdidos << "*" << e.golesFavor << "*" << e.golesContra << "*" << e.tarjetasAmarillas << "*" << e.tarjetasRojas << "*" << e.idEquipo << "*" << e.numEnLista;
+        frase = fr.str();
+        cout<<frase;
+        archivo<<frase<<endl;           
+    }
+	Equipos();
+	
+
+	
+	archivo.close(); //Cerramos el archivo
+
 }
 
 #endif
