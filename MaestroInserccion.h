@@ -80,39 +80,22 @@ void MaestroInserccion::insertarEquipos(){
                 cout<<"Ingrese los datos del equipo del grupo H"<<endl;
                 break;
         }
-        cout<<"Equipo "<<i+1<<" a insertar"<<endl;
+        //ingreso de datos normal
+        /*cout<<"Equipo "<<i+1<<" a insertar"<<endl;
         cout<<"Ingrese el nombre del equipo: ";cin>>e.nombre;
         cout<<"Ingrese la confederacion a la que pertenece: ";cin>>e.confederacion;
         cout<<"Ingrese el nombre del entrenador: ";cin>>e.nombreEntrenador;
         cout<<"Ingrese el apellido del entrenador: ";cin>>e.apellidoEntrenador;
-        cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;
+        cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;*/
+        //ingreso de datos para testeo
+        cout<<"Equipo "<<i+1<<" a insertar"<<endl;
+        cout<<"Ingrese el nombre del equipo: ";e.nombre = ""+i;
+        cout<<"Ingrese la confederacion a la que pertenece: ";e.confederacion= ""+i;
+        cout<<"Ingrese el nombre del entrenador: ";e.nombreEntrenador= ""+i;
+        cout<<"Ingrese el apellido del entrenador: ";e.apellidoEntrenador= ""+i;
+        cout<<"Ingrese la nacionalidad del entrenador: ";e.nacionalidadEntrenador= ""+i;
         string grupo;
-        switch(i/4){
-            case 0:
-                grupoEquipos[i] = 'A';
-                break;
-            case 1:
-                grupoEquipos[i] = 'B';
-                break;
-            case 2:
-                grupoEquipos[i] = 'C';
-                break;
-            case 3:
-                grupoEquipos[i] = 'D';
-                break;
-            case 4:
-                grupoEquipos[i] = 'E';
-                break;
-            case 5:
-                grupoEquipos[i] = 'F';
-                break;
-            case 6:
-                grupoEquipos[i] = 'G';
-                break;
-            case 7:
-                grupoEquipos[i] = 'H';
-                break;
-        }
+        grupoEquipos[i]=i;
         posEquipos[i]=e.nombre; 
         int x = equipos.insertar(e);
         cout<<"Equipo insertado con exito"<<endl;
@@ -125,16 +108,31 @@ void MaestroInserccion::insertarJugadores(){
     int numJug=0;
     for(int i=0;i<32;i++){
         cout<<"Insertando jugadores del equipo "<<posEquipos[i]<<endl;
-        cout<<"Ingrese el numero de jugadores del equipo: ";cin>>numJug;
+        //ingreso de datos normal
+        //cout<<"Ingrese el numero de jugadores del equipo: ";cin>>numJug;
+        //ingreso de datos para testeo
+        cout<<"Ingrese el numero de jugadores del equipo: ";numJug = 12;
         for(int j=0;j<numJug;j++){
-            string nombre;
+            //ingreso de datos normal
+            /*string nombre;
             cout<<"Nombre del jugador: ";cin>>nombre;
             int edad;
             cout<<"Edad del jugador: ";cin>>edad;
             int numCamiseta;
+            cout<<"Numero de camiseta: ";cin>>numCamiseta;
             int cantGoles = 0;
             string posicion;
-            cout<<"Posicion del jugador: ";cin>>posicion;
+            cout<<"Posicion del jugador: ";cin>>posicion;*/
+            //ingreso de datos para testeo
+            string nombre;
+            cout<<"Nombre del jugador: ";nombre = "jugador"+j;
+            int edad;
+            cout<<"Edad del jugador: ";edad = j;
+            int numCamiseta;
+            cout<<"Numero de camiseta: ";numCamiseta = j;
+            int cantGoles = 0;
+            string posicion;
+            cout<<"Posicion del jugador: ";posicion = "posicion"+j;
             jugadores.insertar(nombre,edad,numCamiseta,cantGoles,posicion,i);
             cout<<"Jugador insertado con exito"<<endl;
         }

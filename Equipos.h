@@ -64,8 +64,17 @@ int Equipos::insertar(Equipo e){
     e.idEquipo=idEquipoActual;
     idEquipoActual++;
     e.numEnLista=tam+1;
-    insertar(e);
+    equipos.Insertar(e);
     tam++;
+    //impresion de toda la estructura para testeo
+    cout<<"nombre: "<<e.nombre<<endl;
+    cout<<"confederacion: "<<e.confederacion<<endl;
+    cout<<"nombreEntrenador: "<<e.nombreEntrenador<<endl;
+    cout<<"apellidoEntrenador: "<<e.apellidoEntrenador<<endl;
+    cout<<"nacionalidadEntrenador: "<<e.nacionalidadEntrenador<<endl;
+    cout<<"idEquipo: "<<e.idEquipo<<endl;
+    cout<<"numEnLista: "<<e.numEnLista<<endl;
+
     return e.idEquipo;
 }
 
@@ -90,6 +99,15 @@ int Equipos::insertar(string nombre, string confederacion, string nombreEntrenad
     equipo.numEnLista=tam+1;
     equipos.Insertar(equipo);
     tam++;
+    //impresion de toda la estructura para testeo
+    cout<<"nombre: "<<equipo.nombre<<endl;
+    cout<<"confederacion: "<<equipo.confederacion<<endl;
+    cout<<"nombreEntrenador: "<<equipo.nombreEntrenador<<endl;
+    cout<<"apellidoEntrenador: "<<equipo.apellidoEntrenador<<endl;
+    cout<<"nacionalidadEntrenador: "<<equipo.nacionalidadEntrenador<<endl;
+    cout<<"idEquipo: "<<equipo.idEquipo<<endl;
+    cout<<"numEnLista: "<<equipo.numEnLista<<endl;
+    
     return equipo.idEquipo;
 }
 

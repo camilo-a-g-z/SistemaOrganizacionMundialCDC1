@@ -172,6 +172,17 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 		 
 		
 	}
+	//impresion de toda la estructura para testeo
+	cout<<"Nombre futbolista: "<<datos[i].nombre<<endl;
+	cout<<"Edad futbolista: "<<datos[i].edad<<endl;
+	cout<<"Numero de camiseta futbolista: "<<datos[i].numCamiseta<<endl;
+	cout<<"Cantidad de goles futbolista: "<<datos[i].cantGoles<<endl;
+	cout<<"Posicion futbolista: "<<datos[i].pos<<endl;
+	cout<<"Siguiente companero: "<<datos[i].sigCompanero<<endl;
+	cout<<"Siguiente cantidad de goles: "<<datos[i].sigCantGoles<<endl;
+	cout<<"Siguiente campo libre: "<<datos[i].sigCampoLibre<<endl;
+	cout<<"Cabecera equipo: "<<cabeceras[equipo]<<endl;
+	cout<<"Cabecera cantidad de goles: "<<cabeceras[32]<<endl;
 	tam++;
 	return true;
 }
