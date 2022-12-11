@@ -1,6 +1,8 @@
 #ifndef M_GENERADOR_H
 #define M_GENERADOR_H
 #include <iostream>
+#include<stdlib.h>
+#include <time.h>
 #include "Lista.h"
 #include "multiLista.h"
 #include "Estadios.h"
@@ -17,7 +19,8 @@ class MaestroGenerador
         //constructor
         MaestroGenerador(){}
         //metodo para recivir una fecha y estadios y generar un cronograma y lo guarda en cronograma
-        void generarCronograma(Estadios estadios, Equipos equipos);
+        void generarCronograma(Estadios estadios, Equipos equipos, int grupoEquipos[]);
+        randomEstadio(Estadios estadios);
         //getter
         Cronograma getCronograma(){return cronograma;}
         //destructor
@@ -31,14 +34,14 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
     bool partidoPorDia = false;
     for(int i = 0; i<48; i+=4){
         //por dia es un partido
-        cronograma.insertar(randomEstadio(estadios),i,i+1,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+2,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i,i+1,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i+2,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+2,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i+1,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+2,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(randomEstadio(estadios),i+1,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
     }
     //los -1 a continuacion son para indicar que no hay equipo definido en ese partido
@@ -115,7 +118,8 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
 }
 //metodo para devolver aleatoriamente un estadio
 int MaestroGenerador::randomEstadio(Estadios estadios){
-    int random = rand() % 8;
+    srand(time(NULL)); //generar un numero aleatorio entre 0-8
+	int random =rand()%(9-1);
     return estadios.obtenerEstadio(random).idEstadio;
 }
 

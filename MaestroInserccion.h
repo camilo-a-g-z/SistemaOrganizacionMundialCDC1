@@ -32,8 +32,8 @@ class MaestroInserccion
         Estadios getEstadios(){return estadios;}
         Equipos getEquipos(){return equipos;}
         Cronograma getCronograma(){return cronograma;}
-        string getPosEquipos(){return posEquipos;}
-        int getGrupoEquipos(){return grupoEquipos;}
+        string *getPosEquipos(){return posEquipos;}
+        int *getGrupoEquipos(){return grupoEquipos;}
         //destructores
         ~MaestroInserccion(){
             jugadores.~Multilista();
@@ -86,30 +86,31 @@ void MaestroInserccion::insertarEquipos(){
         cout<<"Ingrese el nombre del entrenador: ";cin>>e.nombreEntrenador;
         cout<<"Ingrese el apellido del entrenador: ";cin>>e.apellidoEntrenador;
         cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;
+        string grupo;
         switch(i/4){
             case 0:
-                e.grupo = 'A';
+                grupoEquipos[i] = 'A';
                 break;
             case 1:
-                e.grupo = 'B';
+                grupoEquipos[i] = 'B';
                 break;
             case 2:
-                e.grupo = 'C';
+                grupoEquipos[i] = 'C';
                 break;
             case 3:
-                e.grupo = 'D';
+                grupoEquipos[i] = 'D';
                 break;
             case 4:
-                e.grupo = 'E';
+                grupoEquipos[i] = 'E';
                 break;
             case 5:
-                e.grupo = 'F';
+                grupoEquipos[i] = 'F';
                 break;
             case 6:
-                e.grupo = 'G';
+                grupoEquipos[i] = 'G';
                 break;
             case 7:
-                e.grupo = 'H';
+                grupoEquipos[i] = 'H';
                 break;
         }
         posEquipos[i]=e.nombre; 
@@ -121,10 +122,11 @@ void MaestroInserccion::insertarEquipos(){
 
 void MaestroInserccion::insertarJugadores(){
     cout<<"\n\nAhora insertaremos los jugadores de cada equipo\n\n";
+    int numJug=0;
     for(int i=0;i<32;i++){
         cout<<"Insertando jugadores del equipo "<<posEquipos[i]<<endl;
-        cout<<"Ingrese el numero de jugadores del equipo: ";cin>>j.numJugadores;
-        for(int j=0;j<j.numJugadores;j++){
+        cout<<"Ingrese el numero de jugadores del equipo: ";cin>>numJug;
+        for(int j=0;j<numJug;j++){
             string nombre;
             cout<<"Nombre del jugador: ";cin>>nombre;
             int edad;
@@ -146,7 +148,7 @@ void MaestroInserccion::insertarEstadios(){
     for(int i=0;i<8;i++){
         cout<<"Estadio "<<i+1<<" a insertar"<<endl;
         cout<<"Ingrese el nombre del estadio: ";cin>>e.nombre;
-        cout<<"Ingrese la ciudad en la que se encuentra: ";cin>>e
+        cout<<"Ingrese la ciudad en la que se encuentra: ";cin>>e.ciudad;
         cout<<"Ingrese la capacidad del estadio: ";cin>>e.capacidad;
     }
 }

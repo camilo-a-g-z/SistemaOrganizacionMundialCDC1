@@ -10,7 +10,7 @@ struct Estadio{
     int capacidad;
     int idEstadio;
     int numEnLista;
-}
+};
 
 class Estadios
 {
@@ -42,7 +42,7 @@ int Estadios::insertar(string nombre, string ciudad, int capacidad){
     estadio.capacidad=capacidad;
     estadio.idEstadio=idEstadioActual;
     estadio.numEnLista=tam;
-    estadios.insertar(estadio);
+    estadios.Insertar(estadio);
     idEstadioActual++;
     tam++;
     return 0;
@@ -50,13 +50,23 @@ int Estadios::insertar(string nombre, string ciudad, int capacidad){
 //metodo para obtener un estadio por su id
 Estadio Estadios::obtenerEstadio(int id){
     Estadio estadio;
-    estadio=estadios.obtener(id);
+    for(int i=1;i<=tam;i++){
+        estadio=estadios.ObtenerDatos(i);
+        if(estadio.idEstadio==id){
+            return estadio;
+        }
+    }
     return estadio;
 }
 //metodo para obtener un estadio por su posicion en la lista
 Estadio Estadios::obtenerEstadioPorPosicion(int pos){
     Estadio estadio;
-    estadio=estadios.obtenerPorPosicion(pos);
+    for(int i=1;i<=tam;i++){
+        estadio=estadios.ObtenerDatos(i);
+        if(estadio.numEnLista==pos){
+            return estadio;
+        }
+    }
     return estadio;
 }
 //metodo para modificar un estadio
