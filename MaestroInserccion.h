@@ -16,7 +16,8 @@ class MaestroInserccion
         Estadios estadios;
         Equipos equipos;
         Cronograma cronograma;
-        string posEquipos = new string[9];
+        string posEquipos = new string[32];
+        int grupoEquipos = new int[32];//del 0 al 3 grupo A, del 0 al 3 grupo B, del 0 al 3 grupo C, del 0 al 3 grupo D
 	public:
         //constructor
         MaestroInserccion(){
@@ -40,19 +41,19 @@ void MaestroInserccion::insertarDesdeCero(){
     insertarEquipos();
     insertarJugadores();
     insertarEstadios();
-    insertarCronograma();
 }
 
 void MaestroInserccion::insertarEquipos(){
     cout<<"\n\nEmpezaremos con la inserccion de los 8 equipos participantes en el mundial\n\n";
     Equipo e;
-    for(int i=0;i<8;i++){
+    for(int i=0;i<32;i++){
         cout<<"Equipo "<<i+1<<" a insertar"<<endl;
         cout<<"Ingrese el nombre del equipo: ";cin>>e.nombre;
         cout<<"Ingrese la confederacion a la que pertenece: ";cin>>e.confederacion;
         cout<<"Ingrese el nombre del entrenador: ";cin>>e.nombreEntrenador;
         cout<<"Ingrese el apellido del entrenador: ";cin>>e.apellidoEntrenador;
         cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;
+        cout<<"Ingrese el grupo al que pertenece: ";cin>>grupoEquipos[i];
         posEquipos[i]=e.nombre; 
         int x = equipos.insertar(e);
         cout<<"Equipo insertado con exito"<<endl;
@@ -62,7 +63,7 @@ void MaestroInserccion::insertarEquipos(){
 
 void MaestroInserccion::insertarJugadores(){
     cout<<"\n\nAhora insertaremos los jugadores de cada equipo\n\n";
-    for(int i=0;i<8;i++){
+    for(int i=0;i<32;i++){
         cout<<"Insertando jugadores del equipo "<<posEquipos[i]<<endl;
         cout<<"Ingrese el numero de jugadores del equipo: ";cin>>j.numJugadores;
         for(int j=0;j<j.numJugadores;j++){
@@ -81,4 +82,14 @@ void MaestroInserccion::insertarJugadores(){
     cout<<"\n\nJugadores insertados con exito\n\n";
 }
 
+void MaestroInserccion::insertarEstadios(){
+    cout<<"\n\nAhora insertaremos los estadios del mundial\n\n";
+    Estadio e;
+    for(int i=0;i<8;i++){
+        cout<<"Estadio "<<i+1<<" a insertar"<<endl;
+        cout<<"Ingrese el nombre del estadio: ";cin>>e.nombre;
+        cout<<"Ingrese la ciudad en la que se encuentra: ";cin>>e
+        cout<<"Ingrese la capacidad del estadio: ";cin>>e.capacidad;
+    }
+}
 #endif
