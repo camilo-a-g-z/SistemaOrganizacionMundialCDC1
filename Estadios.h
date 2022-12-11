@@ -28,6 +28,7 @@ class Estadios
         Estadio obtenerEstadio(int id);
         Estadio obtenerEstadioPorPosicion(int pos);
         void modificarEstadio(int id, Estadio estadio);
+        int getTam(){return tam;}
         
         
 };

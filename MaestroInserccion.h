@@ -1,6 +1,7 @@
 #ifndef M_INSERCCION_H
 #define M_INSERCCION_H
 #include <iostream>
+#include <string>
 #include "Lista.h"
 #include "multiLista.h"
 #include "Estadios.h"
@@ -8,6 +9,7 @@
 #include "Cronograma.h"
 using namespace std;
 
+using std::string;
 
 class MaestroInserccion
 {
@@ -46,7 +48,7 @@ void MaestroInserccion::insertarDesdeCero(){
 }
 
 void MaestroInserccion::insertarEquipos(){
-    cout<<"\n\nEmpezaremos con la inserccion de los 8 equipos participantes en el mundial\n\n";
+    cout<<"\n\nEmpezaremos con la inserccion de los 32 equipos participantes en el mundial\n\n";
     Equipo e;
     for(int i=0;i<32;i++){
         switch(i/4){
@@ -84,11 +86,11 @@ void MaestroInserccion::insertarEquipos(){
         cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;*/
         //ingreso de datos para testeo
         cout<<"Equipo "<<i+1<<" a insertar"<<endl;
-        cout<<"Ingrese el nombre del equipo: "<<endl;e.nombre = "Equipo"+i;
-        cout<<"Ingrese la confederacion a la que pertenece: "<<endl;e.confederacion= "Equipo"+i;
-        cout<<"Ingrese el nombre del entrenador: "<<endl;e.nombreEntrenador= "Equipo"+i;
-        cout<<"Ingrese el apellido del entrenador: "<<endl;e.apellidoEntrenador= "Equipo"+i;
-        cout<<"Ingrese la nacionalidad del entrenador: "<<endl;e.nacionalidadEntrenador= "Equipo"+i;
+        cout<<"Ingrese el nombre del equipo: "<<endl;e.nombre = "Equipo "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
+        cout<<"Ingrese la confederacion a la que pertenece: "<<endl;e.confederacion= "Confederacion "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
+        cout<<"Ingrese el nombre del entrenador: "<<endl;e.nombreEntrenador= "EquipoEntrenadorNombre "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
+        cout<<"Ingrese el apellido del entrenador: "<<endl;e.apellidoEntrenador= "EquipoEntrenadorApellido "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
+        cout<<"Ingrese la nacionalidad del entrenador: "<<endl;e.nacionalidadEntrenador= "EquipoEntrenadorNacion "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
         string grupo;
         grupoEquipos[i]=i;
         posEquipos[i]=e.nombre; 
@@ -120,14 +122,14 @@ void MaestroInserccion::insertarJugadores(){
             cout<<"Posicion del jugador: ";cin>>posicion;*/
             //ingreso de datos para testeo
             string nombre;
-            cout<<"Nombre del jugador: "<<endl;nombre = "jugador"+j;
+            cout<<"Nombre del jugador: "<<endl;nombre = "jugador "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
             int edad;
-            cout<<"Edad del jugador: "<<endl;edad = j;
+            cout<<"Edad del jugador: "<<endl;edad = j+30;
             int numCamiseta;
             cout<<"Numero de camiseta: "<<endl;numCamiseta = j;
             int cantGoles = 0;
             string posicion;
-            cout<<"Posicion del jugador: "<<endl;posicion = "posicion"+j;
+            cout<<"Posicion del jugador: "<<endl;posicion = "posicion "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
             jugadores.insertar(nombre,edad,numCamiseta,cantGoles,posicion,i);
             cout<<"Jugador insertado con exito"<<endl;
         }
@@ -146,8 +148,8 @@ void MaestroInserccion::insertarEstadios(){
         cout<<"Ingrese la capacidad del estadio: ";cin>>e.capacidad;*/
         //ingreso de datos para testeo
         cout<<"Estadio "<<i+1<<" a insertar"<<endl;
-        cout<<"Ingrese el nombre del estadio: "<<endl;e.nombre = "Estadio"+i;
-        cout<<"Ingrese la ciudad en la que se encuentra: "<<endl;e.ciudad = "Ciudad"+i;
+        cout<<"Ingrese el nombre del estadio: "<<endl;e.nombre = "Estadio "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
+        cout<<"Ingrese la ciudad en la que se encuentra: "<<endl;e.ciudad = "Ciudad "+static_cast<ostringstream*>( &(ostringstream() << i) )->str();
         cout<<"Ingrese la capacidad del estadio: "<<endl;e.capacidad = i;
         estadiosIDS[i] = estadios.insertar(e.nombre,e.ciudad,e.capacidad);
 

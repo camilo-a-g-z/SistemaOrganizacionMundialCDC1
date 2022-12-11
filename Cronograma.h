@@ -59,6 +59,15 @@ void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fe
     partido.posEnLista=tam;
     partidos.Insertar(partido);
     tam++;
+    //impresion de toda la estructura para testeo
+    cout<<"idEstadio: "<<partido.idEstadio<<endl;
+    cout<<"idEquipo1: "<<partido.idEquipo1<<endl;
+    cout<<"idEquipo2: "<<partido.idEquipo2<<endl;
+    cout<<"fecha: "<<partido.fecha<<endl;
+    cout<<"etapa: "<<partido.etapa<<endl;
+    cout<<"seccion: "<<partido.seccion<<endl;
+    cout<<"posEnLista: "<<partido.posEnLista<<endl;
+
 }
 
 Lista<partido> Cronograma::obtenerPartidosPorEtapa(string etapa){

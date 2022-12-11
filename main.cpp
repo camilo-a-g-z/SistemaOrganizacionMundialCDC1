@@ -9,7 +9,6 @@ using namespace std;
 int main(){
 	MaestroPrincipal mP;
 	mP.inicio();
-	cout<<"Termino"<<endl;
 	/*Multilista jugadores;
 	Equipos equipos;
 

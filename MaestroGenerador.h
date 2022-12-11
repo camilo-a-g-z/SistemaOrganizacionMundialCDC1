@@ -23,25 +23,26 @@ class MaestroGenerador
         randomEstadio(Estadios estadios);
         //getter
         Cronograma getCronograma(){return cronograma;}
-        //destructor
-        ~MaestroGenerador(){}
+        
 };
 
-void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int grupoEquipos[]){
+void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int *grupoEquipos){
     //se deben generar 64 partidos donde 48 son de eliminacion, 8 de octavos, 4 de cuartos, 2 de semifinales, 1 de final y 1 de tercer puesto
     //primeramente se debe generar los partidos de eliminacion
+    cout<<"Entro a generar cronograma"<<endl;
     int dia = 0;
     bool partidoPorDia = false;
-    for(int i = 0; i<48; i+=4){
+    for(int i = 0; i<8; i+=4){
         //por dia es un partido
-        cronograma.insertar(randomEstadio(estadios),i,i+1,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+2,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(0,i,i+1,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cout<<"Inserto partido"<<endl;
+        cronograma.insertar(1,i+2,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(2,i,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(3,i+1,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(4,i,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(5,i+1,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
         dia++;
     }
     //los -1 a continuacion son para indicar que no hay equipo definido en ese partido
@@ -74,7 +75,7 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "H";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Octavos",seccion);
+        cronograma.insertar(i-48,-1,-1,""+dia,"Octavos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de cuartos
@@ -93,7 +94,7 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "D";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Cuartos",seccion);
+        cronograma.insertar(i-56,-1,-1,""+dia,"Cuartos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de semifinales
@@ -106,21 +107,14 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "B";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Semifinales",seccion);
+        cronograma.insertar(i-60,-1,-1,""+dia,"Semifinales",seccion);
         dia++;
     }
     //luego se debe generar el partido de tercer puesto
-    cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Tercer puesto","A");
+    cronograma.insertar(0,-1,-1,""+dia,"Tercer puesto","A");
     dia++;
     //luego se debe generar el partido de final
-    cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Final","A");
+    cronograma.insertar(1,-1,-1,""+dia,"Final","A");
     //guardar en cronograma
 }
-//metodo para devolver aleatoriamente un estadio
-int MaestroGenerador::randomEstadio(Estadios estadios){
-    srand(time(NULL)); //generar un numero aleatorio entre 0-8
-	int random =rand()%(9-1);
-    return estadios.obtenerEstadio(random).idEstadio;
-}
-
 #endif
