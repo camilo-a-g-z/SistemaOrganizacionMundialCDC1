@@ -136,6 +136,8 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 	int k;
 	int i=sigPosLibre;
 	sigPosLibre = datos[i].sigCampoLibre;
+	cout<<"\n\n sigPosLibre: "<<sigPosLibre<<" i: "<<i<<" datos(sigCampoLibre): "<<datos[i].sigCampoLibre<<endl;
+	f.sigCampoLibre = datos[i].sigCampoLibre;
 	datos[i]=f;
 	//insertar en la lista de cabeceras a partir de la posicion del equipo
 	if(cabeceras[equipo]==-1){

@@ -89,11 +89,11 @@ void MaestroInserccion::insertarEquipos(){
         cout<<"Ingrese la nacionalidad del entrenador: ";cin>>e.nacionalidadEntrenador;*/
         //ingreso de datos para testeo
         cout<<"Equipo "<<i+1<<" a insertar"<<endl;
-        cout<<"Ingrese el nombre del equipo: ";e.nombre = ""+i;
-        cout<<"Ingrese la confederacion a la que pertenece: ";e.confederacion= ""+i;
-        cout<<"Ingrese el nombre del entrenador: ";e.nombreEntrenador= ""+i;
-        cout<<"Ingrese el apellido del entrenador: ";e.apellidoEntrenador= ""+i;
-        cout<<"Ingrese la nacionalidad del entrenador: ";e.nacionalidadEntrenador= ""+i;
+        cout<<"Ingrese el nombre del equipo: "<<endl;e.nombre = "Equipo"+i;
+        cout<<"Ingrese la confederacion a la que pertenece: "<<endl;e.confederacion= "Equipo"+i;
+        cout<<"Ingrese el nombre del entrenador: "<<endl;e.nombreEntrenador= "Equipo"+i;
+        cout<<"Ingrese el apellido del entrenador: "<<endl;e.apellidoEntrenador= "Equipo"+i;
+        cout<<"Ingrese la nacionalidad del entrenador: "<<endl;e.nacionalidadEntrenador= "Equipo"+i;
         string grupo;
         grupoEquipos[i]=i;
         posEquipos[i]=e.nombre; 
@@ -125,14 +125,14 @@ void MaestroInserccion::insertarJugadores(){
             cout<<"Posicion del jugador: ";cin>>posicion;*/
             //ingreso de datos para testeo
             string nombre;
-            cout<<"Nombre del jugador: ";nombre = "jugador"+j;
+            cout<<"Nombre del jugador: "<<endl;nombre = "jugador"+j;
             int edad;
-            cout<<"Edad del jugador: ";edad = j;
+            cout<<"Edad del jugador: "<<endl;edad = j;
             int numCamiseta;
-            cout<<"Numero de camiseta: ";numCamiseta = j;
+            cout<<"Numero de camiseta: "<<endl;numCamiseta = j;
             int cantGoles = 0;
             string posicion;
-            cout<<"Posicion del jugador: ";posicion = "posicion"+j;
+            cout<<"Posicion del jugador: "<<endl;posicion = "posicion"+j;
             jugadores.insertar(nombre,edad,numCamiseta,cantGoles,posicion,i);
             cout<<"Jugador insertado con exito"<<endl;
         }
