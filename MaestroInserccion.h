@@ -17,7 +17,7 @@ class MaestroInserccion
         Equipos equipos;
         Cronograma cronograma;
         string posEquipos = new string[32];
-        int grupoEquipos = new int[32];//del 0 al 3 grupo A, del 0 al 3 grupo B, del 0 al 3 grupo C, del 0 al 3 grupo D
+        int grupoEquipos = new int[32];//del 0 al 3 grupo A, del 4 al 7 grupo B, del 8 al 11 grupo C, del 12 al 15 grupo D, del 16 al 19 grupo E, del 20 al 23 grupo F, del 24 al 27 grupo G, del 28 al 31 grupo H
 	public:
         //constructor
         MaestroInserccion(){
