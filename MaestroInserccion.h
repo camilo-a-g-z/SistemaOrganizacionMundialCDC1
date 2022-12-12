@@ -30,6 +30,14 @@ class MaestroInserccion
         void insertarEstadios();
         void insertarCronograma();
         void insertarDesdeCero();
+        //guardar en archivos
+        void guardarPosEquipos();
+        void guardarGrupoEquipos();
+        void guardarEstadiosIDS();
+        //leer de archivos
+        void leerPosEquipos();
+        void leerGrupoEquipos();
+        void leerEstadiosIDS();
         //getters
         Multilista getJugadores(){return jugadores;}
         Estadios getEstadios(){return estadios;}
@@ -155,6 +163,90 @@ void MaestroInserccion::insertarEstadios(){
 
         cout<<"Estadio insertado con exito"<<endl;
     }
+}
+
+//Una funcion que guarde la posEquipos en un archivo
+void MaestroInserccion::guardarPosEquipos(){
+    ofstream archivo;
+    archivo.open("posEquipos.txt");
+    for(int i=0;i<32;i++){
+        if(i==31)
+            archivo<<posEquipos[i];
+        else
+            archivo<<posEquipos[i]<<endl;
+        
+    }
+    archivo.close();
+}
+
+//Una funcion que lea los datos de un archivo para guardarlos en posEquipos
+void MaestroInserccion::leerPosEquipos(){
+    ifstream archivo;
+    archivo.open("posEquipos.txt");
+ 
+    string linea;
+    int i=0;
+    while(getline(archivo,linea)){
+        posEquipos[i]=linea;
+        i++;
+    }
+    archivo.close();
+}
+
+//Una funcion que guarde los grupoEquipos en un archivo
+void MaestroInserccion::guardarGrupoEquipos(){
+    ofstream archivo;
+    archivo.open("grupoEquipos.txt");
+    for(int i=0;i<32;i++){
+        if(i==31)
+            archivo<<grupoEquipos[i];
+        else
+            archivo<<grupoEquipos[i]<<endl;
+        
+    }
+    archivo.close();
+}
+
+//Una funcion que lea los datos de un archivo para guardarlos en grupoEquipos
+void MaestroInserccion::leerGrupoEquipos(){
+    ifstream archivo;
+    archivo.open("grupoEquipos.txt");
+    
+    string linea;
+    int i=0;
+    while(getline(archivo,linea)){
+        grupoEquipos[i]=linea;
+        i++;
+    }
+    archivo.close();
+}
+
+//Una funcion que guarde los estadiosIDS en un archivo
+void MaestroInserccion::guardarEstadiosIDS(){
+    ofstream archivo;
+    archivo.open("estadiosIDS.txt");
+    for(int i=0;i<8;i++){
+        if(i==7)
+            archivo<<estadiosIDS[i];
+        else
+            archivo<<estadiosIDS[i]<<endl;
+        
+    }
+    archivo.close();
+}
+
+//Una funcion que lea los datos de un archivo para guardarlos en estadiosIDS
+void MaestroInserccion::leerEstadiosIDS(){
+    ifstream archivo;
+    archivo.open("estadiosIDS.txt");
+    
+    string linea;
+    int i=0;
+    while(getline(archivo,linea)){
+        estadiosIDS[i]=linea;
+        i++;
+    }
+    archivo.close();
 }
 //getters y setters
 

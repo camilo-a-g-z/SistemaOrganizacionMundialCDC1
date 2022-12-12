@@ -32,7 +32,7 @@ class MaestroPrincipal
         void verEstadios();
         void verCronograma();
         void ponerResultadoPartido();
-        void modificarFecha(partido pM);
+        void modificarFecha(partido, Lista<partido>);
         //getter
         
         
