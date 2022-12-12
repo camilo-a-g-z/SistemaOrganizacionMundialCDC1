@@ -3,6 +3,7 @@
 #include"Lista.h"
 #include"Equipos.h"
 #include"Estadios.h"
+#include "Cronograma.h"
 #include "MaestroPrincipal.h"
 
 using namespace std;
@@ -12,8 +13,19 @@ int main(){
 	//mP.inicio();
 
 	Estadios estadios;
+	Cronograma partidos;
 
-	estadios.leerEstadiosArchivo("estadios.txt");
+	partidos.leerPartidosArchivo("Cronograma.txt");
+	cout<<partidos.getTam()<<endl;
+	/*
+	partidos.insertar(1,1,2,"2018-06-15","15:00","eliminatoria","Grupo A");
+	partidos.insertar(2,3,4,"2018-06-15","15:00","eliminatoria","Grupo B");
+	partidos.insertar(3,5,6,"2018-06-15","15:00","eliminatoria","Grupo C");
+	partidos.insertar(4,7,8,"2018-06-15","15:00","eliminatoria","Grupo D");
+
+
+	partidos.guardarPartidosArchivo("Cronograma.txt");
+	/*estadios.leerEstadiosArchivo("estadios.txt");
 
 	cout<<estadios.obtenerEstadio(1).nombre<<endl;
 	/*
