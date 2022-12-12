@@ -4,7 +4,7 @@
 #include"Equipos.h"
 #include"Estadios.h"
 #include "Cronograma.h"
-//#include "MaestroPrincipal.h"
+#include "MaestroPrincipal.h"
 #include "MaestroInserccion.h"
 
 using namespace std;
