@@ -4,17 +4,13 @@
 #include"Equipos.h"
 #include"Estadios.h"
 #include "Cronograma.h"
-//#include "MaestroPrincipal.h"
-#include "MaestroInserccion.h"
+#include "MaestroPrincipal.h"
 
 using namespace std;
 
 int main(){
-	//MaestroPrincipal mP;
-	//mP.inicio();
-	MaestroInserccion mI;
-	mI.insertarDesdeCero();
-	mI.guardarPosEquipos();
+	MaestroPrincipal mP;
+	mP.inicio();
 
 	/*Estadios estadios;
 	Cronograma partidos;

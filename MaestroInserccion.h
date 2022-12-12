@@ -215,7 +215,7 @@ void MaestroInserccion::leerGrupoEquipos(){
     string linea;
     int i=0;
     while(getline(archivo,linea)){
-        grupoEquipos[i]=linea;
+        //grupoEquipos[i]=linea;
         i++;
     }
     archivo.close();
@@ -243,7 +243,7 @@ void MaestroInserccion::leerEstadiosIDS(){
     string linea;
     int i=0;
     while(getline(archivo,linea)){
-        estadiosIDS[i]=linea;
+        //estadiosIDS[i]=linea;
         i++;
     }
     archivo.close();

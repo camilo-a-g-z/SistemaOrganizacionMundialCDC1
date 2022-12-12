@@ -338,6 +338,7 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 equipo1.puntos-=3;
                 equipo1.partidosGanados--;
                 equipo2.partidosPerdidos--;
+                //se quitan los goles
             }else if(pM.golesEquipo1<pM.golesEquipo2){
                 equipo2.puntos-=3;
                 equipo2.partidosGanados--;
@@ -348,6 +349,11 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 equipo1.partidosEmpatados--;
                 equipo2.partidosEmpatados--;
             }
+            //se quitan los goles
+            equipo1.golesFavor-=pM.golesEquipo1;
+            equipo1.golesContra-=pM.golesEquipo2;
+            equipo2.golesFavor-=pM.golesEquipo2;
+            equipo2.golesContra-=pM.golesEquipo1;
         }
         cout<<"Ingrese el nuevo goles equipo 1: ";
         cin>>pM.golesEquipo1;
@@ -361,29 +367,37 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         cin>>pM.penales1;
         cout<<"Ingrese el nuevo penales 2: ";
         cin>>pM.penales2;
-        equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-        equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        if(pM.jugado){
-            equipo1.partidosJugados++;
-            equipo2.partidosJugados++;
-            if(pM.golesEquipo1>pM.golesEquipo2){
-                equipo1.puntos+=3;
-                equipo1.partidosGanados++;
-                equipo2.partidosPerdidos++;
-            }else if(pM.golesEquipo1<pM.golesEquipo2){
-                equipo2.puntos+=3;
-                equipo2.partidosGanados++;
-                equipo1.partidosPerdidos++;
-            }else{
-                equipo1.puntos++;
-                equipo2.puntos++;
-                equipo1.partidosEmpatados++;
-                equipo2.partidosEmpatados++;
-            }
+        if(!pM.jugado){
+            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
+            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
         }
+        pM.jugado = true;
+        equipo1.partidosJugados++;
+        equipo2.partidosJugados++;
+        if(pM.golesEquipo1>pM.golesEquipo2){
+            equipo1.puntos+=3;
+            equipo1.partidosGanados++;
+            equipo2.partidosPerdidos++;
+        }else if(pM.golesEquipo1<pM.golesEquipo2){
+            equipo2.puntos+=3;
+            equipo2.partidosGanados++;
+            equipo1.partidosPerdidos++;
+        }else{
+            equipo1.puntos++;
+            equipo2.puntos++;
+            equipo1.partidosEmpatados++;
+            equipo2.partidosEmpatados++;
+        }
+        //se suman los goles
+        equipo1.golesFavor+=pM.golesEquipo1;
+        equipo1.golesContra+=pM.golesEquipo2;
+        equipo2.golesFavor+=pM.golesEquipo2;
+        equipo2.golesContra+=pM.golesEquipo1;
         cout<<"\n\nENTRO A MODIFICAR\n\n";
         cronograma.modificarPartido(pM.posEnLista,pM);
         //se actualiza equipos
+        cout<<"\n\nID del equipo 1: "<<equipo1.idEquipo<<"\n\n";
+        cout<<"\n\nID del equipo 2: "<<equipo2.idEquipo<<"\n\n";
         equipos.modificarEquipo(equipo1.idEquipo,equipo1);
         equipos.modificarEquipo(equipo2.idEquipo,equipo2);
         if(equipo1.partidosJugados==3){
@@ -540,22 +554,24 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
 
 void MaestroPrincipal::verEquipos(){
     //system("cls");
+    Equipo eM;
     cout<<"\n\nEquipos participantes en el mundial\n\n";
     for(int i=0;i<32;i++){
-        cout<<i+1<<". Nombre del equipo: "<<equipos.obtenerEquipo(i).nombre<<endl;
-        cout<<"   Confederacion: "<<equipos.obtenerEquipo(i).confederacion<<endl;
-        cout<<"   Puntos: "<<equipos.obtenerEquipo(i).puntos<<endl;
-        cout<<"   Partidos jugados: "<<equipos.obtenerEquipo(i).partidosJugados<<endl;
-        cout<<"   Partidos ganados: "<<equipos.obtenerEquipo(i).partidosGanados<<endl;
-        cout<<"   Partidos empatados: "<<equipos.obtenerEquipo(i).partidosEmpatados<<endl;
-        cout<<"   Partidos perdidos: "<<equipos.obtenerEquipo(i).partidosPerdidos<<endl;
-        cout<<"   Goles a favor: "<<equipos.obtenerEquipo(i).golesFavor<<endl;
-        cout<<"   Goles en contra: "<<equipos.obtenerEquipo(i).golesContra<<endl;
-        cout<<"   Tarjetas amarillas: "<<equipos.obtenerEquipo(i).tarjetasAmarillas<<endl;
-        cout<<"   Tarjetas rojas: "<<equipos.obtenerEquipo(i).tarjetasRojas<<endl;
-        cout<<"   Nombre del entrenador: "<<equipos.obtenerEquipo(i).nombreEntrenador<<endl;
-        cout<<"   Apellido del entrenador: "<<equipos.obtenerEquipo(i).apellidoEntrenador<<endl;
-        cout<<"   Nacionalidad del entrenador: "<<equipos.obtenerEquipo(i).nacionalidadEntrenador<<endl;
+        eM = equipos.obtenerEquipo(i);
+        cout<<i+1<<". Nombre del equipo: "<<eM.nombre<<endl;
+        cout<<"   Confederacion: "<<eM.confederacion<<endl;
+        cout<<"   Puntos: "<<eM.puntos<<endl;
+        cout<<"   Partidos jugados: "<<eM.partidosJugados<<endl;
+        cout<<"   Partidos ganados: "<<eM.partidosGanados<<endl;
+        cout<<"   Partidos empatados: "<<eM.partidosEmpatados<<endl;
+        cout<<"   Partidos perdidos: "<<eM.partidosPerdidos<<endl;
+        cout<<"   Goles a favor: "<<eM.golesFavor<<endl;
+        cout<<"   Goles en contra: "<<eM.golesContra<<endl;
+        cout<<"   Tarjetas amarillas: "<<eM.tarjetasAmarillas<<endl;
+        cout<<"   Tarjetas rojas: "<<eM.tarjetasRojas<<endl;
+        cout<<"   Nombre del entrenador: "<<eM.nombreEntrenador<<endl;
+        cout<<"   Apellido del entrenador: "<<eM.apellidoEntrenador<<endl;
+        cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
     }
     system("pause");
 }
@@ -612,7 +628,11 @@ void MaestroPrincipal::verCronograma(){
             p = cronograma.obtenerPartidos();
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -654,7 +674,11 @@ void MaestroPrincipal::verCronograma(){
             p = cronograma.obtenerPartidosPorEquipo(equipoD-1);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -696,7 +720,11 @@ void MaestroPrincipal::verCronograma(){
             p = cronograma.obtenerPartidosPorEstadio(estadioD-1);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -738,7 +766,11 @@ void MaestroPrincipal::verCronograma(){
             p = cronograma.obtenerPartidosPorEtapaYSeccion(eD,sD);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
