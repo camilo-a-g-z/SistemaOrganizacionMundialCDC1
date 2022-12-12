@@ -32,15 +32,42 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
     cout<<"Entro a generar cronograma"<<endl;
     int dia = 0;
     for(int i = 0; i<32; i= i+4){
+        string grupo;
+        switch(i/4){
+            case 0:
+                grupo = "A";
+                break;
+            case 1:
+                grupo = "B";
+                break;
+            case 2:
+                grupo = "C";
+                break;
+            case 3:
+                grupo = "D";
+                break;
+            case 4:
+                grupo = "E";
+                break;
+            case 5:
+                grupo = "F";
+                break;
+            case 6:
+                grupo = "G";
+                break;
+            case 7:
+                grupo = "H";
+                break;
+        }
         //por dia es un partido
-        cronograma.insertar(0,i,i+1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
-        cronograma.insertar(1,i+2,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(0,i,i+1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
+        cronograma.insertar(1,i+2,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
         dia++;
-        cronograma.insertar(2,i,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
-        cronograma.insertar(3,i+1,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(2,i,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
+        cronograma.insertar(3,i+1,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
         dia++;
-        cronograma.insertar(4,i,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
-        cronograma.insertar(5,i+1,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(4,i,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
+        cronograma.insertar(5,i+1,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",grupo);
         dia++;
     }
     //los -1 a continuacion son para indicar que no hay equipo definido en ese partido
