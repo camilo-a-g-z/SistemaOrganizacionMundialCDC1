@@ -1,6 +1,8 @@
 #ifndef M_GENERADOR_H
 #define M_GENERADOR_H
 #include <iostream>
+#include<stdlib.h>
+#include <time.h>
 #include "Lista.h"
 #include "multiLista.h"
 #include "Estadios.h"
@@ -17,34 +19,34 @@ class MaestroGenerador
         //constructor
         MaestroGenerador(){}
         //metodo para recivir una fecha y estadios y generar un cronograma y lo guarda en cronograma
-        void generarCronograma(Estadios estadios, Equipos equipos);
+        void generarCronograma(Estadios estadios, Equipos equipos, int grupoEquipos[]);
+        randomEstadio(Estadios estadios);
         //getter
         Cronograma getCronograma(){return cronograma;}
-        //destructor
-        ~MaestroGenerador(){}
+        
 };
 
-void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int grupoEquipos[]){
+void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int *grupoEquipos){
     //se deben generar 64 partidos donde 48 son de eliminacion, 8 de octavos, 4 de cuartos, 2 de semifinales, 1 de final y 1 de tercer puesto
     //primeramente se debe generar los partidos de eliminacion
+    cout<<"Entro a generar cronograma"<<endl;
     int dia = 0;
-    bool partidoPorDia = false;
-    for(int i = 0; i<48; i+=4){
+    for(int i = 0; i<32; i= i+4){
         //por dia es un partido
-        cronograma.insertar(randomEstadio(estadios),i,i+1,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+2,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(0,i,i+1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(1,i+2,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+2,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(2,i,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(3,i+1,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
-        cronograma.insertar(randomEstadio(estadios),i,i+3,""+dia,"Eliminacion",grupoEquipos[i]);
-        cronograma.insertar(randomEstadio(estadios),i+1,i+2,""+dia,"Eliminacion",grupoEquipos[i]);
+        cronograma.insertar(4,i,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(5,i+1,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
     }
     //los -1 a continuacion son para indicar que no hay equipo definido en ese partido
     //luego se deben generar los partidos de octavos
     string seccion;
-    for(int i = 48; i<56; i+=2){
+    for(int i = 48; i<56; i++){
         switch(i){
             case 48:
                 seccion = "A";
@@ -71,11 +73,11 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "H";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Octavos",seccion);
+        cronograma.insertar(i-48,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Octavos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de cuartos
-    for(int i = 56; i<60; i+=2){
+    for(int i = 56; i<60; i++){
         switch(i){
             case 56:
                 seccion = "A";
@@ -90,11 +92,11 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "D";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Cuartos",seccion);
+        cronograma.insertar(i-56,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Cuartos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de semifinales
-    for(int i = 60; i<62; i+=2){
+    for(int i = 60; i<62; i++){
         switch(i){
             case 60:
                 seccion = "A";
@@ -103,20 +105,14 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "B";
                 break;
         }
-        cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Semifinales",seccion);
+        cronograma.insertar(i-60,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Semifinales",seccion);
         dia++;
     }
     //luego se debe generar el partido de tercer puesto
-    cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Tercer puesto","A");
+    cronograma.insertar(0,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Tercer puesto","A");
     dia++;
     //luego se debe generar el partido de final
-    cronograma.insertar(randomEstadio(estadios),-1,-1,""+dia,"Final","A");
+    cronograma.insertar(1,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Final","A");
     //guardar en cronograma
 }
-//metodo para devolver aleatoriamente un estadio
-int MaestroGenerador::randomEstadio(Estadios estadios){
-    int random = rand() % 8;
-    return estadios.obtenerEstadio(random).idEstadio;
-}
-
 #endif

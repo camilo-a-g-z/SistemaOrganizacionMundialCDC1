@@ -64,12 +64,6 @@ class Multilista{
             datos[834].sigCampoLibre=-1;
 		}
 		
-		//Destructor
-		~Multilista(){
-			delete[] datos;
-			delete[] cabeceras;
-		}
-		
 		//Metodos (acciones) de la Multilista
 		bool insertar(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int equipo);
 		bool eliminar(int pos);
@@ -136,6 +130,8 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 	int k;
 	int i=sigPosLibre;
 	sigPosLibre = datos[i].sigCampoLibre;
+	cout<<"\n\n sigPosLibre: "<<sigPosLibre<<" i: "<<i<<" datos(sigCampoLibre): "<<datos[i].sigCampoLibre<<endl;
+	f.sigCampoLibre = datos[i].sigCampoLibre;
 	datos[i]=f;
 	//insertar en la lista de cabeceras a partir de la posicion del equipo
 	if(cabeceras[equipo]==-1){
@@ -172,6 +168,17 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 		 
 		
 	}
+	//impresion de toda la estructura para testeo
+	cout<<"Nombre futbolista: "<<datos[i].nombre<<endl;
+	cout<<"Edad futbolista: "<<datos[i].edad<<endl;
+	cout<<"Numero de camiseta futbolista: "<<datos[i].numCamiseta<<endl;
+	cout<<"Cantidad de goles futbolista: "<<datos[i].cantGoles<<endl;
+	cout<<"Posicion futbolista: "<<datos[i].pos<<endl;
+	cout<<"Siguiente companero: "<<datos[i].sigCompanero<<endl;
+	cout<<"Siguiente cantidad de goles: "<<datos[i].sigCantGoles<<endl;
+	cout<<"Siguiente campo libre: "<<datos[i].sigCampoLibre<<endl;
+	cout<<"Cabecera equipo: "<<cabeceras[equipo]<<endl;
+	cout<<"Cabecera cantidad de goles: "<<cabeceras[32]<<endl;
 	tam++;
 	return true;
 }

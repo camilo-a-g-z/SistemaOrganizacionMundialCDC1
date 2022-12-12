@@ -2,11 +2,14 @@
 #include"multiLista.h"
 #include"Lista.h"
 #include"Equipos.h"
+#include "MaestroPrincipal.h"
 
 using namespace std;
 
 int main(){
-	Multilista jugadores;
+	MaestroPrincipal mP;
+	mP.inicio();
+	/*Multilista jugadores;
 	Equipos equipos;
 
 	equipos.leerEquiposArchivo("equipos.txt");
@@ -18,7 +21,6 @@ int main(){
 	equipos.insertar("Chile","CONMEBOL","Pizzi","Reinaldo","Chile");
 	equipos.insertar("Colombia","CONMEBOL","Pekerman","Jose","Colombia");
 	equipos.insertar("Ecuador","CONMEBOL","Ramirez","Ismael","Ecuador");
-
 
 	equipos.guardarEquiposArchivo("equipos.txt");*/
 	//jugadores.leerJugadoresArchivo("jugadores.txt");
@@ -45,7 +47,7 @@ int main(){
 	
 	jugadores.guardarJugadoresArchivo(l2, "jugadores.txt");*/
 
-	cout<<"Ahora le vamos a pedir que nos vuelva a mostrar: "<<endl;
+	//cout<<"Ahora le vamos a pedir que nos vuelva a mostrar: "<<endl;
 
 	//for(int i = 1; i<=l.TamLista();i++){
 	/*

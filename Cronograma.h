@@ -8,10 +8,10 @@ struct partido{
     int idEstadio;
     int idEquipo1;
     int idEquipo2;
-    String fecha;
-    String hora;
-    String etapa;//eliminacion, cuartos....final
-    String seccion;//Grupo A,Grupo B ....
+    string fecha;
+    string hora;
+    string etapa;//eliminacion, cuartos....final
+    string seccion;//Grupo A,Grupo B ....
     int golesEquipo1;
     int golesEquipo2;
     int suplementario1;
@@ -19,7 +19,7 @@ struct partido{
     int penales1;
     int penales2;
     int posEnLista;
-}
+};
 
 class Cronograma
 {
@@ -31,21 +31,22 @@ class Cronograma
         Cronograma(){
             tam=0;
         }
-        void insertar(int idEstadio, int idEquipo1, int idEquipo2, String fecha, String etapa, String seccion);
-        Lista<partido> obtenerPartidosPorEtapa(String etapa);
+        void insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string etapa, string seccion);
+        Lista<partido> obtenerPartidosPorEtapa(string etapa);
+        Lista<partido> obtenerPartidos(){
+            cout<<"tam de partidos: "<<partidos.TamLista()<<endl;
+            return partidos;}
         Lista<partido> obtenerPartidosPorEquipo(int idEquipo);
         Lista<partido> obtenerPartidosPorEstadio(int idEstadio);
-        Lista<partido> obtenerPartidosPorEtapaYSeccion(String etapa, String seccion);
-        Lista<partido> obtenerPartidosPorFecha(String fecha);
+        Lista<partido> obtenerPartidosPorEtapaYSeccion(string etapa, string seccion);
+        Lista<partido> obtenerPartidosPorFecha(string fecha);
+        int getTam(){return tam;}
         void modificarPartido(int posEnLista, partido partido);
-        //destructor
-        ~Cronograma(){
-            partidos.~Lista();
-        }
+        
         
 };
 
-void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, String fecha, String etapa, String seccion){
+void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string etapa, string seccion){
     partido partido;
     partido.idEstadio=idEstadio;
     partido.idEquipo1=idEquipo1;
@@ -62,13 +63,22 @@ void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, String fe
     partido.posEnLista=tam;
     partidos.Insertar(partido);
     tam++;
+    //impresion de toda la estructura para testeo
+    cout<<"idEstadio: "<<partido.idEstadio<<endl;
+    cout<<"idEquipo1: "<<partido.idEquipo1<<endl;
+    cout<<"idEquipo2: "<<partido.idEquipo2<<endl;
+    cout<<"fecha: "<<partido.fecha<<endl;
+    cout<<"etapa: "<<partido.etapa<<endl;
+    cout<<"seccion: "<<partido.seccion<<endl;
+    cout<<"posEnLista: "<<partido.posEnLista<<endl;
+
 }
 
-Lista<partido> Cronograma::obtenerPartidosPorEtapa(String etapa){
+Lista<partido> Cronograma::obtenerPartidosPorEtapa(string etapa){
     Lista<partido> partidosEtapa;
     partido partido;
     for(int i=1;i<=tam;i++){
-        partido=partidos.obtenerPorPosicion(i);
+        partido=partidos.ObtenerDatos(i);
         if(partido.etapa==etapa){
             partidosEtapa.Insertar(partido);
         }
@@ -80,7 +90,7 @@ Lista<partido> Cronograma::obtenerPartidosPorEquipo(int idEquipo){
     Lista<partido> partidosEquipo;
     partido partido;
     for(int i=1;i<=tam;i++){
-        partido=partidos.obtenerPorPosicion(i);
+        partido=partidos.ObtenerDatos(i);
         if(partido.idEquipo1==idEquipo || partido.idEquipo2==idEquipo){
             partidosEquipo.Insertar(partido);
         }
@@ -92,7 +102,7 @@ Lista<partido> Cronograma::obtenerPartidosPorEstadio(int idEstadio){
     Lista<partido> partidosEstadio;
     partido partido;
     for(int i=1;i<=tam;i++){
-        partido=partidos.obtenerPorPosicion(i);
+        partido=partidos.ObtenerDatos(i);
         if(partido.idEstadio==idEstadio){
             partidosEstadio.Insertar(partido);
         }
@@ -100,11 +110,11 @@ Lista<partido> Cronograma::obtenerPartidosPorEstadio(int idEstadio){
     return partidosEstadio;
 }
 //metodo para obtener una lista de partidos de una etapa y seccion
-Lista<partido> Cronograma::obtenerPartidosPorEtapaYSeccion(String etapa, String seccion){
+Lista<partido> Cronograma::obtenerPartidosPorEtapaYSeccion(string etapa, string seccion){
     Lista<partido> partidosEtapaSeccion;
     partido partido;
     for(int i=1;i<=tam;i++){
-        partido=partidos.obtenerPorPosicion(i);
+        partido=partidos.ObtenerDatos(i);
         if(partido.etapa==etapa && partido.seccion==seccion){
             partidosEtapaSeccion.Insertar(partido);
         }
@@ -112,11 +122,11 @@ Lista<partido> Cronograma::obtenerPartidosPorEtapaYSeccion(String etapa, String 
     return partidosEtapaSeccion;
 }
 //metodo para obtener una lista de partidos de una fecha
-Lista<partido> Cronograma::obtenerPartidosPorFecha(String fecha){
+Lista<partido> Cronograma::obtenerPartidosPorFecha(string fecha){
     Lista<partido> partidosFecha;
     partido partido;
     for(int i=1;i<=tam;i++){
-        partido=partidos.obtenerPorPosicion(i);
+        partido=partidos.ObtenerDatos(i);
         if(partido.fecha==fecha){
             partidosFecha.Insertar(partido);
         }
@@ -125,7 +135,7 @@ Lista<partido> Cronograma::obtenerPartidosPorFecha(String fecha){
 }
 //metodo para modificar un partido
 void Cronograma::modificarPartido(int posEnLista, partido partido){
-    partidos.modificarPorPosicion(posEnLista,partido);
+    partidos.modificar(posEnLista,partido);
 }
 
 #endif
