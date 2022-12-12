@@ -31,24 +31,22 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
     //primeramente se debe generar los partidos de eliminacion
     cout<<"Entro a generar cronograma"<<endl;
     int dia = 0;
-    bool partidoPorDia = false;
-    for(int i = 0; i<8; i+=4){
+    for(int i = 0; i<32; i= i+4){
         //por dia es un partido
-        cronograma.insertar(0,i,i+1,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cout<<"Inserto partido"<<endl;
-        cronograma.insertar(1,i+2,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(0,i,i+1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(1,i+2,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
-        cronograma.insertar(2,i,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cronograma.insertar(3,i+1,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(2,i,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(3,i+1,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
-        cronograma.insertar(4,i,i+3,""+dia,"Eliminacion",""+grupoEquipos[i]);
-        cronograma.insertar(5,i+1,i+2,""+dia,"Eliminacion",""+grupoEquipos[i]);
+        cronograma.insertar(4,i,i+3,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
+        cronograma.insertar(5,i+1,i+2,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Eliminacion",static_cast<ostringstream*>( &(ostringstream() << grupoEquipos[i]) )->str());
         dia++;
     }
     //los -1 a continuacion son para indicar que no hay equipo definido en ese partido
     //luego se deben generar los partidos de octavos
     string seccion;
-    for(int i = 48; i<56; i+=2){
+    for(int i = 48; i<56; i++){
         switch(i){
             case 48:
                 seccion = "A";
@@ -75,11 +73,11 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "H";
                 break;
         }
-        cronograma.insertar(i-48,-1,-1,""+dia,"Octavos",seccion);
+        cronograma.insertar(i-48,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Octavos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de cuartos
-    for(int i = 56; i<60; i+=2){
+    for(int i = 56; i<60; i++){
         switch(i){
             case 56:
                 seccion = "A";
@@ -94,11 +92,11 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "D";
                 break;
         }
-        cronograma.insertar(i-56,-1,-1,""+dia,"Cuartos",seccion);
+        cronograma.insertar(i-56,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Cuartos",seccion);
         dia++;
     }
     //luego se deben generar los partidos de semifinales
-    for(int i = 60; i<62; i+=2){
+    for(int i = 60; i<62; i++){
         switch(i){
             case 60:
                 seccion = "A";
@@ -107,14 +105,14 @@ void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int
                 seccion = "B";
                 break;
         }
-        cronograma.insertar(i-60,-1,-1,""+dia,"Semifinales",seccion);
+        cronograma.insertar(i-60,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Semifinales",seccion);
         dia++;
     }
     //luego se debe generar el partido de tercer puesto
-    cronograma.insertar(0,-1,-1,""+dia,"Tercer puesto","A");
+    cronograma.insertar(0,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Tercer puesto","A");
     dia++;
     //luego se debe generar el partido de final
-    cronograma.insertar(1,-1,-1,""+dia,"Final","A");
+    cronograma.insertar(1,-1,-1,static_cast<ostringstream*>( &(ostringstream() << dia) )->str(),"Final","A");
     //guardar en cronograma
 }
 #endif

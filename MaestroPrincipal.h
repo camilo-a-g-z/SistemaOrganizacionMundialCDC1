@@ -19,6 +19,7 @@ class MaestroPrincipal
         Equipos equipos;
         Cronograma cronograma;
         Multilista jugadores;
+        string *posEquipos;
 	public:
         //constructor
         MaestroPrincipal(){}
@@ -29,6 +30,7 @@ class MaestroPrincipal
         void verEquipos();
         void verJugadores();
         void verEstadios();
+        void verCronograma();
         //getter
         
         
@@ -44,12 +46,12 @@ void MaestroPrincipal::inicio(){
 
         estadios=mI.getEstadios();
         equipos=mI.getEquipos();
-        cronograma=mI.getCronograma();
         jugadores=mI.getJugadores();
-
+        posEquipos = mI.getPosEquipos();
         cout<<"Se ha insertado desde cero"<<endl;
 		MaestroGenerador mG;
 		mG.generarCronograma(mI.getEstadios(),mI.getEquipos(),mI.getGrupoEquipos());
+        cronograma = mG.getCronograma();
     }
     menu();
     
@@ -80,7 +82,7 @@ void MaestroPrincipal::menu(){
             verEstadios();
             break;
         case 4:
-            
+            verCronograma();
             break;
         case 5:
             
@@ -155,6 +157,73 @@ void MaestroPrincipal::verEstadios(){
         cout<<i+1<<". Nombre del estadio: "<<estadio.nombre<<endl;
         cout<<"   Ciudad: "<<estadio.ciudad<<endl;
         cout<<"   Capacidad: "<<estadio.capacidad<<endl;
+    }
+    system("pause");
+    menu();
+}
+
+void MaestroPrincipal::verCronograma(){
+    //system("cls");
+    Lista<partido> p;
+
+    cout<<"\n\nCronograma del mundial\n\n";
+    cout<<"1. Ver todos los partidos.\n";
+    cout<<"2. Ver los partidos de un equipo.\n";
+    cout<<"3. Ver los partidos de un estadio.\n";
+    cout<<"4. Ver los partidos, por etapa.\n";
+    cout<<"Seleccione la opcion que desea: ";
+    int opcion;
+    cin>>opcion;
+    switch(opcion){
+        case 1:
+            p = cronograma.obtenerPartidos();
+            for(int i=1;i<=p.TamLista();i++){
+                partido p2 = p.ObtenerDatos(i);
+                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                cout<<"   Hora: "<<p2.hora<<endl;
+                cout<<"   Estadio: ";
+                for(int i=0;i<estadios.getTam();i++){
+                    Estadio estadio = estadios.obtenerEstadio(i);
+                    if(p2.idEstadio==estadio.idEstadio){
+                        cout<<estadio.nombre<<endl;
+                        break;
+                    }
+                }
+                cout<<"   Equipo 1: ";
+                if(p2.idEquipo1!= -1){
+                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Equipo 2: ";
+                if(p2.idEquipo2!= -1){
+                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Etapa: "<<p2.etapa<<endl;
+                cout<<"   Seccion: "<<p2.seccion<<endl;
+                cout<<"   Goles equipo 1: "<<p2.golesEquipo1<<endl;
+                cout<<"   Goles equipo 2: "<<p2.golesEquipo2<<endl;
+                cout<<"   Suplementario 1: "<<p2.suplementario1<<endl;
+                cout<<"   Suplementario 2: "<<p2.suplementario2<<endl;
+                cout<<"   Penales 1: "<<p2.penales1<<endl;
+                cout<<"   Penales 2: "<<p2.penales2<<endl;
+            }
+            break;
+        case 2:
+            
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            
+            break;
+        default:
+            cout<<"Opcion no valida"<<endl;
+            menu();
+            break;
     }
     system("pause");
     menu();
