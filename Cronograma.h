@@ -42,11 +42,20 @@ class Cronograma
         Lista<partido> obtenerPartidosPorEstadio(int idEstadio);
         Lista<partido> obtenerPartidosPorEtapaYSeccion(string etapa, string seccion);
         Lista<partido> obtenerPartidosPorFecha(string fecha);
+        partido obtenerPartidoPorPosEnLista(int posEnLista);
         int getTam(){return tam;}
         void modificarPartido(int posEnLista, partido partido);
         
         
 };
+
+partido Cronograma::obtenerPartidoPorPosEnLista(int posEnLista){
+    for(int i = 1; i<=tam; i++){
+        if(partidos.ObtenerDatos(i).posEnLista == posEnLista){
+            return partidos.ObtenerDatos(i);
+        }
+    }
+}
 
 void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion){
     partido partido;

@@ -10,13 +10,13 @@ using namespace std;
 
 int main(){
 	MaestroPrincipal mP;
-	//mP.inicio();
+	mP.inicio();
 
-	Estadios estadios;
+	/*Estadios estadios;
 	Cronograma partidos;
 
 	partidos.leerPartidosArchivo("Cronograma.txt");
-	cout<<partidos.getTam()<<endl;
+	cout<<partidos.getTam()<<endl;*/
 	/*
 	partidos.insertar(1,1,2,"2018-06-15","15:00","eliminatoria","Grupo A");
 	partidos.insertar(2,3,4,"2018-06-15","15:00","eliminatoria","Grupo B");
