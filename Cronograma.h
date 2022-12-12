@@ -19,6 +19,7 @@ struct partido{
     int penales1;
     int penales2;
     int posEnLista;
+    bool jugado;
 };
 
 class Cronograma
@@ -73,6 +74,7 @@ void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fe
     partido.penales1=0;
     partido.penales2=0;
     partido.posEnLista=tam;
+    partido.jugado=false;
     partidos.Insertar(partido);
     tam++;
     //impresion de toda la estructura para testeo
