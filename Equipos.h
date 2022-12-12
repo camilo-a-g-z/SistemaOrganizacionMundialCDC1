@@ -41,6 +41,7 @@ class Equipos
         int insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
         void insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista);
         void guardarEquiposArchivo(string nombreArchivo);
+        void leerEquiposArchivo(string nombreArchivo);
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
@@ -119,7 +120,7 @@ void Equipos::modificarEquipo(int id, Equipo equipo){
 }
  
 void Equipos::insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista){
-    Equipos();
+    
     Equipo equipo;
     equipo.nombre=nombre;
     equipo.confederacion=confederacion;
@@ -173,4 +174,95 @@ void Equipos::guardarEquiposArchivo(string nombreArchivo){
 
 }
 
+
+//Funcion para leer los equipos del archivo y guardarlos en equipos
+void Equipos::leerEquiposArchivo(string nombreArchivo){ //Nombre o ubiacion del archivo o fichiero
+    ifstream archivo;
+    string texto, T;
+    
+    
+    archivo.open(nombreArchivo.c_str(),ios::in); //Abrimos el archivo en modo lectura
+    
+    if(archivo.fail()){
+        cout<<"No se pudo abrir el archivo";
+        exit(1);
+    }
+    while(!archivo.eof()){ //mientras no sea final del archivo
+        getline(archivo,texto);
+        string nombre, confederacion, nombreEntrenador, apellidoEntrenador, nacionalidadEntrenador;
+    	int puntos, partidosJugados, partidosGanados, partidosEmpatados, partidosPerdidos, golesFavor, golesContra, tarjetasAmarillas, tarjetasRojas, idEquipo, numEnLista;
+        
+        stringstream X(texto); // X is an object of stringstream that references the S string  
+        int i=0;
+        Equipos();
+        // use while loop to check the getline() function condition  
+        while (getline(X, T, '*')) {  
+            /* X represents to read the string from stringstream, T use for store the token string and, 
+            '-' - represents to split the string where - is found. */  
+            
+            switch(i)
+            {
+                case 0: //posicion en la multilista
+                    sscanf(T.c_str(), "%d", &numEnLista); 
+                    
+                case 1:  //nombre
+                    nombre = T;
+                   
+                break;
+                case 2: //confederacion
+                    confederacion = T;
+                    
+                break;
+                case 3: //nombre entrenador
+                	nombreEntrenador = T;  
+                                  
+                break;
+                case 4: //apellido entrenador
+                	apellidoEntrenador = T;
+                   
+                break;
+                case 5: //nacionalidad entrenador
+                    nacionalidadEntrenador = T;
+                    
+                break;
+                case 6: //puntos
+                    sscanf(T.c_str(), "%d", &puntos);
+                     
+                break;
+                case 7: //partidos jugados
+                    sscanf(T.c_str(), "%d", &partidosJugados);
+                break;
+                case 8: //partidos ganados
+                    sscanf(T.c_str(), "%d", &partidosGanados);
+                break;
+                case 9: //partidos empatados
+                    sscanf(T.c_str(), "%d", &partidosEmpatados);
+                break;
+                case 10: //partidos perdidos
+                    sscanf(T.c_str(), "%d", &partidosPerdidos);
+                break;
+                case 11: //goles a favor
+                    sscanf(T.c_str(), "%d", &golesFavor);
+                break;
+                case 12: //goles en contra
+                    sscanf(T.c_str(), "%d", &golesContra);
+                break;
+                case 13: //tarjetas amarillas
+                    sscanf(T.c_str(), "%d", &tarjetasAmarillas);
+                break;
+                case 14: //tarjetas rojas
+                    sscanf(T.c_str(), "%d", &tarjetasRojas);
+                break;
+                case 15: //id equipo
+                    sscanf(T.c_str(), "%d", &idEquipo);
+                break;
+            }
+             i++; 
+        }  
+            cout<<"linea: "<< numEnLista<<nombre<<confederacion<<nombreEntrenador<<apellidoEntrenador<<nacionalidadEntrenador<<puntos<<partidosJugados<<partidosGanados<<partidosEmpatados<<partidosPerdidos<<golesFavor<<golesContra<<tarjetasAmarillas<<tarjetasRojas<<idEquipo<<endl;
+
+            insertarEquipoArchivo(nombre, confederacion, nombreEntrenador, apellidoEntrenador, nacionalidadEntrenador, puntos, partidosJugados, partidosGanados, partidosEmpatados, partidosPerdidos, golesFavor, golesContra, tarjetasAmarillas, tarjetasRojas, idEquipo, numEnLista);
+	}	
+	archivo.close(); //Cerramos el archivo
+}
 #endif

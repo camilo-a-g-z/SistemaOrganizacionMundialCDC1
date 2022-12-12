@@ -9,14 +9,18 @@ int main(){
 	Multilista jugadores;
 	Equipos equipos;
 
-
+	equipos.leerEquiposArchivo("equipos.txt");
+	
+	cout<<equipos.obtenerEquipo(1).nombre<<endl;
+/*
 	equipos.insertar("Argentina","CONMEBOL","Simeone","Diego","Argentina");
 	equipos.insertar("Brasil","CONMEBOL","Tite","Adenor","Brasil");
 	equipos.insertar("Chile","CONMEBOL","Pizzi","Reinaldo","Chile");
 	equipos.insertar("Colombia","CONMEBOL","Pekerman","Jose","Colombia");
 	equipos.insertar("Ecuador","CONMEBOL","Ramirez","Ismael","Ecuador");
 
-	equipos.guardarEquiposArchivo("equipos.txt");
+
+	equipos.guardarEquiposArchivo("equipos.txt");*/
 	//jugadores.leerJugadoresArchivo("jugadores.txt");
 	/*
 	for(int i=0;i<20;i++){
