@@ -33,9 +33,7 @@ class Cronograma
         }
         void insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string etapa, string seccion);
         Lista<partido> obtenerPartidosPorEtapa(string etapa);
-        Lista<partido> obtenerPartidos(){
-            cout<<"tam de partidos: "<<partidos.TamLista()<<endl;
-            return partidos;}
+        Lista<partido> obtenerPartidos(){return partidos;}
         Lista<partido> obtenerPartidosPorEquipo(int idEquipo);
         Lista<partido> obtenerPartidosPorEstadio(int idEstadio);
         Lista<partido> obtenerPartidosPorEtapaYSeccion(string etapa, string seccion);

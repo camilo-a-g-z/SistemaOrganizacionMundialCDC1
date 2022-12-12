@@ -165,12 +165,13 @@ void MaestroPrincipal::verEstadios(){
 void MaestroPrincipal::verCronograma(){
     //system("cls");
     Lista<partido> p;
+    string eD, sD;
 
     cout<<"\n\nCronograma del mundial\n\n";
     cout<<"1. Ver todos los partidos.\n";
     cout<<"2. Ver los partidos de un equipo.\n";
     cout<<"3. Ver los partidos de un estadio.\n";
-    cout<<"4. Ver los partidos, por etapa.\n";
+    cout<<"4. Ver los partidos, por etapa y seccion.\n";
     cout<<"Seleccione la opcion que desea: ";
     int opcion;
     cin>>opcion;
@@ -212,13 +213,130 @@ void MaestroPrincipal::verCronograma(){
             }
             break;
         case 2:
-            
+            cout<<"Ingrese el numero del equipo del cual desea ver los partidos: ";
+            for(int i=0;i<32;i++){
+                cout<<i+1<<". Nombre del equipo: "<<equipos.obtenerEquipo(i).nombre<<endl;
+            }
+            int equipoD;
+            cin>>equipoD;
+            p = cronograma.obtenerPartidosPorEquipo(equipoD-1);
+            for(int i=1;i<=p.TamLista();i++){
+                partido p2 = p.ObtenerDatos(i);
+                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                cout<<"   Hora: "<<p2.hora<<endl;
+                cout<<"   Estadio: ";
+                for(int i=0;i<estadios.getTam();i++){
+                    Estadio estadio = estadios.obtenerEstadio(i);
+                    if(p2.idEstadio==estadio.idEstadio){
+                        cout<<estadio.nombre<<endl;
+                        break;
+                    }
+                }
+                cout<<"   Equipo 1: ";
+                if(p2.idEquipo1!= -1){
+                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Equipo 2: ";
+                if(p2.idEquipo2!= -1){
+                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Etapa: "<<p2.etapa<<endl;
+                cout<<"   Seccion: "<<p2.seccion<<endl;
+                cout<<"   Goles equipo 1: "<<p2.golesEquipo1<<endl;
+                cout<<"   Goles equipo 2: "<<p2.golesEquipo2<<endl;
+                cout<<"   Suplementario 1: "<<p2.suplementario1<<endl;
+                cout<<"   Suplementario 2: "<<p2.suplementario2<<endl;
+                cout<<"   Penales 1: "<<p2.penales1<<endl;
+                cout<<"   Penales 2: "<<p2.penales2<<endl;
+            }
             break;
         case 3:
-            
+            cout<<"Ingrese el numero del estadio del cual desea ver los partidos: ";
+            for(int i=0;i<estadios.getTam();i++){
+                cout<<i+1<<". Nombre del estadio: "<<estadios.obtenerEstadio(i).nombre<<endl;
+            }
+            int estadioD;
+            cin>>estadioD;
+            p = cronograma.obtenerPartidosPorEstadio(estadioD-1);
+            for(int i=1;i<=p.TamLista();i++){
+                partido p2 = p.ObtenerDatos(i);
+                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                cout<<"   Hora: "<<p2.hora<<endl;
+                cout<<"   Estadio: ";
+                for(int i=0;i<estadios.getTam();i++){
+                    Estadio estadio = estadios.obtenerEstadio(i);
+                    if(p2.idEstadio==estadio.idEstadio){
+                        cout<<estadio.nombre<<endl;
+                        break;
+                    }
+                }
+                cout<<"   Equipo 1: ";
+                if(p2.idEquipo1!= -1){
+                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Equipo 2: ";
+                if(p2.idEquipo2!= -1){
+                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Etapa: "<<p2.etapa<<endl;
+                cout<<"   Seccion: "<<p2.seccion<<endl;
+                cout<<"   Goles equipo 1: "<<p2.golesEquipo1<<endl;
+                cout<<"   Goles equipo 2: "<<p2.golesEquipo2<<endl;
+                cout<<"   Suplementario 1: "<<p2.suplementario1<<endl;
+                cout<<"   Suplementario 2: "<<p2.suplementario2<<endl;
+                cout<<"   Penales 1: "<<p2.penales1<<endl;
+                cout<<"   Penales 2: "<<p2.penales2<<endl;
+            }
             break;
         case 4:
-            
+            cout<<"Ingrese la etapa deseada: ";
+            cout<<"\tEliminacion \tOctavos \tCuartos \tSemifinal \tFinal"<<endl;
+            cin>>eD;
+            cout<<"Ingrese la seccion deseada: ";
+            cout<<"\tA \tB \tC \tD \tE \tF \tG \tH"<<endl;
+            cin>>sD;
+            p = cronograma.obtenerPartidosPorEtapaYSeccion(eD,sD);
+            for(int i=1;i<=p.TamLista();i++){
+                partido p2 = p.ObtenerDatos(i);
+                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                cout<<"   Hora: "<<p2.hora<<endl;
+                cout<<"   Estadio: ";
+                for(int i=0;i<estadios.getTam();i++){
+                    Estadio estadio = estadios.obtenerEstadio(i);
+                    if(p2.idEstadio==estadio.idEstadio){
+                        cout<<estadio.nombre<<endl;
+                        break;
+                    }
+                }
+                cout<<"   Equipo 1: ";
+                if(p2.idEquipo1!= -1){
+                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Equipo 2: ";
+                if(p2.idEquipo2!= -1){
+                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                }else{
+                    cout<<"No hay equipo"<<endl;
+                }
+                cout<<"   Etapa: "<<p2.etapa<<endl;
+                cout<<"   Seccion: "<<p2.seccion<<endl;
+                cout<<"   Goles equipo 1: "<<p2.golesEquipo1<<endl;
+                cout<<"   Goles equipo 2: "<<p2.golesEquipo2<<endl;
+                cout<<"   Suplementario 1: "<<p2.suplementario1<<endl;
+                cout<<"   Suplementario 2: "<<p2.suplementario2<<endl;
+                cout<<"   Penales 1: "<<p2.penales1<<endl;
+                cout<<"   Penales 2: "<<p2.penales2<<endl;
+            }
             break;
         default:
             cout<<"Opcion no valida"<<endl;
