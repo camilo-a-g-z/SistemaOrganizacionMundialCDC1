@@ -2,4 +2,4 @@
 1*Brasil*CONMEBOL*Tite*Adenor*Brasil*0*0*0*0*0*0*0*0*0*1*2
 2*Chile*CONMEBOL*Pizzi*Reinaldo*Chile*0*0*0*0*0*0*0*0*0*2*3
 3*Colombia*CONMEBOL*Pekerman*Jose*Colombia*0*0*0*0*0*0*0*0*0*3*4
-4*Ecuador*CONMEBOL*Ramirez*Ismael*Ecuador*0*0*0*0*0*0*0*0*0*4*5W
+4*Ecuador*CONMEBOL*Ramirez*Ismael*Ecuador*0*0*0*0*0*0*0*0*0*4*5

@@ -179,7 +179,11 @@ void Equipos::guardarEquiposArchivo(string nombreArchivo){
         fr << i-1 <<"*" << e.nombre << "*" << e.confederacion << "*" << e.nombreEntrenador << "*" << e.apellidoEntrenador << "*" << e.nacionalidadEntrenador << "*" << e.puntos << "*" << e.partidosJugados << "*" << e.partidosGanados << "*" << e.partidosEmpatados << "*" << e.partidosPerdidos << "*" << e.golesFavor << "*" << e.golesContra << "*" << e.tarjetasAmarillas << "*" << e.tarjetasRojas << "*" << e.idEquipo << "*" << e.numEnLista;
         frase = fr.str();
         cout<<frase;
-        archivo<<frase<<endl;           
+        if(i==tam){
+            archivo<<frase;
+        }else{
+            archivo<<frase<<endl;  
+        }           
     }
 	Equipos();
 	
@@ -274,8 +278,6 @@ void Equipos::leerEquiposArchivo(string nombreArchivo){ //Nombre o ubiacion del 
             }
              i++; 
         }  
-            cout<<"linea: "<< numEnLista<<nombre<<confederacion<<nombreEntrenador<<apellidoEntrenador<<nacionalidadEntrenador<<puntos<<partidosJugados<<partidosGanados<<partidosEmpatados<<partidosPerdidos<<golesFavor<<golesContra<<tarjetasAmarillas<<tarjetasRojas<<idEquipo<<endl;
-
             insertarEquipoArchivo(nombre, confederacion, nombreEntrenador, apellidoEntrenador, nacionalidadEntrenador, puntos, partidosJugados, partidosGanados, partidosEmpatados, partidosPerdidos, golesFavor, golesContra, tarjetasAmarillas, tarjetasRojas, idEquipo, numEnLista);
 	}	
 	archivo.close(); //Cerramos el archivo

@@ -324,7 +324,11 @@ void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nom
         fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
         frase = fr.str();
         cout<<frase;
-        archivo<<frase<<endl;           
+        if(i==tam){
+        	archivo<<frase;
+		}else{
+			archivo<<frase<<endl;  
+		}         
     }
 	Multilista();
 		

@@ -2,13 +2,27 @@
 #include"multiLista.h"
 #include"Lista.h"
 #include"Equipos.h"
+#include"Estadios.h"
 #include "MaestroPrincipal.h"
 
 using namespace std;
 
 int main(){
 	MaestroPrincipal mP;
-	mP.inicio();
+	//mP.inicio();
+
+	Estadios estadios;
+
+	estadios.leerEstadiosArchivo("estadios.txt");
+
+	cout<<estadios.obtenerEstadio(1).nombre<<endl;
+	/*
+	estadios.insertar("Estadio Monumental","Buenos Aires", 70000);
+	estadios.insertar("Estadio Azteca","Mexico", 80000);
+	estadios.insertar("Estadio Maracana","Rio de Janeiro", 90000);
+	estadios.insertar("Estadio Nacional","Santiago", 100000);
+
+	estadios.guardarEstadiosArchivo("estadios.txt");
 	/*Multilista jugadores;
 	Equipos equipos;
 
