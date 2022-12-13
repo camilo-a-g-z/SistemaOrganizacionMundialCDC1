@@ -311,18 +311,9 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
     Equipo equipo1, equipo2, equipo3, equipo4;
     partido np;
     if(pM.etapa == "Eliminacion"){
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-            cin>>pM.golesEquipo1;
-            cout<<"Ingrese el nuevo goles equipo 2: ";
-            cin>>pM.golesEquipo2;
-            cout<<"Ingrese el nuevo suplementario 1: ";
-            cin>>pM.suplementario1;
-            cout<<"Ingrese el nuevo suplementario 2: ";
-            cin>>pM.suplementario2;
-            cout<<"Ingrese el nuevo penales 1: ";
-            cin>>pM.penales1;
-            cout<<"Ingrese el nuevo penales 2: ";
-            cin>>pM.penales2;
+        if(pM.jugado){
+            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
+            //se quitan los puntos de los equipos
             equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
             equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
             equipo1.partidosJugados--;
