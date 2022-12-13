@@ -453,209 +453,109 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                     if(equipo1.puntos>segundo && equipo1.puntos<mayor){//como no hay empate se revisa el segundo
                         segundo = equipo1.puntos;
                         id2 = equipo1.idEquipo;
-                    }else if(equipo2.puntos>segundo && equipo2.puntos<mayor){
+                    }
+                    if(equipo2.puntos>segundo && equipo2.puntos<mayor){
                         segundo = equipo2.puntos;
                         id2 = equipo2.idEquipo;
-                    }else if(equipo3.puntos>segundo && equipo3.puntos<mayor){
+                    }
+                    if(equipo3.puntos>segundo && equipo3.puntos<mayor){
                         segundo = equipo3.puntos;
                         id2 = equipo3.idEquipo;
-                    }else if(equipo4.puntos>segundo && equipo4.puntos<mayor){
+                    }
+                    if(equipo4.puntos>segundo && equipo4.puntos<mayor){
                         segundo = equipo4.puntos;
                         id2 = equipo4.idEquipo;
                     }
                 }
-                if(equipo1.partidosJugados == 3 && equipo2.partidosJugados == 3 && equipo3.partidosJugados == 3 && equipo4.partidosJugados == 3){
-                    //se escoge los 2 mejores equipos de cada grupo
-                    int mayor=0,segundo=0, id, id2;
-                    if(equipo1.puntos>mayor){
-                        mayor = equipo1.puntos;
+                //si hay empate se revisa quien tiene mas goles a favor
+                equipo1 = equipos.obtenerEquipo(id);
+                equipo2 = equipos.obtenerEquipo(id2);
+                if(empate){
+                    if(equipo1.golesFavor>equipo2.golesFavor){
                         id = equipo1.idEquipo;
-                    }else if(equipo2.puntos>mayor){
-                        mayor = equipo2.puntos;
+                    }else if(equipo1.golesFavor<equipo2.golesFavor){
                         id = equipo2.idEquipo;
-                    }else if(equipo3.puntos>mayor){
-                        mayor = equipo3.puntos;
-                        id = equipo3.idEquipo;
-                    }else if(equipo4.puntos>mayor){
-                        mayor = equipo4.puntos;
-                        id = equipo4.idEquipo;
-                    }
-                    //revisamos si hay un empate de puntos
-                    bool empate=false;
-                    if(equipo1.puntos==mayor && equipo1.idEquipo!=id){
-                        empate = true;
-                        id2 = equipo1.idEquipo;
-                    }else if(equipo2.puntos==mayor && equipo2.idEquipo!=id){
-                        empate = true;
-                        id2 = equipo2.idEquipo;
-                    }else if(equipo3.puntos==mayor && equipo3.idEquipo!=id){
-                        empate = true;
-                        id2 = equipo3.idEquipo;
-                    }else if(equipo4.puntos==mayor && equipo4.idEquipo!=id){
-                        empate = true;
-                        id2 = equipo4.idEquipo;
-                    }else if(equipo1.puntos>segundo && equipo1.puntos<mayor){//como no hay empate se revisa el segundo
-                        segundo = equipo1.puntos;
-                        id2 = equipo1.idEquipo;
-                    }else if(equipo2.puntos>segundo && equipo2.puntos<mayor){
-                        segundo = equipo2.puntos;
-                        id2 = equipo2.idEquipo;
-                    }else if(equipo3.puntos>segundo && equipo3.puntos<mayor){
-                        segundo = equipo3.puntos;
-                        id2 = equipo3.idEquipo;
-                    }else if(equipo4.puntos>segundo && equipo4.puntos<mayor){
-                        segundo = equipo4.puntos;
-                        id2 = equipo4.idEquipo;
-                    }
-                    //si hay empate se revisa quien tiene mas goles a favor
-                    equipo1 = equipos.obtenerEquipo(id);
-                    equipo2 = equipos.obtenerEquipo(id2);
-                    if(empate){
-                        if(equipo1.golesFavor>equipo2.golesFavor){
+                    }else{
+                        //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
+                        if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
                             id = equipo1.idEquipo;
-                        }else if(equipo1.golesFavor<equipo2.golesFavor){
+                        }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
                             id = equipo2.idEquipo;
                         }else{
-                            //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                            if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
+                            //si hay empate, se revisan tarjetas amaillas
+                            if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
                                 id = equipo1.idEquipo;
-                            }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
+                            }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
                                 id = equipo2.idEquipo;
-                            }else{
-                                //si hay empate, se revisan tarjetas amaillas
-                                if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                                    id = equipo1.idEquipo;
-                                }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                                    id = equipo2.idEquipo;
-                                }
                             }
                         }
-                        if(id==id2){
-                            equipo2 = equipo1;
-                            equipo1 = equipos.obtenerEquipo(id2);
-                        }
-                    }  
-                    //se genera cronograma de octavos de final
-                    if(pM.seccion == "A"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(49);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(50);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "B"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(49);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(50);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    } else if(pM.seccion == "C"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(51);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(52);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "D"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(51);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(52);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "E"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(53);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(54);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "F"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(53);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(54);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "G"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(55);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(56);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                    }else if(pM.seccion == "H"){
-                        np = cronograma.obtenerPartidoPorPosEnLista(55);
-                        np.idEquipo2 = equipo2.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
-                        np = cronograma.obtenerPartidoPorPosEnLista(56);
-                        np.idEquipo1 = equipo1.idEquipo;
-                        cronograma.modificarPartido(np.posEnLista,np);
                     }
                     if(id==id2){
                         equipo2 = equipo1;
                         equipo1 = equipos.obtenerEquipo(id2);
                     }
                 }  
+                cout<<"El equipo 1 es: "<<equipo1.nombre<<endl;
+                cout<<"El equipo 2 es: "<<equipo2.nombre<<endl;
                 //se genera cronograma de octavos de final
                 if((equipo1.idEquipo /4)==0){
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(48);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==1){
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(48);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 } else if((equipo1.idEquipo /4)==2){
-                    np = cronograma.obtenerPartidoPorPosEnLista(51);
+                    np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(52);
+                    np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==3){
-                    np = cronograma.obtenerPartidoPorPosEnLista(51);
+                    np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(52);
+                    np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==4){
-                    np = cronograma.obtenerPartidoPorPosEnLista(53);
+                    np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(54);
+                    np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==5){
-                    np = cronograma.obtenerPartidoPorPosEnLista(53);
+                    np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(54);
+                    np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==6){
-                    np = cronograma.obtenerPartidoPorPosEnLista(55);
+                    np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(56);
+                    np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==7){
-                    np = cronograma.obtenerPartidoPorPosEnLista(55);
+                    np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(56);
+                    np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }
+                
             }
         }
     }else if(pM.etapa == "Octavos"){
@@ -700,7 +600,12 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         equipos.modificarEquipo(equipo1.idEquipo,equipo1);
         equipos.modificarEquipo(equipo2.idEquipo,equipo2);
         bool empate = false;
-        if(pM.golesEquipo1 == pM.golesEquipo2){empate = true;}
+        int id = 0, id2 = 0;
+        if(pM.golesEquipo1 == pM.golesEquipo2){
+            id = pM.idEquipo1;
+            id2 = pM.idEquipo2;
+            empate = true;
+        }
         if(empate){
             if(equipo1.golesFavor>equipo2.golesFavor){
                 id = equipo1.idEquipo;
@@ -727,9 +632,41 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             }
         } 
         //se generan los partidos de cuartos
-        //if(pM.seccion)
-    }
-        
+        //revisar si disminuyendo 1 se arregla el error
+        if(pM.seccion=="A"){
+            np = cronograma.obtenerPartidoPorPosEnLista(56);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="B"){
+            np = cronograma.obtenerPartidoPorPosEnLista(57);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="C"){
+            np = cronograma.obtenerPartidoPorPosEnLista(56);
+            np.idEquipo2 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="D"){
+            np = cronograma.obtenerPartidoPorPosEnLista(57);
+            np.idEquipo2 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="E"){
+            np = cronograma.obtenerPartidoPorPosEnLista(58);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="F"){
+            np = cronograma.obtenerPartidoPorPosEnLista(59);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="G"){
+            np = cronograma.obtenerPartidoPorPosEnLista(58);
+            np.idEquipo2 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="H"){
+            np = cronograma.obtenerPartidoPorPosEnLista(59);
+            np.idEquipo2 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }
+    }  
 }
 
 void MaestroPrincipal::verEquipos(){
