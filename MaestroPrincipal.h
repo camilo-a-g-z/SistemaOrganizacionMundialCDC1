@@ -130,7 +130,11 @@ void MaestroPrincipal::ponerResultadoPartido(){
             p = cronograma.obtenerPartidos();
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -172,7 +176,11 @@ void MaestroPrincipal::ponerResultadoPartido(){
             p = cronograma.obtenerPartidosPorEquipo(equipoD-1);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -214,7 +222,11 @@ void MaestroPrincipal::ponerResultadoPartido(){
             p = cronograma.obtenerPartidosPorEstadio(estadioD-1);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
@@ -256,7 +268,11 @@ void MaestroPrincipal::ponerResultadoPartido(){
             p = cronograma.obtenerPartidosPorEtapaYSeccion(eD,sD);
             for(int i=1;i<=p.TamLista();i++){
                 partido p2 = p.ObtenerDatos(i);
-                cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                if(p2.jugado){
+                    cout<<i<<". Fecha: "<<p2.fecha<<"\t El partido ya fue jugado"<<endl;
+                }else{
+                    cout<<i<<". Fecha: "<<p2.fecha<<endl;
+                }
                 cout<<"   Hora: "<<p2.hora<<endl;
                 cout<<"   Estadio: ";
                 for(int i=0;i<estadios.getTam();i++){
