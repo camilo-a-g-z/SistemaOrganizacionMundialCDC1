@@ -149,7 +149,7 @@ Lista<partido> Cronograma::obtenerPartidosPorFecha(string fecha){
 }
 //metodo para modificar un partido
 void Cronograma::modificarPartido(int posEnLista, partido partido){
-    partidos.modificar(posEnLista+1,partido);
+    partidos.modificar(posEnLista,partido);
 }
 
 

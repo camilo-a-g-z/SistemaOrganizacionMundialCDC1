@@ -60,7 +60,7 @@ void MaestroPrincipal::inicio(){
 }
 
 void MaestroPrincipal::menu(){
-    system("cls");
+    //system("cls");
     cout<<"\n\nBienvenido al menu principal del mundial de futbol\n\n";
     cout<<"1. Ver equipos.\n";
     cout<<"2. Ver jugadores.\n";
@@ -393,15 +393,10 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         equipo1.golesContra+=pM.golesEquipo2;
         equipo2.golesFavor+=pM.golesEquipo2;
         equipo2.golesContra+=pM.golesEquipo1;
-        cout<<"\n\nENTRO A MODIFICAR\n\n";
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        //se actualiza equipos
-        cout<<"\n\nID del equipo 1: "<<equipo1.idEquipo<<"\n\n";
-        cout<<"\n\nID del equipo 2: "<<equipo2.idEquipo<<"\n\n";
+        cronograma.modificarPartido(pM.posEnLista +1,pM);
         equipos.modificarEquipo(equipo1.idEquipo,equipo1);
         equipos.modificarEquipo(equipo2.idEquipo,equipo2);
         if(equipo1.partidosJugados==3){
-            cout<<"\n\nENTRO\n\n";
             //en caso de que cada equipo complete los 3 partidos de la etapa se genera cronograma
             int posgrupo = equipo1.idEquipo/4;
             posgrupo = posgrupo*4;
@@ -423,13 +418,16 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 if(equipo1.puntos>mayor){
                     mayor = equipo1.puntos;
                     id = equipo1.idEquipo;
-                }else if(equipo2.puntos>mayor){
+                }
+                if(equipo2.puntos>mayor){
                     mayor = equipo2.puntos;
                     id = equipo2.idEquipo;
-                }else if(equipo3.puntos>mayor){
+                }
+                if(equipo3.puntos>mayor){
                     mayor = equipo3.puntos;
                     id = equipo3.idEquipo;
-                }else if(equipo4.puntos>mayor){
+                }
+                if(equipo4.puntos>mayor){
                     mayor = equipo4.puntos;
                     id = equipo4.idEquipo;
                 }
@@ -438,27 +436,33 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 if(equipo1.puntos==mayor && equipo1.idEquipo!=id){
                     empate = true;
                     id2 = equipo1.idEquipo;
-                }else if(equipo2.puntos==mayor && equipo2.idEquipo!=id){
+                }
+                if(equipo2.puntos==mayor && equipo2.idEquipo!=id){
                     empate = true;
                     id2 = equipo2.idEquipo;
-                }else if(equipo3.puntos==mayor && equipo3.idEquipo!=id){
+                }
+                if(equipo3.puntos==mayor && equipo3.idEquipo!=id){
                     empate = true;
                     id2 = equipo3.idEquipo;
-                }else if(equipo4.puntos==mayor && equipo4.idEquipo!=id){
+                }
+                if(equipo4.puntos==mayor && equipo4.idEquipo!=id){
                     empate = true;
                     id2 = equipo4.idEquipo;
-                }else if(equipo1.puntos>segundo && equipo1.puntos<mayor){//como no hay empate se revisa el segundo
-                    segundo = equipo1.puntos;
-                    id2 = equipo1.idEquipo;
-                }else if(equipo2.puntos>segundo && equipo2.puntos<mayor){
-                    segundo = equipo2.puntos;
-                    id2 = equipo2.idEquipo;
-                }else if(equipo3.puntos>segundo && equipo3.puntos<mayor){
-                    segundo = equipo3.puntos;
-                    id2 = equipo3.idEquipo;
-                }else if(equipo4.puntos>segundo && equipo4.puntos<mayor){
-                    segundo = equipo4.puntos;
-                    id2 = equipo4.idEquipo;
+                }
+                if(!empate){
+                    if(equipo1.puntos>segundo && equipo1.puntos<mayor){//como no hay empate se revisa el segundo
+                        segundo = equipo1.puntos;
+                        id2 = equipo1.idEquipo;
+                    }else if(equipo2.puntos>segundo && equipo2.puntos<mayor){
+                        segundo = equipo2.puntos;
+                        id2 = equipo2.idEquipo;
+                    }else if(equipo3.puntos>segundo && equipo3.puntos<mayor){
+                        segundo = equipo3.puntos;
+                        id2 = equipo3.idEquipo;
+                    }else if(equipo4.puntos>segundo && equipo4.puntos<mayor){
+                        segundo = equipo4.puntos;
+                        id2 = equipo4.idEquipo;
+                    }
                 }
                 //si hay empate se revisa quien tiene mas goles a favor
                 equipo1 = equipos.obtenerEquipo(id);
@@ -489,56 +493,56 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                     }
                 }  
                 //se genera cronograma de octavos de final
-                if(pM.seccion == "A"){
+                if((equipo1.idEquipo /4)==0){
                     np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "B"){
+                }else if((equipo1.idEquipo /4)==1){
                     np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                } else if(pM.seccion == "C"){
+                } else if((equipo1.idEquipo /4)==2){
                     np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "D"){
+                }else if((equipo1.idEquipo /4)==3){
                     np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "E"){
+                }else if((equipo1.idEquipo /4)==4){
                     np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "F"){
+                }else if((equipo1.idEquipo /4)==5){
                     np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "G"){
+                }else if((equipo1.idEquipo /4)==6){
                     np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(56);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                }else if(pM.seccion == "H"){
+                }else if((equipo1.idEquipo /4)==7){
                     np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
@@ -549,7 +553,78 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 
             }
         }
+    }else if(pM.etapa == "Octavos"){
+        if(pM.jugado){
+            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
+            //se quitan los puntos de los equipos
+            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
+            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
+            equipo1.partidosJugados--;
+            equipo2.partidosJugados--;
+            //se quitan los goles
+            equipo1.golesFavor-=pM.golesEquipo1;
+            equipo1.golesContra-=pM.golesEquipo2;
+            equipo2.golesFavor-=pM.golesEquipo2;
+            equipo2.golesContra-=pM.golesEquipo1;
+        }
+        cout<<"Ingrese el nuevo goles equipo 1: ";
+        cin>>pM.golesEquipo1;
+        cout<<"Ingrese el nuevo goles equipo 2: ";
+        cin>>pM.golesEquipo2;
+        cout<<"Ingrese el nuevo suplementario 1: ";
+        cin>>pM.suplementario1;
+        cout<<"Ingrese el nuevo suplementario 2: ";
+        cin>>pM.suplementario2;
+        cout<<"Ingrese el nuevo penales 1: ";
+        cin>>pM.penales1;
+        cout<<"Ingrese el nuevo penales 2: ";
+        cin>>pM.penales2;
+        if(!pM.jugado){
+            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
+            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
+        }
+        pM.jugado = true;
+        equipo1.partidosJugados++;
+        equipo2.partidosJugados++;
+        //se suman los goles
+        equipo1.golesFavor+=pM.golesEquipo1;
+        equipo1.golesContra+=pM.golesEquipo2;
+        equipo2.golesFavor+=pM.golesEquipo2;
+        equipo2.golesContra+=pM.golesEquipo1;
+        cronograma.modificarPartido(pM.posEnLista +1,pM);
+        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
+        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
+        bool empate = false;
+        if(pM.golesEquipo1 == pM.golesEquipo2){empate = true;}
+        if(empate){
+            if(equipo1.golesFavor>equipo2.golesFavor){
+                id = equipo1.idEquipo;
+            }else if(equipo1.golesFavor<equipo2.golesFavor){
+                id = equipo2.idEquipo;
+            }else{
+                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
+                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
+                    id = equipo1.idEquipo;
+                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
+                    id = equipo2.idEquipo;
+                }else{
+                    //si hay empate, se revisan tarjetas amaillas
+                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
+                        id = equipo1.idEquipo;
+                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
+                        id = equipo2.idEquipo;
+                    }
+                }
+            }
+            if(id==id2){
+                equipo2 = equipo1;
+                equipo1 = equipos.obtenerEquipo(id2);
+            }
+        } 
+        //se generan los partidos de cuartos
+        //if(pM.seccion)
     }
+        
 }
 
 void MaestroPrincipal::verEquipos(){
