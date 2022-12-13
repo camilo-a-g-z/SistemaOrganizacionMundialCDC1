@@ -126,7 +126,7 @@ template < class T >
 void Lista<T>::modificar(int pos, T dato){
 	Nodo<T> *aux;
 	aux = cab->sig;
-	for(int i = 1; i <= pos; i++){aux = aux->sig;}
+	for(int i = 1; i < pos; i++){aux = aux->sig;}
 	aux->info = dato;
 }
 

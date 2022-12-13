@@ -129,7 +129,10 @@ Equipo Equipos::obtenerEquipoPorPosicion(int pos){
 void Equipos::modificarEquipo(int id, Equipo equipo){
     for(int i=1;i<=tam;i++){
         if(equipos.ObtenerDatos(i).idEquipo==id){
+            cout<<"modificando equipo: "<<equipos.ObtenerDatos(i).idEquipo<<" id:"<<id<<endl;
             equipos.modificar(i,equipo);
+            cout<<"2modificando equipo: "<<equipos.ObtenerDatos(i).idEquipo<<" id:"<<id<<endl;
+            break;
         }
     }
 }
