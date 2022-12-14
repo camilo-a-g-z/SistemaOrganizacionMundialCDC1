@@ -103,11 +103,16 @@ void MaestroPrincipal::menu(){
         case 5:
             ponerResultadoPartido();
             //se guardan los archivos todo menos estadios
+            equipos.guardarEquiposArchivo();
+            jugadores.guardarJugadoresArchivo();
+            cronograma.guardarPartidosArchivo();
             menu();
             break;
         case 6:
             modificarEquipo();
             //se guardan los archivos todo menos estadios, cronograma
+            equipos.guardarEquiposArchivo();
+            jugadores.guardarJugadoresArchivo();
             menu();
             break;
         case 7:
