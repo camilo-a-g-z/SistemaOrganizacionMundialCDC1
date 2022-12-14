@@ -85,6 +85,7 @@ void Multilista :: modificarFutbolista(futbolista f, int equipo){
 	int pos=cabeceras[equipo];
 	while(pos!=-1){
 		if(datos[pos].sigCantGoles==f.sigCantGoles && datos[pos].sigCompanero==f.sigCompanero && datos[pos].sigCampoLibre==f.sigCampoLibre){
+			datos[pos].nombre=f.nombre;
 			datos[pos].edad=f.edad;
 			datos[pos].numCamiseta=f.numCamiseta;
 			datos[pos].cantGoles=f.cantGoles;

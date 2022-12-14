@@ -34,6 +34,7 @@ class MaestroPrincipal
         void ponerResultadoPartido();
         void modificarFecha(partido pM, Lista<partido> p);
         void modificarEquipo();
+        void modificarJugador();
         //getter
         
         
@@ -103,7 +104,7 @@ void MaestroPrincipal::menu(){
             menu();
             break;
         case 7:
-
+            modificarJugador();
             //se guardan los archivos equipo
             menu();
             break;
@@ -116,6 +117,41 @@ void MaestroPrincipal::menu(){
             break;
     }
 }
+
+void MaestroPrincipal::modificarJugador(){
+    Lista<futbolista> jugadoresEquipo;
+    cout<<"Seleccione el equipo del cual desea ver los jugadores: "<<endl;
+    for(int i=0;i<32;i++){
+        cout<<i+1<<". "<<equipos.obtenerEquipo(i).nombre<<endl;
+    }
+    cout<<"Ingrese la opcion que desea: ";
+    int opcion;
+    cin>>opcion;
+    jugadoresEquipo=jugadores.mostrarEquipo(opcion-1);
+    //system("cls");
+    for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+        futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+        cout<<i<<". Nombre: "<<jugador.nombre<<endl;
+    }
+    cout<<"Ingrese el numero del jugador que desea modificar: ";
+    int num;
+    cin>>num;
+    futbolista jugador = jugadoresEquipo.ObtenerDatos(num);
+    fflush(stdin);
+    cout<<"Ingrese el nombre del jugador: ";
+    getline(cin,jugador.nombre);
+    cout<<"Ingrese la posicion del jugador: ";
+    getline(cin,jugador.pos);
+    cout<<"Ingrese el numero de camiseta del jugador: ";
+    cin>>jugador.numCamiseta;
+    cout<<"Ingrese la edad del jugador: ";
+    cin>>jugador.edad;
+    cout<<"Ingrese goles anotados: ";
+    //cin>>jugador.goles;
+
+    jugadores.modificarFutbolista(jugador,opcion-1);
+}
+
 
 void MaestroPrincipal::modificarEquipo(){
     //system("cls");
@@ -532,59 +568,59 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 cout<<"El equipo 2 es: "<<equipo2.nombre<<endl;
                 //se genera cronograma de octavos de final
                 if((equipo1.idEquipo /4)==0){
-                    np = cronograma.obtenerPartidoPorPosEnLista(48);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==1){
-                    np = cronograma.obtenerPartidoPorPosEnLista(48);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(50);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 } else if((equipo1.idEquipo /4)==2){
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(51);
+                    np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==3){
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(51);
+                    np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==4){
-                    np = cronograma.obtenerPartidoPorPosEnLista(52);
+                    np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(53);
+                    np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==5){
-                    np = cronograma.obtenerPartidoPorPosEnLista(52);
+                    np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(53);
+                    np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==6){
-                    np = cronograma.obtenerPartidoPorPosEnLista(54);
+                    np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(55);
+                    np = cronograma.obtenerPartidoPorPosEnLista(56);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }else if((equipo1.idEquipo /4)==7){
-                    np = cronograma.obtenerPartidoPorPosEnLista(54);
+                    np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo2 = equipo2.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(55);
+                    np = cronograma.obtenerPartidoPorPosEnLista(56);
                     np.idEquipo1 = equipo1.idEquipo;
                     cronograma.modificarPartido(np.posEnLista,np);
                 }
@@ -667,35 +703,35 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         //se generan los partidos de cuartos
         //revisar si disminuyendo 1 se arregla el error
         if(pM.seccion=="A"){
-            np = cronograma.obtenerPartidoPorPosEnLista(56);
+            np = cronograma.obtenerPartidoPorPosEnLista(57);
             np.idEquipo1 = equipo1.idEquipo;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="B"){
-            np = cronograma.obtenerPartidoPorPosEnLista(57);
+            np = cronograma.obtenerPartidoPorPosEnLista(58);
             np.idEquipo1 = equipo1.idEquipo;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="C"){
-            np = cronograma.obtenerPartidoPorPosEnLista(56);
-            np.idEquipo2 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
-        }else if(pM.seccion=="D"){
             np = cronograma.obtenerPartidoPorPosEnLista(57);
             np.idEquipo2 = equipo1.idEquipo;
             cronograma.modificarPartido(np.posEnLista,np);
-        }else if(pM.seccion=="E"){
-            np = cronograma.obtenerPartidoPorPosEnLista(58);
-            np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
-        }else if(pM.seccion=="F"){
-            np = cronograma.obtenerPartidoPorPosEnLista(59);
-            np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
-        }else if(pM.seccion=="G"){
+        }else if(pM.seccion=="D"){
             np = cronograma.obtenerPartidoPorPosEnLista(58);
             np.idEquipo2 = equipo1.idEquipo;
             cronograma.modificarPartido(np.posEnLista,np);
-        }else if(pM.seccion=="H"){
+        }else if(pM.seccion=="E"){
             np = cronograma.obtenerPartidoPorPosEnLista(59);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="F"){
+            np = cronograma.obtenerPartidoPorPosEnLista(60);
+            np.idEquipo1 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="G"){
+            np = cronograma.obtenerPartidoPorPosEnLista(59);
+            np.idEquipo2 = equipo1.idEquipo;
+            cronograma.modificarPartido(np.posEnLista,np);
+        }else if(pM.seccion=="H"){
+            np = cronograma.obtenerPartidoPorPosEnLista(60);
             np.idEquipo2 = equipo1.idEquipo;
             cronograma.modificarPartido(np.posEnLista,np);
         }
@@ -774,19 +810,19 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         }
         //se genera el partido de semifinal
         if(pM.seccion=="A"){
-            np = cronograma.obtenerPartidoPorPosEnLista(60);
+            np = cronograma.obtenerPartidoPorPosEnLista(61);
             np.idEquipo1 = id;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="B"){
-            np = cronograma.obtenerPartidoPorPosEnLista(60);
+            np = cronograma.obtenerPartidoPorPosEnLista(61);
             np.idEquipo2 = id2;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="C"){
-            np = cronograma.obtenerPartidoPorPosEnLista(61);
+            np = cronograma.obtenerPartidoPorPosEnLista(62);
             np.idEquipo1 = id;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="D"){
-            np = cronograma.obtenerPartidoPorPosEnLista(61);
+            np = cronograma.obtenerPartidoPorPosEnLista(62);
             np.idEquipo2 = id2;
             cronograma.modificarPartido(np.posEnLista,np);
         }
@@ -865,17 +901,17 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         }
         //se genera el partido de la final y tercer puesto
         if(pM.seccion=="A"){
-            np = cronograma.obtenerPartidoPorPosEnLista(63);
+            np = cronograma.obtenerPartidoPorPosEnLista(64);
             np.idEquipo1 = id;
             cronograma.modificarPartido(np.posEnLista,np);
-            np = cronograma.obtenerPartidoPorPosEnLista(62);
+            np = cronograma.obtenerPartidoPorPosEnLista(63);
             np.idEquipo1 = id2;
             cronograma.modificarPartido(np.posEnLista,np);
         }else if(pM.seccion=="B"){
-            np = cronograma.obtenerPartidoPorPosEnLista(63);
+            np = cronograma.obtenerPartidoPorPosEnLista(64);
             np.idEquipo2 = id;
             cronograma.modificarPartido(np.posEnLista,np);
-            np = cronograma.obtenerPartidoPorPosEnLista(62);
+            np = cronograma.obtenerPartidoPorPosEnLista(63);
             np.idEquipo2 = id2;
             cronograma.modificarPartido(np.posEnLista,np);
         }
@@ -1066,21 +1102,41 @@ void MaestroPrincipal::verEquipos(){
 void MaestroPrincipal::verJugadores(){
     Lista<futbolista> jugadoresEquipo;
     //system("cls");
-    cout<<"Seleccione el equipo del cual desea ver los jugadores: "<<endl;
-    for(int i=0;i<32;i++){
-        cout<<i+1<<". "<<equipos.obtenerEquipo(i).nombre<<endl;
-    }
-    cout<<"Ingrese la opcion que desea: ";
+    cout<<"\n\nJugadores participantes en el mundial\n\n";
+    cout<<"1. Ver por goleadores.\n";
+    cout<<"2. Ver por equipos.\n";
+    cout<<"Escoja una opcion: ";
     int opcion;
     cin>>opcion;
-    jugadoresEquipo=jugadores.mostrarEquipo(opcion-1);
-    //system("cls");
-    for(int i=1;i<=jugadoresEquipo.TamLista();i++){
-        futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
-        cout<<i<<". Nombre: "<<jugador.nombre<<endl;
-        cout<<"   Posicion: "<<jugador.pos<<endl;
-        cout<<"   Numero de camiseta: "<<jugador.numCamiseta<<endl;
-        cout<<"   Goles: "<<jugador.cantGoles<<endl;
+    switch(opcion){
+        case 1:
+            jugadoresEquipo=jugadores.mostrarGolesGlobal();
+            for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+                futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+                cout<<i<<". Nombre: "<<jugador.nombre<<endl;
+                cout<<"   Posicion: "<<jugador.pos<<endl;
+                cout<<"   Numero de camiseta: "<<jugador.numCamiseta<<endl;
+                cout<<"   Goles: "<<jugador.cantGoles<<endl;
+            }
+            break;
+        case 2:
+            cout<<"Seleccione el equipo del cual desea ver los jugadores: "<<endl;
+            for(int i=0;i<32;i++){
+                cout<<i+1<<". "<<equipos.obtenerEquipo(i).nombre<<endl;
+            }
+            cout<<"Ingrese la opcion que desea: ";
+            int opcion;
+            cin>>opcion;
+            jugadoresEquipo=jugadores.mostrarEquipo(opcion-1);
+            //system("cls");
+            for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+                futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+                cout<<i<<". Nombre: "<<jugador.nombre<<endl;
+                cout<<"   Posicion: "<<jugador.pos<<endl;
+                cout<<"   Numero de camiseta: "<<jugador.numCamiseta<<endl;
+                cout<<"   Goles: "<<jugador.cantGoles<<endl;
+            }
+            break;
     }
     system("pause");
 }
