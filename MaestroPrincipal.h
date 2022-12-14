@@ -54,6 +54,7 @@ void MaestroPrincipal::inicio(){
 		MaestroGenerador mG;
 		mG.generarCronograma(mI.getEstadios(),mI.getEquipos(),mI.getGrupoEquipos());
         cronograma = mG.getCronograma();
+        //se guardan los archivos
     }
     menu();
     
@@ -92,14 +93,17 @@ void MaestroPrincipal::menu(){
             break;
         case 5:
             ponerResultadoPartido();
+            //se guardan los archivos todo menos estadios
             menu();
             break;
         case 6:
             
+            //se guardan los archivos todo menos estadios, cronograma
             menu();
             break;
         case 7:
             
+            //se guardan los archivos equipo
             menu();
             break;
         case 8:
