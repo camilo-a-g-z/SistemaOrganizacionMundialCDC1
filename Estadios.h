@@ -29,7 +29,7 @@ class Estadios
         void insertarEstadioArchivo(string nombre, string ciudad, int capacidad, int idEstadio, int numEnLista);
         Estadio obtenerEstadio(int id);
         Estadio obtenerEstadioPorPosicion(int pos);
-        void guardarEstadiosArchivo(string nombreArchivo);
+        void guardarEstadiosArchivo();
         Lista<Estadio> leerEstadiosArchivo();
         void modificarEstadio(int id, Estadio estadio);
         int getTam(){return tam;}
@@ -96,7 +96,8 @@ void Estadios::insertarEstadioArchivo(string nombre, string ciudad, int capacida
 }
 
 //Funcion para guardar los estadios en el archivo
-void Estadios::guardarEstadiosArchivo(string nombreArchivo){
+void Estadios::guardarEstadiosArchivo(){
+    string nombreArchivo = "estadios.txt";
 	ofstream archivo;
     string frase;
     char rpt;	

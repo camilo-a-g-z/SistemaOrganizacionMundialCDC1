@@ -34,7 +34,7 @@ class Cronograma
         }
         void insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion);
 
-        void guardarPartidosArchivo(string nombreArchivo);
+        void guardarPartidosArchivo();
         void insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista);
         Lista<partido> leerPartidosArchivo();
 		Lista<partido> obtenerPartidosPorEtapa(string etapa);
@@ -174,7 +174,8 @@ void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEqui
 }
 
 //Funcion para guardar los partidos en el archivo
-void Cronograma::guardarPartidosArchivo(string nombreArchivo){
+void Cronograma::guardarPartidosArchivo(){
+    string nombreArchivo="partidos.txt";
  	ofstream archivo;
     string frase;
     char rpt;	

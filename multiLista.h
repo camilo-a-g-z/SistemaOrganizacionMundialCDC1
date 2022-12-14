@@ -69,7 +69,7 @@ class Multilista{
 		bool eliminar(int pos);
 		bool multilistaLLena();
 		bool multilistaVacia();
-		void guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo);
+		void guardarJugadoresArchivo();
 		Lista<futbolista> leerJugadoresArchivo();
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
@@ -356,7 +356,8 @@ Lista<futbolista> Multilista::leerJugadoresArchivo(){ //Nombre o ubiacion del ar
 }
 
 //Funcion para guardar los jugadores en el archivo
-void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo){
+void Multilista::guardarJugadoresArchivo(){
+	string nombreArchivo = "jugadores.txt";
  	ofstream archivo;
 	string frase;
 	char rpt;	
@@ -370,7 +371,7 @@ void Multilista::guardarJugadoresArchivo(Lista<futbolista> jugadores, string nom
 	fflush(stdin);
     for(int i=1; i<=tam; i++){
 		stringstream fr;
-		futbolista f = jugadores.ObtenerDatos(i);
+		futbolista f = datos[i];
         fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
         frase = fr.str();
         cout<<frase;
