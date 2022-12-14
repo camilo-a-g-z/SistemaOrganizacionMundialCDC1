@@ -40,7 +40,7 @@ class Equipos
         }
         int insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
         void insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista);
-        void guardarEquiposArchivo(string nombreArchivo);
+        void guardarEquiposArchivo();
         Lista<Equipo> leerEquiposArchivo();
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
@@ -162,7 +162,8 @@ void Equipos::insertarEquipoArchivo(string nombre, string confederacion, string 
 }
 
 //Funcion para guardar los equipos en el archivo
-void Equipos::guardarEquiposArchivo(string nombreArchivo){
+void Equipos::guardarEquiposArchivo(){
+    string nombreArchivo="equipos.txt";
  	ofstream archivo;
 	string frase;
 	char rpt;	
@@ -181,7 +182,7 @@ void Equipos::guardarEquiposArchivo(string nombreArchivo){
         
         fr << i-1 <<"*" << e.nombre << "*" << e.confederacion << "*" << e.nombreEntrenador << "*" << e.apellidoEntrenador << "*" << e.nacionalidadEntrenador << "*" << e.puntos << "*" << e.partidosJugados << "*" << e.partidosGanados << "*" << e.partidosEmpatados << "*" << e.partidosPerdidos << "*" << e.golesFavor << "*" << e.golesContra << "*" << e.tarjetasAmarillas << "*" << e.tarjetasRojas << "*" << e.idEquipo << "*" << e.numEnLista;
         frase = fr.str();
-        cout<<frase;
+        //cout<<frase;
         if(i==tam){
             archivo<<frase;
         }else{

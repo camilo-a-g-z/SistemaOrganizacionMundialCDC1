@@ -1,5 +1,32 @@
-0*Argentina*CONMEBOL*Simeone*Diego*Argentina*0*0*0*0*0*0*0*0*0*0*1
-1*Brasil*CONMEBOL*Tite*Adenor*Brasil*0*0*0*0*0*0*0*0*0*1*2
-2*Chile*CONMEBOL*Pizzi*Reinaldo*Chile*0*0*0*0*0*0*0*0*0*2*3
-3*Colombia*CONMEBOL*Pekerman*Jose*Colombia*0*0*0*0*0*0*0*0*0*3*4
-4*Ecuador*CONMEBOL*Ramirez*Ismael*Ecuador*0*0*0*0*0*0*0*0*0*4*5
+0*Equipo 0*Confederacion 0*EquipoEntrenadorNombre 0*EquipoEntrenadorApellido 0*EquipoEntrenadorNacion 0*0*0*0*0*0*0*0*0*0*0*1
+1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*0*0*0*0*0*0*0*0*0*1*2
+2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*0*0*0*0*0*0*0*0*2*3
+3*Equipo 3*Confederacion 3*EquipoEntrenadorNombre 3*EquipoEntrenadorApellido 3*EquipoEntrenadorNacion 3*0*0*0*0*0*0*0*0*0*3*4
+4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*0*0*0*0*0*0*0*0*0*4*5
+5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*0*0*0*0*0*0*0*0*0*5*6
+6*Equipo 6*Confederacion 6*EquipoEntrenadorNombre 6*EquipoEntrenadorApellido 6*EquipoEntrenadorNacion 6*0*0*0*0*0*0*0*0*0*6*7
+7*Equipo 7*Confederacion 7*EquipoEntrenadorNombre 7*EquipoEntrenadorApellido 7*EquipoEntrenadorNacion 7*0*0*0*0*0*0*0*0*0*7*8
+8*Equipo 8*Confederacion 8*EquipoEntrenadorNombre 8*EquipoEntrenadorApellido 8*EquipoEntrenadorNacion 8*0*0*0*0*0*0*0*0*0*8*9
+9*Equipo 9*Confederacion 9*EquipoEntrenadorNombre 9*EquipoEntrenadorApellido 9*EquipoEntrenadorNacion 9*0*0*0*0*0*0*0*0*0*9*10
+10*Equipo 10*Confederacion 10*EquipoEntrenadorNombre 10*EquipoEntrenadorApellido 10*EquipoEntrenadorNacion 10*0*0*0*0*0*0*0*0*0*10*11
+11*Equipo 11*Confederacion 11*EquipoEntrenadorNombre 11*EquipoEntrenadorApellido 11*EquipoEntrenadorNacion 11*0*0*0*0*0*0*0*0*0*11*12
+12*Equipo 12*Confederacion 12*EquipoEntrenadorNombre 12*EquipoEntrenadorApellido 12*EquipoEntrenadorNacion 12*0*0*0*0*0*0*0*0*0*12*13
+13*Equipo 13*Confederacion 13*EquipoEntrenadorNombre 13*EquipoEntrenadorApellido 13*EquipoEntrenadorNacion 13*0*0*0*0*0*0*0*0*0*13*14
+14*Equipo 14*Confederacion 14*EquipoEntrenadorNombre 14*EquipoEntrenadorApellido 14*EquipoEntrenadorNacion 14*0*0*0*0*0*0*0*0*0*14*15
+15*Equipo 15*Confederacion 15*EquipoEntrenadorNombre 15*EquipoEntrenadorApellido 15*EquipoEntrenadorNacion 15*0*0*0*0*0*0*0*0*0*15*16
+16*Equipo 16*Confederacion 16*EquipoEntrenadorNombre 16*EquipoEntrenadorApellido 16*EquipoEntrenadorNacion 16*0*0*0*0*0*0*0*0*0*16*17
+17*Equipo 17*Confederacion 17*EquipoEntrenadorNombre 17*EquipoEntrenadorApellido 17*EquipoEntrenadorNacion 17*0*0*0*0*0*0*0*0*0*17*18
+18*Equipo 18*Confederacion 18*EquipoEntrenadorNombre 18*EquipoEntrenadorApellido 18*EquipoEntrenadorNacion 18*0*0*0*0*0*0*0*0*0*18*19
+19*Equipo 19*Confederacion 19*EquipoEntrenadorNombre 19*EquipoEntrenadorApellido 19*EquipoEntrenadorNacion 19*0*0*0*0*0*0*0*0*0*19*20
+20*Equipo 20*Confederacion 20*EquipoEntrenadorNombre 20*EquipoEntrenadorApellido 20*EquipoEntrenadorNacion 20*0*0*0*0*0*0*0*0*0*20*21
+21*Equipo 21*Confederacion 21*EquipoEntrenadorNombre 21*EquipoEntrenadorApellido 21*EquipoEntrenadorNacion 21*0*0*0*0*0*0*0*0*0*21*22
+22*Equipo 22*Confederacion 22*EquipoEntrenadorNombre 22*EquipoEntrenadorApellido 22*EquipoEntrenadorNacion 22*0*0*0*0*0*0*0*0*0*22*23
+23*Equipo 23*Confederacion 23*EquipoEntrenadorNombre 23*EquipoEntrenadorApellido 23*EquipoEntrenadorNacion 23*0*0*0*0*0*0*0*0*0*23*24
+24*Equipo 24*Confederacion 24*EquipoEntrenadorNombre 24*EquipoEntrenadorApellido 24*EquipoEntrenadorNacion 24*0*0*0*0*0*0*0*0*0*24*25
+25*Equipo 25*Confederacion 25*EquipoEntrenadorNombre 25*EquipoEntrenadorApellido 25*EquipoEntrenadorNacion 25*0*0*0*0*0*0*0*0*0*25*26
+26*Equipo 26*Confederacion 26*EquipoEntrenadorNombre 26*EquipoEntrenadorApellido 26*EquipoEntrenadorNacion 26*0*0*0*0*0*0*0*0*0*26*27
+27*Equipo 27*Confederacion 27*EquipoEntrenadorNombre 27*EquipoEntrenadorApellido 27*EquipoEntrenadorNacion 27*0*0*0*0*0*0*0*0*0*27*28
+28*Equipo 28*Confederacion 28*EquipoEntrenadorNombre 28*EquipoEntrenadorApellido 28*EquipoEntrenadorNacion 28*0*0*0*0*0*0*0*0*0*28*29
+29*Equipo 29*Confederacion 29*EquipoEntrenadorNombre 29*EquipoEntrenadorApellido 29*EquipoEntrenadorNacion 29*0*0*0*0*0*0*0*0*0*29*30
+30*Equipo 30*Confederacion 30*EquipoEntrenadorNombre 30*EquipoEntrenadorApellido 30*EquipoEntrenadorNacion 30*0*0*0*0*0*0*0*0*0*30*31
+31*Equipo 31*Confederacion 31*EquipoEntrenadorNombre 31*EquipoEntrenadorApellido 31*EquipoEntrenadorNacion 31*0*0*0*0*0*0*0*0*0*31*32

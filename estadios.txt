@@ -1,4 +1,8 @@
-0*Estadio Monumental*Buenos Aires*70000*0*0
-1*Estadio Azteca*Mexico*80000*1*1
-2*Estadio Maracana*Rio de Janeiro*90000*2*2
-3*Estadio Nacional*Santiago*100000*3*3
+0*Estadio 0*Ciudad 0*0*0*0
+1*Estadio 1*Ciudad 1*1*1*1
+2*Estadio 2*Ciudad 2*2*2*2
+3*Estadio 3*Ciudad 3*3*3*3
+4*Estadio 4*Ciudad 4*4*4*4
+5*Estadio 5*Ciudad 5*5*5*5
+6*Estadio 6*Ciudad 6*6*6*6
+7*Estadio 7*Ciudad 7*7*7*7

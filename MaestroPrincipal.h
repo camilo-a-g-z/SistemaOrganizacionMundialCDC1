@@ -57,7 +57,13 @@ void MaestroPrincipal::inicio(){
 		MaestroGenerador mG;
 		mG.generarCronograma(mI.getEstadios(),mI.getEquipos(),mI.getGrupoEquipos());
         cronograma = mG.getCronograma();
+
         //se guardan los archivos
+        estadios.guardarEstadiosArchivo();
+        equipos.guardarEquiposArchivo();
+        jugadores.guardarJugadoresArchivo();
+        cronograma.guardarPartidosArchivo();
+        
     }
     menu();
     
