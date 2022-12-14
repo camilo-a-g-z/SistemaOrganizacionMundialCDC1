@@ -569,61 +569,61 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
                 cout<<"El equipo 2 es: "<<equipo2.nombre<<endl;
                 //se genera cronograma de octavos de final
                 if((equipo1.idEquipo /4)==0){
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(48);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==1){
-                    np = cronograma.obtenerPartidoPorPosEnLista(49);
+                    np = cronograma.obtenerPartidoPorPosEnLista(48);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
-                    np = cronograma.obtenerPartidoPorPosEnLista(50);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
+                    np = cronograma.obtenerPartidoPorPosEnLista(49);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 } else if((equipo1.idEquipo /4)==2){
                     np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==3){
                     np = cronograma.obtenerPartidoPorPosEnLista(51);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(52);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==4){
                     np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==5){
                     np = cronograma.obtenerPartidoPorPosEnLista(53);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(54);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==6){
                     np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(56);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }else if((equipo1.idEquipo /4)==7){
                     np = cronograma.obtenerPartidoPorPosEnLista(55);
                     np.idEquipo2 = equipo2.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                     np = cronograma.obtenerPartidoPorPosEnLista(56);
                     np.idEquipo1 = equipo1.idEquipo;
-                    cronograma.modificarPartido(np.posEnLista,np);
+                    cronograma.modificarPartido(np.posEnLista+1,np);
                 }
                 
             }
@@ -706,35 +706,35 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         if(pM.seccion=="A"){
             np = cronograma.obtenerPartidoPorPosEnLista(57);
             np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="B"){
             np = cronograma.obtenerPartidoPorPosEnLista(58);
             np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="C"){
             np = cronograma.obtenerPartidoPorPosEnLista(57);
             np.idEquipo2 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="D"){
             np = cronograma.obtenerPartidoPorPosEnLista(58);
             np.idEquipo2 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="E"){
             np = cronograma.obtenerPartidoPorPosEnLista(59);
             np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="F"){
             np = cronograma.obtenerPartidoPorPosEnLista(60);
             np.idEquipo1 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="G"){
             np = cronograma.obtenerPartidoPorPosEnLista(59);
             np.idEquipo2 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="H"){
             np = cronograma.obtenerPartidoPorPosEnLista(60);
             np.idEquipo2 = equipo1.idEquipo;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Cuartos"){
         if(pM.jugado){
@@ -813,19 +813,19 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         if(pM.seccion=="A"){
             np = cronograma.obtenerPartidoPorPosEnLista(61);
             np.idEquipo1 = id;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="B"){
             np = cronograma.obtenerPartidoPorPosEnLista(61);
             np.idEquipo2 = id2;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="C"){
             np = cronograma.obtenerPartidoPorPosEnLista(62);
             np.idEquipo1 = id;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="D"){
             np = cronograma.obtenerPartidoPorPosEnLista(62);
             np.idEquipo2 = id2;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Semifinales"){
         if(pM.jugado){
@@ -904,17 +904,17 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         if(pM.seccion=="A"){
             np = cronograma.obtenerPartidoPorPosEnLista(64);
             np.idEquipo1 = id;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
             np = cronograma.obtenerPartidoPorPosEnLista(63);
             np.idEquipo1 = id2;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }else if(pM.seccion=="B"){
             np = cronograma.obtenerPartidoPorPosEnLista(64);
             np.idEquipo2 = id;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
             np = cronograma.obtenerPartidoPorPosEnLista(63);
             np.idEquipo2 = id2;
-            cronograma.modificarPartido(np.posEnLista,np);
+            cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Tercer puesto"){
         if(pM.jugado){
