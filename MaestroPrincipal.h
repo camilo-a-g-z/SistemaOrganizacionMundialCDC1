@@ -33,6 +33,7 @@ class MaestroPrincipal
         void verCronograma();
         void ponerResultadoPartido();
         void modificarFecha(partido pM, Lista<partido> p);
+        void modificarEquipo();
         //getter
         
         
@@ -97,12 +98,12 @@ void MaestroPrincipal::menu(){
             menu();
             break;
         case 6:
-            
+            modificarEquipo();
             //se guardan los archivos todo menos estadios, cronograma
             menu();
             break;
         case 7:
-            
+
             //se guardan los archivos equipo
             menu();
             break;
@@ -114,6 +115,33 @@ void MaestroPrincipal::menu(){
             menu();
             break;
     }
+}
+
+void MaestroPrincipal::modificarEquipo(){
+    //system("cls");
+    Equipo e;
+    cout<<"\n\nEquipos participantes en el mundial\n\n";
+    for(int i=0;i<32;i++){
+        e = equipos.obtenerEquipo(i);
+        cout<<i+1<<". Nombre del equipo: "<<e.nombre<<endl;
+    }
+    cout<<"Ingrese el numero del equipo que desea modificar: ";
+    int num;
+    cin>>num;
+    e = equipos.obtenerEquipo(num-1);
+    fflush(stdin);
+    cout<<"Ingrese el nombre del equipo: ";
+    getline(cin,e.nombre);
+    cout<<"Ingrese la confederacion: ";
+    getline(cin,e.confederacion);
+    cout<<"Ingrese el nombre del entrenador: ";
+    getline(cin,e.nombreEntrenador);
+    cout<<"Ingrese el apellido del entrenador: ";
+    getline(cin,e.apellidoEntrenador);
+    cout<<"Ingrese la nacionalidad del entrenador: ";
+    getline(cin,e.nacionalidadEntrenador);
+
+    equipos.modificarEquipo(num-1,e);
 }
 
 void MaestroPrincipal::ponerResultadoPartido(){
@@ -1033,7 +1061,6 @@ void MaestroPrincipal::verEquipos(){
         cout<<"   Apellido del entrenador: "<<eM.apellidoEntrenador<<endl;
         cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
     }
-    system("pause");
 }
 
 void MaestroPrincipal::verJugadores(){
