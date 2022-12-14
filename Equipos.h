@@ -182,7 +182,7 @@ void Equipos::guardarEquiposArchivo(){
         
         fr << i-1 <<"*" << e.nombre << "*" << e.confederacion << "*" << e.nombreEntrenador << "*" << e.apellidoEntrenador << "*" << e.nacionalidadEntrenador << "*" << e.puntos << "*" << e.partidosJugados << "*" << e.partidosGanados << "*" << e.partidosEmpatados << "*" << e.partidosPerdidos << "*" << e.golesFavor << "*" << e.golesContra << "*" << e.tarjetasAmarillas << "*" << e.tarjetasRojas << "*" << e.idEquipo << "*" << e.numEnLista;
         frase = fr.str();
-        cout<<frase;
+        //cout<<frase;
         if(i==tam){
             archivo<<frase;
         }else{

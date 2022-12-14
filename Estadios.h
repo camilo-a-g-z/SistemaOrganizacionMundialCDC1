@@ -114,7 +114,7 @@ void Estadios::guardarEstadiosArchivo(){
         Estadio e = estadios.ObtenerDatos(i);
         fr << i-1 <<"*" << e.nombre << "*" << e.ciudad << "*" <<e.capacidad << "*"<< e.idEstadio << "*" << e.numEnLista;
         frase = fr.str();
-        cout<<frase;
+        //cout<<frase;
         if(i==tam){
         	archivo<<frase;
 		}else{
