@@ -174,7 +174,7 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 	int k;
 	int i=sigPosLibre;
 	sigPosLibre = datos[i].sigCampoLibre;
-	cout<<"\n\n sigPosLibre: "<<sigPosLibre<<" i: "<<i<<" datos(sigCampoLibre): "<<datos[i].sigCampoLibre<<endl;
+	//cout<<"\n\n sigPosLibre: "<<sigPosLibre<<" i: "<<i<<" datos(sigCampoLibre): "<<datos[i].sigCampoLibre<<endl;
 	f.sigCampoLibre = datos[i].sigCampoLibre;
 	datos[i]=f;
 	//insertar en la lista de cabeceras a partir de la posicion del equipo
@@ -211,6 +211,7 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 		}		
 	}
 	//impresion de toda la estructura para testeo
+	/*
 	cout<<"Nombre futbolista: "<<datos[i].nombre<<endl;
 	cout<<"Edad futbolista: "<<datos[i].edad<<endl;
 	cout<<"Numero de camiseta futbolista: "<<datos[i].numCamiseta<<endl;
@@ -220,7 +221,7 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 	cout<<"Siguiente cantidad de goles: "<<datos[i].sigCantGoles<<endl;
 	cout<<"Siguiente campo libre: "<<datos[i].sigCampoLibre<<endl;
 	cout<<"Cabecera equipo: "<<cabeceras[equipo]<<endl;
-	cout<<"Cabecera cantidad de goles: "<<cabeceras[32]<<endl;
+	cout<<"Cabecera cantidad de goles: "<<cabeceras[32]<<endl;*/
 	tam++;
 	return true;
 }
@@ -369,13 +370,13 @@ void Multilista::guardarJugadoresArchivo(){
 	}
 			
 	fflush(stdin);
-    for(int i=1; i<=tam; i++){
+    for(int i=0; i<tam; i++){
 		stringstream fr;
 		futbolista f = datos[i];
-        fr << i-1 <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
+        fr << i <<"*" << f.nombre << "*" << f.pos << "*" <<f.edad << "*"<< f.numCamiseta << "*" << f.cantGoles << "*" << f.sigCantGoles << "*" << f.sigCompanero << "*" << f.sigCampoLibre;
         frase = fr.str();
         //cout<<frase;
-        if(i==tam){
+        if(i==tam-1){
         	archivo<<frase;
 		}else{
 			archivo<<frase<<endl;  

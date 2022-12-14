@@ -39,7 +39,6 @@ int main(){
 	/*Multilista jugadores;
 	Equipos equipos;
 
-
 	equipos.insertar("Argentina","CONMEBOL","Simeone","Diego","Argentina");
 	equipos.insertar("Brasil","CONMEBOL","Tite","Adenor","Brasil");
 	equipos.insertar("Chile","CONMEBOL","Pizzi","Reinaldo","Chile");
