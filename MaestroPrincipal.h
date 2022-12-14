@@ -35,6 +35,7 @@ class MaestroPrincipal
         void modificarFecha(partido pM, Lista<partido> p);
         void modificarEquipo();
         void modificarJugador();
+        void modificarJugadorPorFecha(int opcion);
         //getter
         
         
@@ -402,6 +403,104 @@ void MaestroPrincipal::ponerResultadoPartido(){
 void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
     Equipo equipo1, equipo2, equipo3, equipo4;
     partido np;
+    bool empate = false;
+    int id = 0, id2 = 0;
+    if(pM.etapa != "Eliminacion"){
+        if(pM.jugado){
+            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
+            //se quitan los puntos de los equipos
+            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
+            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
+            equipo1.partidosJugados--;
+            equipo2.partidosJugados--;
+            //se quitan los goles
+            equipo1.golesFavor-=pM.golesEquipo1;
+            equipo1.golesContra-=pM.golesEquipo2;
+            equipo2.golesFavor-=pM.golesEquipo2;
+            equipo2.golesContra-=pM.golesEquipo1;
+        }
+        cout<<"Ingrese el nuevo goles equipo 1: ";
+        cin>>pM.golesEquipo1;
+        cout<<"Ingrese el nuevo goles equipo 2: ";
+        cin>>pM.golesEquipo2;
+        cout<<"Ingrese el nuevo suplementario 1: ";
+        cin>>pM.suplementario1;
+        cout<<"Ingrese el nuevo suplementario 2: ";
+        cin>>pM.suplementario2;
+        cout<<"Ingrese el nuevo penales 1: ";
+        cin>>pM.penales1;
+        cout<<"Ingrese el nuevo penales 2: ";
+        cin>>pM.penales2;
+        if(pM.golesEquipo1 != 0){
+            for(int i=0;i<pM.golesEquipo1;i++){
+                cout<<"Equipo 1"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo1);
+            }
+        }
+        if(pM.golesEquipo2 != 0){
+            for(int i=0;i<pM.golesEquipo2;i++){
+                cout<<"Equipo 2"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo2);
+            }
+        }
+        if(pM.penales1 != 0){
+            for(int i=0;i<pM.penales1;i++){
+                cout<<"Equipo 1"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo1);
+            }
+        }
+        if(pM.penales2 != 0){
+            for(int i=0;i<pM.penales2;i++){
+                cout<<"Equipo 2"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo2);
+            }
+        }
+        if(!pM.jugado){
+            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
+            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
+        }
+        pM.jugado = true;
+        equipo1.partidosJugados++;
+        equipo2.partidosJugados++;
+        //se suman los goles
+        equipo1.golesFavor+=pM.golesEquipo1;
+        equipo1.golesContra+=pM.golesEquipo2;
+        equipo2.golesFavor+=pM.golesEquipo2;
+        equipo2.golesContra+=pM.golesEquipo1;
+        cronograma.modificarPartido(pM.posEnLista,pM);
+        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
+        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
+        if(pM.golesEquipo1 == pM.golesEquipo2){
+            id = pM.idEquipo1;
+            id2 = pM.idEquipo2;
+            empate = true;
+        }
+        if(empate){
+            if(equipo1.golesFavor>equipo2.golesFavor){
+                id = equipo1.idEquipo;
+            }else if(equipo1.golesFavor<equipo2.golesFavor){
+                id = equipo2.idEquipo;
+            }else{
+                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
+                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
+                    id = equipo1.idEquipo;
+                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
+                    id = equipo2.idEquipo;
+                }else{
+                    //si hay empate, se revisan tarjetas amaillas
+                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
+                        id = equipo1.idEquipo;
+                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
+                        id = equipo2.idEquipo;
+                    }
+                }
+            }
+            if(id==id2){
+                equipo2 = equipo1;
+                equipo1 = equipos.obtenerEquipo(id2);
+            }
+        }
+    }
     if(pM.etapa == "Eliminacion"){
         if(pM.jugado){
             cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
@@ -443,6 +542,30 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         cin>>pM.penales1;
         cout<<"Ingrese el nuevo penales 2: ";
         cin>>pM.penales2;
+        if(pM.golesEquipo1 != 0){
+            for(int i=0;i<pM.golesEquipo1;i++){
+                cout<<"Equipo 1"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo1);
+            }
+        }
+        if(pM.golesEquipo2 != 0){
+            for(int i=0;i<pM.golesEquipo2;i++){
+                cout<<"Equipo 2"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo2);
+            }
+        }
+        if(pM.penales1 != 0){
+            for(int i=0;i<pM.penales1;i++){
+                cout<<"Equipo 1"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo1);
+            }
+        }
+        if(pM.penales2 != 0){
+            for(int i=0;i<pM.penales2;i++){
+                cout<<"Equipo 2"<<endl;
+                modificarJugadorPorFecha(pM.idEquipo2);
+            }
+        }
         if(!pM.jugado){
             equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
             equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
@@ -635,78 +758,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             }
         }
     }else if(pM.etapa == "Octavos"){
-        if(pM.jugado){
-            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
-            //se quitan los puntos de los equipos
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-            equipo1.partidosJugados--;
-            equipo2.partidosJugados--;
-            //se quitan los goles
-            equipo1.golesFavor-=pM.golesEquipo1;
-            equipo1.golesContra-=pM.golesEquipo2;
-            equipo2.golesFavor-=pM.golesEquipo2;
-            equipo2.golesContra-=pM.golesEquipo1;
-        }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
-        if(!pM.jugado){
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        }
-        pM.jugado = true;
-        equipo1.partidosJugados++;
-        equipo2.partidosJugados++;
-        //se suman los goles
-        equipo1.golesFavor+=pM.golesEquipo1;
-        equipo1.golesContra+=pM.golesEquipo2;
-        equipo2.golesFavor+=pM.golesEquipo2;
-        equipo2.golesContra+=pM.golesEquipo1;
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
-        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
-        bool empate = false;
-        int id = 0, id2 = 0;
-        if(pM.golesEquipo1 == pM.golesEquipo2){
-            id = pM.idEquipo1;
-            id2 = pM.idEquipo2;
-            empate = true;
-        }
-        if(empate){
-            if(equipo1.golesFavor>equipo2.golesFavor){
-                id = equipo1.idEquipo;
-            }else if(equipo1.golesFavor<equipo2.golesFavor){
-                id = equipo2.idEquipo;
-            }else{
-                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
-                    id = equipo1.idEquipo;
-                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
-                    id = equipo2.idEquipo;
-                }else{
-                    //si hay empate, se revisan tarjetas amaillas
-                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                        id = equipo1.idEquipo;
-                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                        id = equipo2.idEquipo;
-                    }
-                }
-            }
-            if(id==id2){
-                equipo2 = equipo1;
-                equipo1 = equipos.obtenerEquipo(id2);
-            }
-        } 
         //se generan los partidos de cuartos
         //revisar si disminuyendo 1 se arregla el error
         if(pM.seccion=="A"){
@@ -743,78 +794,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Cuartos"){
-        if(pM.jugado){
-            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
-            //se quitan los puntos de los equipos
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-            equipo1.partidosJugados--;
-            equipo2.partidosJugados--;
-            //se quitan los goles
-            equipo1.golesFavor-=pM.golesEquipo1;
-            equipo1.golesContra-=pM.golesEquipo2;
-            equipo2.golesFavor-=pM.golesEquipo2;
-            equipo2.golesContra-=pM.golesEquipo1;
-        }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
-        if(!pM.jugado){
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        }
-        pM.jugado = true;
-        equipo1.partidosJugados++;
-        equipo2.partidosJugados++;
-        //se suman los goles
-        equipo1.golesFavor+=pM.golesEquipo1;
-        equipo1.golesContra+=pM.golesEquipo2;
-        equipo2.golesFavor+=pM.golesEquipo2;
-        equipo2.golesContra+=pM.golesEquipo1;
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
-        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
-        bool empate = false;
-        int id = 0, id2 = 0;
-        if(pM.golesEquipo1 == pM.golesEquipo2){
-            id = pM.idEquipo1;
-            id2 = pM.idEquipo2;
-            empate = true;
-        }
-        if(empate){
-            if(equipo1.golesFavor>equipo2.golesFavor){
-                id = equipo1.idEquipo;
-            }else if(equipo1.golesFavor<equipo2.golesFavor){
-                id = equipo2.idEquipo;
-            }else{
-                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
-                    id = equipo1.idEquipo;
-                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
-                    id = equipo2.idEquipo;
-                }else{
-                    //si hay empate, se revisan tarjetas amaillas
-                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                        id = equipo1.idEquipo;
-                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                        id = equipo2.idEquipo;
-                    }
-                }
-            }
-            if(id==id2){
-                equipo2 = equipo1;
-                equipo1 = equipos.obtenerEquipo(id2);
-            }
-        }
         //se genera el partido de semifinal
         if(pM.seccion=="A"){
             np = cronograma.obtenerPartidoPorPosEnLista(61);
@@ -834,78 +813,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Semifinales"){
-        if(pM.jugado){
-            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
-            //se quitan los puntos de los equipos
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-            equipo1.partidosJugados--;
-            equipo2.partidosJugados--;
-            //se quitan los goles
-            equipo1.golesFavor-=pM.golesEquipo1;
-            equipo1.golesContra-=pM.golesEquipo2;
-            equipo2.golesFavor-=pM.golesEquipo2;
-            equipo2.golesContra-=pM.golesEquipo1;
-        }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
-        if(!pM.jugado){
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        }
-        pM.jugado = true;
-        equipo1.partidosJugados++;
-        equipo2.partidosJugados++;
-        //se suman los goles
-        equipo1.golesFavor+=pM.golesEquipo1;
-        equipo1.golesContra+=pM.golesEquipo2;
-        equipo2.golesFavor+=pM.golesEquipo2;
-        equipo2.golesContra+=pM.golesEquipo1;
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
-        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
-        bool empate = false;
-        int id = 0, id2 = 0;
-        if(pM.golesEquipo1 == pM.golesEquipo2){
-            id = pM.idEquipo1;
-            id2 = pM.idEquipo2;
-            empate = true;
-        }
-        if(empate){
-            if(equipo1.golesFavor>equipo2.golesFavor){
-                id = equipo1.idEquipo;
-            }else if(equipo1.golesFavor<equipo2.golesFavor){
-                id = equipo2.idEquipo;
-            }else{
-                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
-                    id = equipo1.idEquipo;
-                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
-                    id = equipo2.idEquipo;
-                }else{
-                    //si hay empate, se revisan tarjetas amaillas
-                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                        id = equipo1.idEquipo;
-                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                        id = equipo2.idEquipo;
-                    }
-                }
-            }
-            if(id==id2){
-                equipo2 = equipo1;
-                equipo1 = equipos.obtenerEquipo(id2);
-            }
-        }
         //se genera el partido de la final y tercer puesto
         if(pM.seccion=="A"){
             np = cronograma.obtenerPartidoPorPosEnLista(64);
@@ -923,78 +830,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             cronograma.modificarPartido(np.posEnLista+1,np);
         }
     }else if(pM.etapa == "Tercer puesto"){
-        if(pM.jugado){
-            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
-            //se quitan los puntos de los equipos
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-            equipo1.partidosJugados--;
-            equipo2.partidosJugados--;
-            //se quitan los goles
-            equipo1.golesFavor-=pM.golesEquipo1;
-            equipo1.golesContra-=pM.golesEquipo2;
-            equipo2.golesFavor-=pM.golesEquipo2;
-            equipo2.golesContra-=pM.golesEquipo1;
-        }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
-        if(!pM.jugado){
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        }
-        pM.jugado = true;
-        equipo1.partidosJugados++;
-        equipo2.partidosJugados++;
-        //se suman los goles
-        equipo1.golesFavor+=pM.golesEquipo1;
-        equipo1.golesContra+=pM.golesEquipo2;
-        equipo2.golesFavor+=pM.golesEquipo2;
-        equipo2.golesContra+=pM.golesEquipo1;
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
-        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
-        bool empate = false;
-        int id = 0, id2 = 0;
-        if(pM.golesEquipo1 == pM.golesEquipo2){
-            id = pM.idEquipo1;
-            id2 = pM.idEquipo2;
-            empate = true;
-        }
-        if(empate){
-            if(equipo1.golesFavor>equipo2.golesFavor){
-                id = equipo1.idEquipo;
-            }else if(equipo1.golesFavor<equipo2.golesFavor){
-                id = equipo2.idEquipo;
-            }else{
-                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
-                    id = equipo1.idEquipo;
-                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
-                    id = equipo2.idEquipo;
-                }else{
-                    //si hay empate, se revisan tarjetas amaillas
-                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                        id = equipo1.idEquipo;
-                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                        id = equipo2.idEquipo;
-                    }
-                }
-            }
-            if(id==id2){
-                equipo2 = equipo1;
-                equipo1 = equipos.obtenerEquipo(id2);
-            }
-        }
         //Se felicita al ganador del tercer lugar y se imprime premio
         system("cls");
         cout<<"\n\nFelicitaciones equipo "<<equipo1.nombre<<" por ganar el tercer puesto del mundial\n\n";
@@ -1002,78 +837,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         cout<<"\n\nFelicitaciones equipo "<<equipo2.nombre<<" por ganar el cuarto puesto del mundial\n\n";
         system("pause");
     } else if(pM.etapa == "Final"){
-        if(pM.jugado){
-            cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
-            //se quitan los puntos de los equipos
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-            equipo1.partidosJugados--;
-            equipo2.partidosJugados--;
-            //se quitan los goles
-            equipo1.golesFavor-=pM.golesEquipo1;
-            equipo1.golesContra-=pM.golesEquipo2;
-            equipo2.golesFavor-=pM.golesEquipo2;
-            equipo2.golesContra-=pM.golesEquipo1;
-        }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
-        if(!pM.jugado){
-            equipo1 = equipos.obtenerEquipo(pM.idEquipo1);
-            equipo2 = equipos.obtenerEquipo(pM.idEquipo2);
-        }
-        pM.jugado = true;
-        equipo1.partidosJugados++;
-        equipo2.partidosJugados++;
-        //se suman los goles
-        equipo1.golesFavor+=pM.golesEquipo1;
-        equipo1.golesContra+=pM.golesEquipo2;
-        equipo2.golesFavor+=pM.golesEquipo2;
-        equipo2.golesContra+=pM.golesEquipo1;
-        cronograma.modificarPartido(pM.posEnLista,pM);
-        equipos.modificarEquipo(equipo1.idEquipo,equipo1);
-        equipos.modificarEquipo(equipo2.idEquipo,equipo2);
-        bool empate = false;
-        int id = 0, id2 = 0;
-        if(pM.golesEquipo1 == pM.golesEquipo2){
-            id = pM.idEquipo1;
-            id2 = pM.idEquipo2;
-            empate = true;
-        }
-        if(empate){
-            if(equipo1.golesFavor>equipo2.golesFavor){
-                id = equipo1.idEquipo;
-            }else if(equipo1.golesFavor<equipo2.golesFavor){
-                id = equipo2.idEquipo;
-            }else{
-                //si hay empate en goles a favor se revisa quien tiene menos tarjetas rojas
-                if(equipo1.tarjetasRojas<equipo2.tarjetasRojas){
-                    id = equipo1.idEquipo;
-                }else if(equipo1.tarjetasRojas>equipo2.tarjetasRojas){  
-                    id = equipo2.idEquipo;
-                }else{
-                    //si hay empate, se revisan tarjetas amaillas
-                    if(equipo1.tarjetasAmarillas<equipo2.tarjetasAmarillas){
-                        id = equipo1.idEquipo;
-                    }else if(equipo1.tarjetasAmarillas>equipo2.tarjetasAmarillas){
-                        id = equipo2.idEquipo;
-                    }
-                }
-            }
-            if(id==id2){
-                equipo2 = equipo1;
-                equipo1 = equipos.obtenerEquipo(id2);
-            }
-        }
         //Se felicita al ganador del tercer lugar y se imprime premio
         system("cls");
         cout<<"\n\nFelicitaciones equipo "<<equipo1.nombre<<" por ganar el primer puesto del mundial\n\n";
@@ -1081,6 +844,21 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         cout<<"\n\nFelicitaciones equipo "<<equipo2.nombre<<" por ganar el segundo puesto del mundial\n\n";
         system("pause");
     }
+}
+
+void MaestroPrincipal::modificarJugadorPorFecha(int opcion){
+    Lista<futbolista> jugadoresEquipo=jugadores.mostrarEquipo(opcion);
+    //system("cls");
+    for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+        futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+        cout<<i<<". Nombre: "<<jugador.nombre<<endl;
+    }
+    cout<<"Ingrese el numero del jugador que anoto el gol: ";
+    int num;
+    cin>>num;
+    futbolista jugador = jugadoresEquipo.ObtenerDatos(num);
+    jugador.cantGoles++;
+    jugadores.modificarFutbolista(jugador,opcion);
 }
 
 void MaestroPrincipal::verEquipos(){
