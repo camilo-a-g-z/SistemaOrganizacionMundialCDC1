@@ -48,11 +48,12 @@ int Estadios::insertar(string nombre, string ciudad, int capacidad){
     idEstadioActual++;
     tam++;
     //impresion de toda la estructura para testeo
+    /*
     cout<<"nombre de Estadio: "<<estadio.nombre<<endl;
     cout<<"ciudad de Estadio: "<<estadio.ciudad<<endl;
     cout<<"capacidad de Estadio: "<<estadio.capacidad<<endl;
     cout<<"id de Estadio: "<<estadio.idEstadio<<endl;
-    cout<<"numero en lista de Estadio: "<<estadio.numEnLista<<endl;
+    cout<<"numero en lista de Estadio: "<<estadio.numEnLista<<endl;*/
     return estadio.numEnLista;
 }
 //metodo para obtener un estadio por su id

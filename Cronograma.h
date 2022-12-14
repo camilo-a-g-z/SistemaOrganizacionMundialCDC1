@@ -78,13 +78,14 @@ void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fe
     partidos.Insertar(partido);
     tam++;
     //impresion de toda la estructura para testeo
+    /*
     cout<<"idEstadio: "<<partido.idEstadio<<endl;
     cout<<"idEquipo1: "<<partido.idEquipo1<<endl;
     cout<<"idEquipo2: "<<partido.idEquipo2<<endl;
     cout<<"fecha: "<<partido.fecha<<endl;
     cout<<"etapa: "<<partido.etapa<<endl;
     cout<<"seccion: "<<partido.seccion<<endl;
-    cout<<"posEnLista: "<<partido.posEnLista<<endl;
+    cout<<"posEnLista: "<<partido.posEnLista<<endl;*/
 
 }
 
@@ -194,7 +195,7 @@ void Cronograma::guardarPartidosArchivo(){
         
         fr << i-1 <<"*" << p.idEstadio << "*" << p.idEquipo1 << "*" << p.idEquipo2 << "*" << p.fecha << "*"<<p.hora<<"*" << p.etapa << "*" << p.seccion << "*" << p.golesEquipo1 << "*" << p.golesEquipo2 << "*" << p.suplementario1 << "*" << p.suplementario2 << "*" << p.penales1 << "*" << p.penales2 << "*" << p.posEnLista;
         frase = fr.str();
-        cout<<frase;
+        //cout<<frase;
         if(i==tam){
             archivo<<frase;
         }else{
