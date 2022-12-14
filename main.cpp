@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
 	MaestroPrincipal mP;	
-	//mP.inicio();
+	mP.inicio();
 
 	/*Estadios estadios;
 	Cronograma partidos;
