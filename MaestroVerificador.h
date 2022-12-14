@@ -18,7 +18,7 @@ class MaestroVerificador {
 
     public: 
         void recuperarDatos();
-        void infoArchivo();
+        bool infoArchivo();
         //getters
         Lista<futbolista> getJugadores(){return jugadores;}
         Lista<Estadio> getEstadios(){return estadios;}
@@ -40,6 +40,23 @@ void MaestroVerificador::recuperarDatos() {
 }
 
 
+//Verifica que los archivos no estan vacios
+bool MaestroVerificador::infoArchivo() {
+    ifstream archivoJugadores("jugadores.txt");
+    ifstream archivoPartidos("Cronograma.txt");
+    ifstream archivoEstadios("estadios.txt");
+    ifstream archivoEquipos("equipos.txt");
+
+    if (archivoJugadores.is_open() && archivoPartidos.is_open() && archivoEstadios.is_open() && archivoEquipos.is_open()) {
+        if (archivoJugadores.peek() == std::ifstream::traits_type::eof() || archivoPartidos.peek() == std::ifstream::traits_type::eof() || archivoEstadios.peek() == std::ifstream::traits_type::eof() || archivoEquipos.peek() == std::ifstream::traits_type::eof()) {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
 
 
 

@@ -5,12 +5,13 @@
 #include"Estadios.h"
 #include "Cronograma.h"
 #include "MaestroPrincipal.h"
+#include "MaestroVerificador.h"
 
 using namespace std;
 
 int main(){
-	MaestroPrincipal mP;
-	mP.inicio();
+	MaestroPrincipal mP;	
+	//mP.inicio();
 
 	/*Estadios estadios;
 	Cronograma partidos;

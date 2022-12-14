@@ -179,7 +179,7 @@ Lista<Estadio> Estadios::leerEstadiosArchivo(){ //Nombre o ubiacion del archivo 
             i++; 
         }  
         //cout<<nombre<<endl;
-            cout<<"linea: "<< nombre<<ciudad<< capacidad<< idEstadio<<numEnLista<<endl;
+        //cout<<"linea: "<< nombre<<ciudad<< capacidad<< idEstadio<<numEnLista<<endl;
             
             insertarEstadioArchivo(nombre, ciudad, capacidad, idEstadio, numEnLista);
     }	

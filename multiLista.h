@@ -299,7 +299,7 @@ Lista<futbolista> Multilista::leerJugadoresArchivo(){ //Nombre o ubiacion del ar
             i++; 
         }  
         //cout<<nombre<<endl;
-            cout<<"linea: "<< nombre<<pos<< edad<< numCamiseta<<cantGoles<<sigCantGoles<<sigCompanero<<sigCampoLibre<<posMulti<<endl;
+        //cout<<"linea: "<< nombre<<pos<< edad<< numCamiseta<<cantGoles<<sigCantGoles<<sigCompanero<<sigCampoLibre<<posMulti<<endl;
             
             insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
 	}	

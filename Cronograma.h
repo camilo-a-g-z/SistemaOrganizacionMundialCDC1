@@ -208,7 +208,7 @@ void Cronograma::guardarPartidosArchivo(string nombreArchivo){
 
 //Funcion para leer los partidos del archivo y guardarlos en equipos
 Lista<partido> Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o fichiero
-    string nombreArchivo="partidos.txt";
+    string nombreArchivo="Cronograma.txt";
     ifstream archivo;
     string texto, T;
     
