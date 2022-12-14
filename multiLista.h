@@ -70,7 +70,7 @@ class Multilista{
 		bool multilistaLLena();
 		bool multilistaVacia();
 		void guardarJugadoresArchivo(Lista<futbolista> jugadores, string nombreArchivo);
-		void leerJugadoresArchivo(string nombreArchivo);
+		Lista<futbolista> leerJugadoresArchivo();
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
@@ -235,8 +235,9 @@ void Multilista::insertarDatosArchivo(string nombre, int edad, int numCamiseta, 
 }
 
 //Funcion para leer los jugadores del archivo y guardarlos en la multilista
-void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacion del archivo o fichiero
-    ifstream archivo;
+Lista<futbolista> Multilista::leerJugadoresArchivo(){ //Nombre o ubiacion del archivo o fichiero
+    string nombreArchivo = "jugadores.txt";
+	ifstream archivo;
 	string texto, T;
 	
 	
@@ -303,6 +304,13 @@ void  Multilista::leerJugadoresArchivo(string nombreArchivo){ //Nombre o ubiacio
             insertarDatosArchivo(nombre, edad, numCamiseta, cantGoles, pos, sigCantGoles, sigCompanero, sigCampoLibre, posMulti);
 	}	
 	archivo.close(); //Cerramos el archivo
+
+	//ciclo que recorre la lista de datos y los guarda en una lista de futbolistas
+	Lista<futbolista> jugadores;
+	for(int i=0; i<tam; i++){
+		jugadores.Insertar(datos[i]);
+	}
+	return jugadores;
 }
 
 //Funcion para guardar los jugadores en el archivo

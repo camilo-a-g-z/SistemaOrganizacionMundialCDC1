@@ -198,7 +198,7 @@ void Equipos::guardarEquiposArchivo(string nombreArchivo){
 
 
 //Funcion para leer los equipos del archivo y guardarlos en equipos
-void Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o fichiero
+Lista<Equipo> Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o fichiero
     string nombreArchivo="equipos.txt";
     ifstream archivo;
     string texto, T;
@@ -285,5 +285,6 @@ void Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o fichiero
             insertarEquipoArchivo(nombre, confederacion, nombreEntrenador, apellidoEntrenador, nacionalidadEntrenador, puntos, partidosJugados, partidosGanados, partidosEmpatados, partidosPerdidos, golesFavor, golesContra, tarjetasAmarillas, tarjetasRojas, idEquipo, numEnLista);
 	}	
 	archivo.close(); //Cerramos el archivo
+    return equipos;
 }
 #endif
