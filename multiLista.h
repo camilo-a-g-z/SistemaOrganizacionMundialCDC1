@@ -105,8 +105,8 @@ void Multilista :: modificarFutbolista(futbolista f, int equipo){
 		}
 		datos[pos2].sigCantGoles=datos[pos].sigCantGoles;
 	}
-	k=cabeceras[32];
-	cantGoles=datos[pos].cantGoles;
+	int k=cabeceras[32];
+	int cantGoles=datos[pos].cantGoles;
 	int anterior=k;
 	while(datos[k].sigCantGoles != -1 && datos[k].cantGoles > cantGoles){
 		anterior=k;

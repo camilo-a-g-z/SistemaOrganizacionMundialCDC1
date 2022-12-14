@@ -167,10 +167,11 @@ void MaestroPrincipal::ponerResultadoPartido(){
             }
             break;
         case 2:
-            cout<<"Ingrese el numero del equipo del cual desea ver los partidos: ";
+            cout<<"Ingrese el numero del equipo del cual desea ver los partidos: "<<endl;
             for(int i=0;i<32;i++){
                 cout<<i+1<<". Nombre del equipo: "<<equipos.obtenerEquipo(i).nombre<<endl;
             }
+            cout<<"Ingrese el numero del equipo del cual desea ver los partidos: "<<endl;
             int equipoD;
             cin>>equipoD;
             p = cronograma.obtenerPartidosPorEquipo(equipoD-1);
