@@ -76,8 +76,52 @@ class Multilista{
 		Lista<futbolista> mostrarGolesGlobal();
 		Lista<futbolista> sacarEquipo(int equipo);
 		futbolista getFutbolista(int pos);
+		void modificarFutbolista(futbolista f, int equipo);
 		void insertarDatosArchivo(string nombre, int edad, int numCamiseta, int cantGoles, string pos, int sigCantGoles, int sigCompanero, int sigCampoLibre, int posMulti);
 };
+
+//metodo para modificar un futbolista, recibiendo un futbolista y el equipo al que pertenece
+void Multilista :: modificarFutbolista(futbolista f, int equipo){
+	int pos=cabeceras[equipo];
+	while(pos!=-1){
+		if(datos[pos].sigCantGoles==f.sigCantGoles && datos[pos].sigCompanero==f.sigCompanero && datos[pos].sigCampoLibre==f.sigCampoLibre){
+			datos[pos].edad=f.edad;
+			datos[pos].numCamiseta=f.numCamiseta;
+			datos[pos].cantGoles=f.cantGoles;
+			datos[pos].pos=f.pos;
+			break;
+		}
+		pos=datos[pos].sigCompanero;
+	}
+	//se reajusta la multilista para que los futbolistas sigan ordenados por cantidad de goles
+	futbolista aux = datos[pos];
+	if(cabeceras[32]==pos){
+		cabeceras[32]=datos[pos].sigCantGoles;
+	}
+	else{
+		int pos2=cabeceras[32];
+		while(datos[pos2].sigCantGoles!=pos){
+			pos2=datos[pos2].sigCantGoles;
+		}
+		datos[pos2].sigCantGoles=datos[pos].sigCantGoles;
+	}
+	int k=cabeceras[32];
+	int cantGoles=datos[pos].cantGoles;
+	int anterior=k;
+	while(datos[k].sigCantGoles != -1 && datos[k].cantGoles > cantGoles){
+		anterior=k;
+		k=datos[k].sigCantGoles;
+	}
+	if(anterior==k && datos[k].cantGoles <= cantGoles){
+		datos[pos].sigCantGoles=k;
+		cabeceras[32]=pos;
+	}else if(datos[k].sigCantGoles == -1 && datos[k].cantGoles > cantGoles){
+		datos[k].sigCantGoles = pos;
+	}else{
+		datos[pos].sigCantGoles=k;
+		datos[anterior].sigCantGoles=pos;
+	}	
+}
 
 //metodo para devolver todos los futbolistas de un equipo y eliminarlos de la multilista
 Lista<futbolista> Multilista :: sacarEquipo(int equipo){
@@ -105,7 +149,6 @@ Lista<futbolista> Multilista :: sacarEquipo(int equipo){
 	cabeceras[equipo]=-1;
 	return lista;
 }
-
 
 bool Multilista :: multilistaVacia(){
 	return tam==0;
@@ -164,9 +207,7 @@ bool Multilista :: insertar(string nombre, int edad, int numCamiseta, int cantGo
 		}else{
 			datos[i].sigCantGoles=k;
 			datos[anterior].sigCantGoles=i;
-		}
-		 
-		
+		}		
 	}
 	//impresion de toda la estructura para testeo
 	cout<<"Nombre futbolista: "<<datos[i].nombre<<endl;
