@@ -146,8 +146,9 @@ void MaestroPrincipal::modificarJugador(){
     cin>>jugador.numCamiseta;
     cout<<"Ingrese la edad del jugador: ";
     cin>>jugador.edad;
-    cout<<"Ingrese goles anotados: ";
-    //cin>>jugador.goles;
+    //para testeo
+    //cout<<"Ingrese goles anotados: ";
+    //cin>>jugador.cantGoles;
 
     jugadores.modificarFutbolista(jugador,opcion-1);
 }
