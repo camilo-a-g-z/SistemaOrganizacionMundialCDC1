@@ -1,9 +1,9 @@
-0*Equipo 0*Confederacion 0*EquipoEntrenadorNombre 0*EquipoEntrenadorApellido 0*EquipoEntrenadorNacion 0*6*2*2*0*0*5*1*1*1*0*1
-1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*0*1*0*0*1*0*1*0*0*1*2
-2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*1*0*0*1*1*4*2*2*2*3
+0*Equipo 0*Confederacion 0*EquipoEntrenadorNombre 0*EquipoEntrenadorApellido 0*EquipoEntrenadorNacion 0*0*0*0*0*0*0*0*0*0*0*1
+1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*0*0*0*0*0*0*0*0*0*1*2
+2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*0*0*0*0*0*0*0*0*2*3
 3*Equipo 3*Confederacion 3*EquipoEntrenadorNombre 3*EquipoEntrenadorApellido 3*EquipoEntrenadorNacion 3*0*0*0*0*0*0*0*0*0*3*4
-4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*0*0*0*0*0*0*0*0*0*4*5
-5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*0*0*0*0*0*0*0*0*0*5*6
+4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*3*1*1*0*0*1*0*0*0*4*5
+5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*0*1*0*0*1*0*1*0*0*5*6
 6*Equipo 6*Confederacion 6*EquipoEntrenadorNombre 6*EquipoEntrenadorApellido 6*EquipoEntrenadorNacion 6*0*0*0*0*0*0*0*0*0*6*7
 7*Equipo 7*Confederacion 7*EquipoEntrenadorNombre 7*EquipoEntrenadorApellido 7*EquipoEntrenadorNacion 7*0*0*0*0*0*0*0*0*0*7*8
 8*Equipo 8*Confederacion 8*EquipoEntrenadorNombre 8*EquipoEntrenadorApellido 8*EquipoEntrenadorNacion 8*0*0*0*0*0*0*0*0*0*8*9

@@ -45,9 +45,33 @@ class Equipos
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
+        Lista<Equipo> obtenerEquiposPorPuntos();
         int insertar(Equipo e);
         
 };
+//metodo para devolver la lista de equipos en orden de puntos
+Lista<Equipo> Equipos::obtenerEquiposPorPuntos(){
+    int mayor = 0, pos=0;
+    Lista<Equipo> listaOrdenada;
+    Lista<Equipo> listaAuxiliar;
+    //se hace copia para no alterar con cambios en la lista original
+    for(int i=1; i<=equipos.TamLista(); i++){
+        listaAuxiliar.Insertar(equipos.ObtenerDatos(i));
+    }
+    while(listaAuxiliar.TamLista()>0){
+        mayor = 0;
+        pos=0;
+        for(int i=1; i<=listaAuxiliar.TamLista(); i++){
+            if(listaAuxiliar.ObtenerDatos(i).puntos>mayor){
+                mayor = listaAuxiliar.ObtenerDatos(i).puntos;
+                pos=i;
+            }
+        }
+        listaOrdenada.Insertar(listaAuxiliar.ObtenerDatos(pos));
+        listaAuxiliar.Eliminar(pos);
+    }
+    return listaOrdenada;
+}
 
 int Equipos::insertar(Equipo e){
     e.puntos=0;

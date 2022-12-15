@@ -1340,25 +1340,54 @@ void MaestroPrincipal::modificarJugadorPorFecha(int opcion){
 }
 
 void MaestroPrincipal::verEquipos(){
+    Lista<Equipo> equipo;
     //system("cls");
-    Equipo eM;
     cout<<"\n\nEquipos participantes en el mundial\n\n";
-    for(int i=0;i<32;i++){
-        eM = equipos.obtenerEquipo(i);
-        cout<<i+1<<". Nombre del equipo: "<<eM.nombre<<endl;
-        cout<<"   Confederacion: "<<eM.confederacion<<endl;
-        cout<<"   Puntos: "<<eM.puntos<<endl;
-        cout<<"   Partidos jugados: "<<eM.partidosJugados<<endl;
-        cout<<"   Partidos ganados: "<<eM.partidosGanados<<endl;
-        cout<<"   Partidos empatados: "<<eM.partidosEmpatados<<endl;
-        cout<<"   Partidos perdidos: "<<eM.partidosPerdidos<<endl;
-        cout<<"   Goles a favor: "<<eM.golesFavor<<endl;
-        cout<<"   Goles en contra: "<<eM.golesContra<<endl;
-        cout<<"   Tarjetas amarillas: "<<eM.tarjetasAmarillas<<endl;
-        cout<<"   Tarjetas rojas: "<<eM.tarjetasRojas<<endl;
-        cout<<"   Nombre del entrenador: "<<eM.nombreEntrenador<<endl;
-        cout<<"   Apellido del entrenador: "<<eM.apellidoEntrenador<<endl;
-        cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
+    cout<<"1. Ver equipos por orden de puntos.\n";
+    cout<<"2. Ver equipos por orden.\n";
+    cout<<"Escoja una opcion: ";
+    int opcion;
+    cin>>opcion;
+    switch(opcion){
+        case 1:
+            equipo = equipos.obtenerEquiposPorPuntos();
+            for(int i=1;i<=equipo.TamLista();i++){
+                Equipo eM = equipo.ObtenerDatos(i);
+                cout<<i<<". Nombre del equipo: "<<eM.nombre<<endl;
+                cout<<"   Confederacion: "<<eM.confederacion<<endl;
+                cout<<"   Puntos: "<<eM.puntos<<endl;
+                cout<<"   Partidos jugados: "<<eM.partidosJugados<<endl;
+                cout<<"   Partidos ganados: "<<eM.partidosGanados<<endl;
+                cout<<"   Partidos empatados: "<<eM.partidosEmpatados<<endl;
+                cout<<"   Partidos perdidos: "<<eM.partidosPerdidos<<endl;
+                cout<<"   Goles a favor: "<<eM.golesFavor<<endl;
+                cout<<"   Goles en contra: "<<eM.golesContra<<endl;
+                cout<<"   Tarjetas amarillas: "<<eM.tarjetasAmarillas<<endl;
+                cout<<"   Tarjetas rojas: "<<eM.tarjetasRojas<<endl;
+                cout<<"\n\n"<<endl;
+            }
+            break;
+        case 2:
+            Equipo eM;
+            cout<<"\n\nEquipos participantes en el mundial\n\n";
+            for(int i=0;i<32;i++){
+                eM = equipos.obtenerEquipo(i);
+                cout<<i+1<<". Nombre del equipo: "<<eM.nombre<<endl;
+                cout<<"   Confederacion: "<<eM.confederacion<<endl;
+                cout<<"   Puntos: "<<eM.puntos<<endl;
+                cout<<"   Partidos jugados: "<<eM.partidosJugados<<endl;
+                cout<<"   Partidos ganados: "<<eM.partidosGanados<<endl;
+                cout<<"   Partidos empatados: "<<eM.partidosEmpatados<<endl;
+                cout<<"   Partidos perdidos: "<<eM.partidosPerdidos<<endl;
+                cout<<"   Goles a favor: "<<eM.golesFavor<<endl;
+                cout<<"   Goles en contra: "<<eM.golesContra<<endl;
+                cout<<"   Tarjetas amarillas: "<<eM.tarjetasAmarillas<<endl;
+                cout<<"   Tarjetas rojas: "<<eM.tarjetasRojas<<endl;
+                cout<<"   Nombre del entrenador: "<<eM.nombreEntrenador<<endl;
+                cout<<"   Apellido del entrenador: "<<eM.apellidoEntrenador<<endl;
+                cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
+            }
+            break;
     }
 }
 

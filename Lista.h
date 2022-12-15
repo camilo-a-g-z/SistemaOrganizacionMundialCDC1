@@ -57,7 +57,8 @@ T Lista<T>::ObtenerDatos(int pos){
 template < class T >  
 T Lista<T>::Eliminar(int pos){
 	//en el caso de que estemos pidiendo un lugar que no se puede
-	if(pos > tam + 1){return NULL;}
+	T d;
+	if(pos > (tam + 1)){return d;}
 	//se crea nuevo nodo y variables auxiliares necesarias
 	Nodo<T> *n_n = new Nodo<T>;
 	Nodo<T> *aux, *aux2;
