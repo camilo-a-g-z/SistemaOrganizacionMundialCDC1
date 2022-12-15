@@ -494,6 +494,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo1.partidosEmpatados++;
             equipo2.partidosEmpatados++;
         }
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
@@ -721,6 +735,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         pM.jugado = true;
         equipo1.partidosJugados++;
         equipo2.partidosJugados++;
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
@@ -856,6 +884,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         pM.jugado = true;
         equipo1.partidosJugados++;
         equipo2.partidosJugados++;
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
@@ -971,6 +1013,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         pM.jugado = true;
         equipo1.partidosJugados++;
         equipo2.partidosJugados++;
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
@@ -1084,6 +1140,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         pM.jugado = true;
         equipo1.partidosJugados++;
         equipo2.partidosJugados++;
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
@@ -1187,6 +1257,20 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
         pM.jugado = true;
         equipo1.partidosJugados++;
         equipo2.partidosJugados++;
+        //Se pregunta si en el partido hubieron targetas amarillas y rojas
+        int tarjetasAmarillas, tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 1: ";
+        cin>>tarjetasAmarillas;
+        equipo1.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 1: ";
+        cin>>tarjetasRojas;
+        equipo1.tarjetasRojas+=tarjetasRojas;
+        cout<<"Ingrese el numero de tarjetas amarillas del equipo 2: ";
+        cin>>tarjetasAmarillas;
+        equipo2.tarjetasAmarillas+=tarjetasAmarillas;
+        cout<<"Ingrese el numero de tarjetas rojas del equipo 2: ";
+        cin>>tarjetasRojas;
+        equipo2.tarjetasRojas+=tarjetasRojas;
         //se suman los goles
         equipo1.golesFavor+=pM.golesEquipo1;
         equipo1.golesContra+=pM.golesEquipo2;
