@@ -2,6 +2,7 @@
 #define M_PRINCIPAL_H
 #include <iostream>
 #include<stdlib.h>
+#include<time.h>
 #include "Lista.h"
 #include "multiLista.h"
 #include "Estadios.h"
@@ -35,7 +36,7 @@ class MaestroPrincipal
         void modificarFecha(partido pM, Lista<partido> p);
         void modificarEquipo();
         void modificarJugador();
-        void modificarJugadorPorFecha(int opcion);
+        void modificarJugadorPorFecha(int opcion, char aleatorio);
         //getter
         
         
@@ -412,6 +413,40 @@ void MaestroPrincipal::ponerResultadoPartido(){
 void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
     Equipo equipo1, equipo2, equipo3, equipo4;
     partido np;
+
+    cout<<"Desea que el se le asigne aleatoriamente los goles a los equipos? (s/n): ";
+    char aleatorio;
+    cin>>aleatorio;
+    if(aleatorio == 's'){
+        //se generan los goles aleatoriamente
+        srand(time(NULL));
+        int goles1 = 0 + rand()%(10);
+        cout<<"Goles equipo 1: "<<goles1<<endl;
+        system("pause");
+        srand(time(NULL));
+        int goles2 = rand()%(10);
+        cout<<"Goles equipo 2: "<<goles2<<endl;
+        system("pause");
+        //en caso de que sea empate y sea diferente de eliminacion se genera penales
+        if(goles1 == goles2 && pM.etapa != "Eliminacion"){
+            srand(time(NULL));
+            int penales1 = rand()%(10);
+            cout<<"Penales equipo 1: "<<penales1<<endl;
+            system("pause");
+            int penales2 = rand()%(10);
+            cout<<"Penales equipo 2: "<<penales2<<endl;
+            system("pause");
+            if(penales1 == penales2){
+                penales1++;
+            }
+            pM.penales1 = penales1;
+            pM.penales2 = penales2; 
+        }
+        //se guarda en el partido a modificar
+        pM.golesEquipo1 = goles1;
+        pM.golesEquipo2 = goles2;
+        
+    }
     if(pM.etapa == "Eliminacion"){
         if(pM.jugado){
             cout<<"\nEl partido ya fue jugado tenga esto en cuenta para editar.\n"<<endl;
@@ -441,40 +476,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -696,40 +733,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -845,40 +884,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -974,40 +1015,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -1101,40 +1144,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -1218,40 +1263,42 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
             equipo2.golesFavor-=pM.golesEquipo2;
             equipo2.golesContra-=pM.golesEquipo1;
         }
-        cout<<"Ingrese el nuevo goles equipo 1: ";
-        cin>>pM.golesEquipo1;
-        cout<<"Ingrese el nuevo goles equipo 2: ";
-        cin>>pM.golesEquipo2;
-        cout<<"Ingrese el nuevo suplementario 1: ";
-        cin>>pM.suplementario1;
-        cout<<"Ingrese el nuevo suplementario 2: ";
-        cin>>pM.suplementario2;
-        cout<<"Ingrese el nuevo penales 1: ";
-        cin>>pM.penales1;
-        cout<<"Ingrese el nuevo penales 2: ";
-        cin>>pM.penales2;
+        if(aleatorio == 'n'){
+            cout<<"Ingrese el nuevo goles equipo 1: ";
+            cin>>pM.golesEquipo1;
+            cout<<"Ingrese el nuevo goles equipo 2: ";
+            cin>>pM.golesEquipo2;
+            cout<<"Ingrese el nuevo suplementario 1: ";
+            cin>>pM.suplementario1;
+            cout<<"Ingrese el nuevo suplementario 2: ";
+            cin>>pM.suplementario2;
+            cout<<"Ingrese el nuevo penales 1: ";
+            cin>>pM.penales1;
+            cout<<"Ingrese el nuevo penales 2: ";
+            cin>>pM.penales2;
+        }
         if(pM.golesEquipo1 != 0){
             for(int i=0;i<pM.golesEquipo1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.golesEquipo2 != 0){
             for(int i=0;i<pM.golesEquipo2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(pM.penales1 != 0){
             for(int i=0;i<pM.penales1;i++){
                 cout<<"Equipo 1"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo1);
+                modificarJugadorPorFecha(pM.idEquipo1,aleatorio);
             }
         }
         if(pM.penales2 != 0){
             for(int i=0;i<pM.penales2;i++){
                 cout<<"Equipo 2"<<endl;
-                modificarJugadorPorFecha(pM.idEquipo2);
+                modificarJugadorPorFecha(pM.idEquipo2,aleatorio);
             }
         }
         if(!pM.jugado){
@@ -1324,16 +1371,21 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
     }
 }
 
-void MaestroPrincipal::modificarJugadorPorFecha(int opcion){
+void MaestroPrincipal::modificarJugadorPorFecha(int opcion, char aleatorio){
     Lista<futbolista> jugadoresEquipo=jugadores.mostrarEquipo(opcion);
     //system("cls");
-    for(int i=1;i<=jugadoresEquipo.TamLista();i++){
-        futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
-        cout<<i<<". Nombre: "<<jugador.nombre<<endl;
-    }
-    cout<<"Ingrese el numero del jugador que anoto el gol: ";
     int num;
-    cin>>num;
+    if(aleatorio == 'n'){
+        for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+            futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+            cout<<i<<". Nombre: "<<jugador.nombre<<endl;
+        }
+        cout<<"Ingrese el numero del jugador que anoto el gol: ";
+        cin>>num;
+    }else{
+        num =1+ rand()%(jugadoresEquipo.TamLista());
+        cout<<"El jugador que anoto el gol es: "<<jugadoresEquipo.ObtenerDatos(num).nombre<<endl;
+    }
     futbolista jugador = jugadoresEquipo.ObtenerDatos(num);
     jugador.cantGoles++;
     jugadores.modificarFutbolista(jugador,opcion);
@@ -1341,10 +1393,12 @@ void MaestroPrincipal::modificarJugadorPorFecha(int opcion){
 
 void MaestroPrincipal::verEquipos(){
     Lista<Equipo> equipo;
+    Equipo eM;
     //system("cls");
     cout<<"\n\nEquipos participantes en el mundial\n\n";
     cout<<"1. Ver equipos por orden de puntos.\n";
     cout<<"2. Ver equipos por orden.\n";
+    cout<<"3. Ver todos los datos de uno solo equipo.\n";
     cout<<"Escoja una opcion: ";
     int opcion;
     cin>>opcion;
@@ -1368,7 +1422,6 @@ void MaestroPrincipal::verEquipos(){
             }
             break;
         case 2:
-            Equipo eM;
             cout<<"\n\nEquipos participantes en el mundial\n\n";
             for(int i=0;i<32;i++){
                 eM = equipos.obtenerEquipo(i);
@@ -1388,6 +1441,43 @@ void MaestroPrincipal::verEquipos(){
                 cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
             }
             break;
+        case 3:
+            cout<<"\n\nEquipos participantes en el mundial\n\n";
+            for(int i=0;i<32;i++){
+                cout<<i+1<<". Nombre del equipo: "<<equipos.obtenerEquipo(i).nombre<<endl;
+            }
+            cout<<"Ingrese el numero del equipo que desea ver: ";
+            int num;
+            cin>>num;
+            eM = equipos.obtenerEquipo(num-1);
+            cout<<num<<". Nombre del equipo: "<<eM.nombre<<endl;
+            cout<<"   Confederacion: "<<eM.confederacion<<endl;
+            cout<<"   Puntos: "<<eM.puntos<<endl;
+            cout<<"   Partidos jugados: "<<eM.partidosJugados<<endl;
+            cout<<"   Partidos ganados: "<<eM.partidosGanados<<endl;
+            cout<<"   Partidos empatados: "<<eM.partidosEmpatados<<endl;
+            cout<<"   Partidos perdidos: "<<eM.partidosPerdidos<<endl;
+            cout<<"   Goles a favor: "<<eM.golesFavor<<endl;
+            cout<<"   Goles en contra: "<<eM.golesContra<<endl;
+            cout<<"   Tarjetas amarillas: "<<eM.tarjetasAmarillas<<endl;
+            cout<<"   Tarjetas rojas: "<<eM.tarjetasRojas<<endl;
+            cout<<"   Nombre del entrenador: "<<eM.nombreEntrenador<<endl;
+            cout<<"   Apellido del entrenador: "<<eM.apellidoEntrenador<<endl;
+            cout<<"   Nacionalidad del entrenador: "<<eM.nacionalidadEntrenador<<endl;
+            //se muestran jugadores
+            Lista<futbolista> jugadoresEquipo;
+            jugadoresEquipo = jugadores.mostrarEquipo(num-1);
+            for(int i=1;i<=jugadoresEquipo.TamLista();i++){
+                futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
+                cout<<"\t"<<i<<". Nombre: "<<jugador.nombre<<endl;
+                cout<<"\t"<<"   Edad: "<<jugador.edad<<endl;
+                cout<<"\t"<<"   Posicion: "<<jugador.pos<<endl;
+                cout<<"\t"<<"   Numero de camiseta: "<<jugador.numCamiseta<<endl;
+                cout<<"\t"<<"   Goles: "<<jugador.cantGoles<<endl;
+                cout<<"\t"<<"\n\n"<<endl;
+            }
+            break;
+
     }
 }
 
