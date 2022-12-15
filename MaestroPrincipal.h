@@ -62,8 +62,12 @@ void MaestroPrincipal::inicio(){
         estadios.guardarEstadiosArchivo();
         equipos.guardarEquiposArchivo();
         jugadores.guardarJugadoresArchivo();
+        jugadores.guardarCabecerasArchivo();
         cronograma.guardarPartidosArchivo();
-        
+        mI.guardarPosEquipos();
+        mI.guardarGrupoEquipos();
+        mI.guardarEstadiosIDS();
+
     }
     menu();
     
