@@ -29,7 +29,7 @@ class MaestroGenerador
 void MaestroGenerador::generarCronograma(Estadios estadios, Equipos equipos, int *grupoEquipos){
     //se deben generar 64 partidos donde 48 son de eliminacion, 8 de octavos, 4 de cuartos, 2 de semifinales, 1 de final y 1 de tercer puesto
     //primeramente se debe generar los partidos de eliminacion
-    cout<<"Entro a generar cronograma"<<endl;
+    //cout<<"Entro a generar cronograma"<<endl;
     int dia = 0;
     for(int i = 0; i<32; i= i+4){
         string grupo;

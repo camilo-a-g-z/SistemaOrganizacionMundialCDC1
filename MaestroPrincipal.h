@@ -17,6 +17,7 @@ using namespace std;
 class MaestroPrincipal
 {
 	private:
+        
         Estadios estadios;
         Equipos equipos;
         Cronograma cronograma;
@@ -45,13 +46,14 @@ void MaestroPrincipal::inicio(){
     //intentamos rescatar los archivos de datos, en caso de estar vacios se dirige a maestro insercion
     MaestroVerificador mV;
 
-    if(mV.infoArchivo()){
-        mV.recuperarDatos();
+    //if(mV.infoArchivo()){
+    if(false){
+        /*mV.recuperarDatos();
         estadios=mV.getEstadios();
         equipos=mV.getEquipos();
         jugadores=mV.getJugadores();
         cronograma=mV.getPartidos();
-        cout<<"Se ha recuperado la informacion"<<endl;
+        cout<<"Se ha recuperado la informacion"<<endl;*/
 
     }else{
         MaestroInserccion mI;
@@ -61,7 +63,6 @@ void MaestroPrincipal::inicio(){
         equipos=mI.getEquipos();
         jugadores=mI.getJugadores();
         posEquipos = mI.getPosEquipos();
-        cout<<"Se ha insertado desde cero"<<endl;
 		MaestroGenerador mG;
 		mG.generarCronograma(mI.getEstadios(),mI.getEquipos(),mI.getGrupoEquipos());
         cronograma = mG.getCronograma();
@@ -75,14 +76,13 @@ void MaestroPrincipal::inicio(){
         mI.guardarPosEquipos();
         mI.guardarGrupoEquipos();
         mI.guardarEstadiosIDS();
-
     }
     menu();
     
 }
 
 void MaestroPrincipal::menu(){
-    //system("cls");
+    system("cls");
     cout<<"\n\nBienvenido al menu principal del mundial de futbol\n\n";
     cout<<"1. Ver equipos.\n";
     cout<<"2. Ver jugadores.\n";
@@ -119,9 +119,9 @@ void MaestroPrincipal::menu(){
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
             cronograma.guardarPartidosArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
+            //mI.guardarPosEquipos();
+            //mI.guardarGrupoEquipos();
+            //mI.guardarEstadiosIDS();
             menu();
             break;
         case 6:
@@ -130,9 +130,9 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
+            //mI.guardarPosEquipos();
+            //mI.guardarGrupoEquipos();
+            //mI.guardarEstadiosIDS();
             menu();
             break;
         case 7:
@@ -141,9 +141,9 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
+            //mI.guardarPosEquipos();
+            //mI.guardarGrupoEquipos();
+            //mI.guardarEstadiosIDS();
             
             menu();
             break;
@@ -193,7 +193,7 @@ void MaestroPrincipal::modificarJugador(){
 }
 
 void MaestroPrincipal::modificarEquipo(){
-    //system("cls");
+    system("cls");
     Equipo e;
     cout<<"\n\nEquipos participantes en el mundial\n\n";
     for(int i=0;i<32;i++){
@@ -220,7 +220,7 @@ void MaestroPrincipal::modificarEquipo(){
 }
 
 void MaestroPrincipal::ponerResultadoPartido(){
-    //system("cls");
+    system("cls");
     Lista<partido> p;
     string eD, sD;
 
@@ -1394,7 +1394,6 @@ void MaestroPrincipal::modificarFecha(partido pM, Lista<partido> p){
 
 void MaestroPrincipal::modificarJugadorPorFecha(int opcion, char aleatorio){
     Lista<futbolista> jugadoresEquipo=jugadores.mostrarEquipo(opcion);
-    //system("cls");
     int num;
     if(aleatorio == 'n'){
         for(int i=1;i<=jugadoresEquipo.TamLista();i++){
@@ -1415,7 +1414,7 @@ void MaestroPrincipal::modificarJugadorPorFecha(int opcion, char aleatorio){
 void MaestroPrincipal::verEquipos(){
     Lista<Equipo> equipo;
     Equipo eM;
-    //system("cls");
+    system("cls");
     cout<<"\n\nEquipos participantes en el mundial\n\n";
     cout<<"1. Ver equipos por orden de puntos.\n";
     cout<<"2. Ver equipos por orden.\n";
@@ -1504,7 +1503,7 @@ void MaestroPrincipal::verEquipos(){
 
 void MaestroPrincipal::verJugadores(){
     Lista<futbolista> jugadoresEquipo;
-    //system("cls");
+    system("cls");
     cout<<"\n\nJugadores participantes en el mundial\n\n";
     cout<<"1. Ver por goleadores.\n";
     cout<<"2. Ver por equipos.\n";
@@ -1531,7 +1530,6 @@ void MaestroPrincipal::verJugadores(){
             int opcion;
             cin>>opcion;
             jugadoresEquipo=jugadores.mostrarEquipo(opcion-1);
-            //system("cls");
             for(int i=1;i<=jugadoresEquipo.TamLista();i++){
                 futbolista jugador = jugadoresEquipo.ObtenerDatos(i);
                 cout<<i<<". Nombre: "<<jugador.nombre<<endl;
@@ -1545,7 +1543,7 @@ void MaestroPrincipal::verJugadores(){
 }
 
 void MaestroPrincipal::verEstadios(){
-    //system("cls");
+    system("cls");
     cout<<"\n\nEstadios participantes en el mundial\n\n";
     for(int i=0;i<estadios.getTam();i++){
         Estadio estadio = estadios.obtenerEstadio(i);
@@ -1557,7 +1555,7 @@ void MaestroPrincipal::verEstadios(){
 }
 
 void MaestroPrincipal::verCronograma(){
-    //system("cls");
+    system("cls");
     Lista<partido> p;
     string eD, sD;
 
