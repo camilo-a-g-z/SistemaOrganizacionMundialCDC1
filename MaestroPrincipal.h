@@ -17,7 +17,7 @@ using namespace std;
 class MaestroPrincipal
 {
 	private:
-        
+        MaestroInserccion mI;
         Estadios estadios;
         Equipos equipos;
         Cronograma cronograma;
@@ -46,17 +46,14 @@ void MaestroPrincipal::inicio(){
     //intentamos rescatar los archivos de datos, en caso de estar vacios se dirige a maestro insercion
     MaestroVerificador mV;
 
-    //if(mV.infoArchivo()){
-    if(false){
-        /*mV.recuperarDatos();
+    if(mV.infoArchivo()){
+        mV.recuperarDatos();
         estadios=mV.getEstadios();
         equipos=mV.getEquipos();
         jugadores=mV.getJugadores();
         cronograma=mV.getPartidos();
-        cout<<"Se ha recuperado la informacion"<<endl;*/
-
+        cout<<"Se ha recuperado la informacion"<<endl;
     }else{
-        MaestroInserccion mI;
         mI.insertarDesdeCero();
 
         estadios=mI.getEstadios();
@@ -98,18 +95,22 @@ void MaestroPrincipal::menu(){
     switch(opcion){
         case 1:
             verEquipos();
+            system("pause");
             menu();
             break;
         case 2:
             verJugadores();
+            system("pause");
             menu();
             break;
         case 3:
             verEstadios();
+            system("pause");
             menu();
             break;
         case 4:
             verCronograma();
+            system("pause");
             menu();
             break;
         case 5:
@@ -119,9 +120,10 @@ void MaestroPrincipal::menu(){
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
             cronograma.guardarPartidosArchivo();
-            //mI.guardarPosEquipos();
-            //mI.guardarGrupoEquipos();
-            //mI.guardarEstadiosIDS();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
+            system("pause");
             menu();
             break;
         case 6:
@@ -130,9 +132,10 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            //mI.guardarPosEquipos();
-            //mI.guardarGrupoEquipos();
-            //mI.guardarEstadiosIDS();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
+            system("pause");
             menu();
             break;
         case 7:
@@ -144,7 +147,7 @@ void MaestroPrincipal::menu(){
             mI.guardarPosEquipos();
             mI.guardarGrupoEquipos();
             mI.guardarEstadiosIDS();
-            
+            system("pause");
             menu();
             break;
         case 8:

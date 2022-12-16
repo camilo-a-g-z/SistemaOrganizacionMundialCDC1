@@ -1,11 +1,11 @@
-0*Equipo 0*Confederacion 0*EquipoEntrenadorNombre 0*EquipoEntrenadorApellido 0*EquipoEntrenadorNacion 0*9*4*3*0*0*10*7*0*0*0*1
-1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*6*3*2*0*1*2*1*0*0*1*2
-2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*1*3*0*1*2*0*2*0*0*2*3
-3*Equipo 3*Confederacion 3*EquipoEntrenadorNombre 3*EquipoEntrenadorApellido 3*EquipoEntrenadorNacion 3*1*3*0*1*2*0*2*0*0*3*4
-4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*9*3*3*0*0*3*0*0*0*4*5
-5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*6*4*2*0*1*9*8*0*0*5*6
-6*Equipo 6*Confederacion 6*EquipoEntrenadorNombre 6*EquipoEntrenadorApellido 6*EquipoEntrenadorNacion 6*1*3*0*1*2*0*2*0*0*6*7
-7*Equipo 7*Confederacion 7*EquipoEntrenadorNombre 7*EquipoEntrenadorApellido 7*EquipoEntrenadorNacion 7*1*3*0*1*2*0*2*0*0*7*8
+0*Arg*CON*PEpe*J*J*0*0*0*0*0*0*0*0*0*0*1
+1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*0*0*0*0*0*0*0*0*0*1*2
+2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*0*0*0*0*0*0*0*0*2*3
+3*Equipo 3*Confederacion 3*EquipoEntrenadorNombre 3*EquipoEntrenadorApellido 3*EquipoEntrenadorNacion 3*0*0*0*0*0*0*0*0*0*3*4
+4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*0*0*0*0*0*0*0*0*0*4*5
+5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*0*0*0*0*0*0*0*0*0*5*6
+6*Equipo 6*Confederacion 6*EquipoEntrenadorNombre 6*EquipoEntrenadorApellido 6*EquipoEntrenadorNacion 6*0*0*0*0*0*0*0*0*0*6*7
+7*Equipo 7*Confederacion 7*EquipoEntrenadorNombre 7*EquipoEntrenadorApellido 7*EquipoEntrenadorNacion 7*0*0*0*0*0*0*0*0*0*7*8
 8*Equipo 8*Confederacion 8*EquipoEntrenadorNombre 8*EquipoEntrenadorApellido 8*EquipoEntrenadorNacion 8*0*0*0*0*0*0*0*0*0*8*9
 9*Equipo 9*Confederacion 9*EquipoEntrenadorNombre 9*EquipoEntrenadorApellido 9*EquipoEntrenadorNacion 9*0*0*0*0*0*0*0*0*0*9*10
 10*Equipo 10*Confederacion 10*EquipoEntrenadorNombre 10*EquipoEntrenadorApellido 10*EquipoEntrenadorNacion 10*0*0*0*0*0*0*0*0*0*10*11
