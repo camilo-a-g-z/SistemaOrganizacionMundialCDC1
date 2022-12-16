@@ -166,7 +166,7 @@ void Cronograma::modificarPartido(int posEnLista, partido partido){
 }
 
 
-void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista,){
+void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista){
     partido partido;
     partido.idEstadio=idEstadio;
     partido.idEquipo1=idEquipo1;
