@@ -206,7 +206,7 @@ void Cronograma::guardarPartidosArchivo(){
         stringstream fr;
         partido p = partidos.ObtenerDatos(i);
         
-        fr << i-1 <<"*" << p.idEstadio << "*" << p.idEquipo1 << "*" << p.idEquipo2 << "*" << p.fecha << "*"<<p.hora<<"*" << p.etapa << "*" << p.seccion << "*" << p.golesEquipo1 << "*" << p.golesEquipo2 << "*" << p.suplementario1 << "*" << p.suplementario2 << "*" << p.penales1 << "*" << p.penales2 << "*" << p.posEnLista;
+        fr << i-1 <<"*" << p.idEstadio << "*" << p.idEquipo1 << "*" << p.idEquipo2 << "*" << p.fecha << "*"<<p.hora<<"*" << p.etapa << "*" << p.seccion << "*" << p.golesEquipo1 << "*" << p.golesEquipo2 << "*" << p.suplementario1 << "*" << p.suplementario2 << "*" << p.penales1 << "*" << p.penales2 << "*" << p.posEnLista << "*" << p.jugado;
         frase = fr.str();
         //cout<<frase;
         if(i==tam){
@@ -238,6 +238,7 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
         getline(archivo,texto);
         string fecha, hora, etapa, seccion;
     	int idEstadio, idEquipo1, idEquipo2, golesEquipo1, golesEquipo2, suplementario1, suplementario2, penales1, penales2, posEnLista;
+        bool jugado;
         
         stringstream X(texto); // X is an object of stringstream that references the S string  
         int i=0;
@@ -297,10 +298,16 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
                 case 13: //penales equipo 2
                     sscanf(T.c_str(), "%d", &penales2);
                 break;
+                case 14: //jugado
+                    if(T == "1"){
+                        jugado = true;
+                    }else{
+                        jugado = false;
+                    }
             }
                 i++;
         }
-        insertarPartidoArchivo(idEstadio, idEquipo1, idEquipo2, fecha, hora, etapa, seccion, golesEquipo1, golesEquipo2, suplementario1, suplementario2, penales1, penales2, posEnLista);
+        insertarPartidoArchivo(idEstadio, idEquipo1, idEquipo2, fecha, hora, etapa, seccion, golesEquipo1, golesEquipo2, suplementario1, suplementario2, penales1, penales2, posEnLista, jugado);
     }
     archivo.close(); //Cerramos el archivo
 
