@@ -239,7 +239,7 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
         string fecha, hora, etapa, seccion;
     	int idEstadio, idEquipo1, idEquipo2, golesEquipo1, golesEquipo2, suplementario1, suplementario2, penales1, penales2, posEnLista;
         bool jugado;
-        
+        int jug;
         stringstream X(texto); // X is an object of stringstream that references the S string  
         int i=0;
         Cronograma();
@@ -299,7 +299,10 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
                     sscanf(T.c_str(), "%d", &penales2);
                 break;
                 case 14: //jugado
-                    if(T == "1"){
+                    sscanf(T.c_str(), "%d", &jug);
+                    cout<<"Jugado: "<<jug<<endl;
+                    system("pause");
+                    if(jug == 1){
                         jugado = true;
                     }else{
                         jugado = false;

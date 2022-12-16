@@ -257,13 +257,13 @@ void MaestroPrincipal::ponerResultadoPartido(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -304,13 +304,13 @@ void MaestroPrincipal::ponerResultadoPartido(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -350,13 +350,13 @@ void MaestroPrincipal::ponerResultadoPartido(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -396,13 +396,13 @@ void MaestroPrincipal::ponerResultadoPartido(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -1593,13 +1593,13 @@ void MaestroPrincipal::verCronograma(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -1639,13 +1639,13 @@ void MaestroPrincipal::verCronograma(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -1685,13 +1685,13 @@ void MaestroPrincipal::verCronograma(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
@@ -1731,13 +1731,13 @@ void MaestroPrincipal::verCronograma(){
                 }
                 cout<<"   Equipo 1: ";
                 if(p2.idEquipo1!= -1){
-                    cout<<posEquipos[p2.idEquipo1]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo1)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
                 cout<<"   Equipo 2: ";
                 if(p2.idEquipo2!= -1){
-                    cout<<posEquipos[p2.idEquipo2]<<endl;
+                    cout<<devolverNombreEquipo(p2.idEquipo2)<<endl;
                 }else{
                     cout<<"No hay equipo"<<endl;
                 }
