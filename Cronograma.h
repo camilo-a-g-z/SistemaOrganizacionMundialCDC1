@@ -304,6 +304,7 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
                     }else{
                         jugado = false;
                     }
+                break;    
             }
                 i++;
         }
