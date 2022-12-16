@@ -298,8 +298,9 @@ Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o 
                 case 13: //penales equipo 2
                     sscanf(T.c_str(), "%d", &penales2);
                 break;
-                case 14: //posicion en la lista
+                case 14: //posEnLista
                     sscanf(T.c_str(), "%d", &posEnLista);
+                break;
                 case 15: //jugado
                     sscanf(T.c_str(), "%d", &jug);
                     if(jug == 1){
