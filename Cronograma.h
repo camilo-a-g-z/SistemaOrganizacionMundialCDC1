@@ -35,7 +35,7 @@ class Cronograma
         void insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion);
 
         void guardarPartidosArchivo();
-        void insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista);
+        void insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista, bool jugado);
         Cronograma leerPartidosArchivo();
 		Lista<partido> obtenerPartidosPorEtapa(string etapa);
         Lista<partido> obtenerPartidos(){return partidos;}
@@ -166,7 +166,7 @@ void Cronograma::modificarPartido(int posEnLista, partido partido){
 }
 
 
-void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista){
+void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista, bool jugado){
     partido partido;
     partido.idEstadio=idEstadio;
     partido.idEquipo1=idEquipo1;
@@ -182,7 +182,7 @@ void Cronograma::insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEqui
     partido.penales1=penales1;
     partido.penales2=penales2;
     partido.posEnLista=posEnLista;
-
+    partido.jugado=jugado;
     partidos.Insertar(partido);
     tam++;
 }
