@@ -42,6 +42,7 @@ class Cronograma
         Lista<partido> obtenerPartidosPorEquipo(int idEquipo);
         Lista<partido> obtenerPartidosPorEstadio(int idEstadio);
         Lista<partido> obtenerPartidosPorEtapaYSeccion(string etapa, string seccion);
+        Lista<partido> obtenerPartidosPorSeccion(string seccion);
         Lista<partido> obtenerPartidosPorFecha(string fecha);
         partido obtenerPartidoPorPosEnLista(int posEnLista);
         int getTam(){return tam;}
@@ -49,13 +50,24 @@ class Cronograma
         
         
 };
-
 partido Cronograma::obtenerPartidoPorPosEnLista(int posEnLista){
     for(int i = 1; i<=tam; i++){
         if(partidos.ObtenerDatos(i).posEnLista == posEnLista){
             return partidos.ObtenerDatos(i);
         }
     }
+}
+
+Lista<partido> Cronograma::obtenerPartidosPorSeccion(string seccion){
+    Lista<partido> partidosSeccion;
+    partido partido;
+    for(int i=1;i<=tam;i++){
+        partido=partidos.ObtenerDatos(i);
+        if(partido.seccion==seccion){
+            partidosSeccion.Insertar(partido);
+        }
+    }
+    return partidosSeccion;
 }
 
 void Cronograma::insertar(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion){

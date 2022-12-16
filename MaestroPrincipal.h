@@ -36,10 +36,8 @@ class MaestroPrincipal
         void modificarFecha(partido pM, Lista<partido> p);
         void modificarEquipo();
         void modificarJugador();
-        void modificarJugadorPorFecha(int opcion, char aleatorio);
-        //getter
-        
-        
+        void modificarJugadorPorFecha(int opcion, char aleatorio);     
+        string devolverNombreEquipo(int idEquipo);   
 };
 
 void MaestroPrincipal::inicio(){
@@ -169,7 +167,6 @@ void MaestroPrincipal::modificarJugador(){
 
     jugadores.modificarFutbolista(jugador,opcion-1);
 }
-
 
 void MaestroPrincipal::modificarEquipo(){
     //system("cls");
@@ -1545,6 +1542,7 @@ void MaestroPrincipal::verCronograma(){
     cout<<"2. Ver los partidos de un equipo.\n";
     cout<<"3. Ver los partidos de un estadio.\n";
     cout<<"4. Ver los partidos, por etapa y seccion.\n";
+    cout<<"5. Arbol para la segunda fase.\n";
     cout<<"Seleccione la opcion que desea: ";
     int opcion;
     cin>>opcion;
@@ -1727,11 +1725,39 @@ void MaestroPrincipal::verCronograma(){
                 cout<<"   Penales 2: "<<p2.penales2<<endl;
             }
             break;
+        case 5:
+            cout<<"Equipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(48).idEquipo1)<<"\t\t\t\t\t\t\t\t\t\t\t\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(49).idEquipo1)<<endl;
+            cout<<"Equipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(48).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(56).idEquipo1)<<"\t\t\t\t\t\t\t\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(57).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(49).idEquipo2)<<endl;
+            cout<<endl;
+            cout<<"Equipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(50).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(56).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(60).idEquipo1)<<"\t\t\t\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(61).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(57).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(51).idEquipo1)<<endl;
+            cout<<"Equipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(50).idEquipo2)<<"\t\t\t\t\t\t"<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(63).idEquipo1)<<"\t\t\t\t\t\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(51).idEquipo2)<<endl;
+            cout<<endl;
+            cout<<endl;
+            cout<<"Equipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(52).idEquipo1)<<"\t\t\t\t\t\t"<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(63).idEquipo2)<<"\t\t\t\t\t\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(53).idEquipo1)<<endl;
+            cout<<"Equipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(52).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(58).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(60).idEquipo2)<<"\t\t\t\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(61).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(59).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(53).idEquipo2)<<endl;
+            cout<<endl;
+            cout<<"Equipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(54).idEquipo1)<<"\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(58).idEquipo2)<<"\t\t\t\t"<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(62).idEquipo1)<<"\t\t\t\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(59).idEquipo2)<<"\tEquipo 1: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(55).idEquipo1)<<endl;
+            cout<<"Equipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(54).idEquipo2)<<"\t\t\t\t\t\t"<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(62).idEquipo2)<<"\t\t\t\t\t\tEquipo 2: "<<devolverNombreEquipo(cronograma.obtenerPartidoPorPosEnLista(55).idEquipo2)<<endl;
+            break;
         default:
             cout<<"Opcion no valida"<<endl;
             menu();
             break;
     }
     system("pause");
+}
+
+string MaestroPrincipal::devolverNombreEquipo(int idEquipo){
+    if(idEquipo!=-1){
+        for(int i=0;i<32;i++){
+            Equipo equipo = equipos.obtenerEquipo(i);
+            if(equipo.idEquipo==idEquipo){
+                return equipo.nombre;
+            }
+        }
+        return "No hay equipo";
+    }else{
+        return "-1";
+    }
 }
 #endif
