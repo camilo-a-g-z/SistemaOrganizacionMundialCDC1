@@ -41,7 +41,7 @@ class Equipos
         int insertar(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador);
         void insertarEquipoArchivo(string nombre, string confederacion, string nombreEntrenador, string apellidoEntrenador, string nacionalidadEntrenador, int puntos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesFavor, int golesContra, int tarjetasAmarillas, int tarjetasRojas, int idEquipo, int numEnLista);
         void guardarEquiposArchivo();
-        Lista<Equipo> leerEquiposArchivo();
+        Equipos leerEquiposArchivo();
         Equipo obtenerEquipo(int id);
         Equipo obtenerEquipoPorPosicion(int pos);
         void modificarEquipo(int id, Equipo equipo);
@@ -225,7 +225,7 @@ void Equipos::guardarEquiposArchivo(){
 
 
 //Funcion para leer los equipos del archivo y guardarlos en equipos
-Lista<Equipo> Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o fichiero
+Equipos Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o fichiero
     string nombreArchivo="equipos.txt";
     ifstream archivo;
     string texto, T;
@@ -312,6 +312,6 @@ Lista<Equipo> Equipos::leerEquiposArchivo(){ //Nombre o ubiacion del archivo o f
             insertarEquipoArchivo(nombre, confederacion, nombreEntrenador, apellidoEntrenador, nacionalidadEntrenador, puntos, partidosJugados, partidosGanados, partidosEmpatados, partidosPerdidos, golesFavor, golesContra, tarjetasAmarillas, tarjetasRojas, idEquipo, numEnLista);
 	}	
 	archivo.close(); //Cerramos el archivo
-    return equipos;
+    return *this;
 }
 #endif

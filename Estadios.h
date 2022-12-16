@@ -30,7 +30,7 @@ class Estadios
         Estadio obtenerEstadio(int id);
         Estadio obtenerEstadioPorPosicion(int pos);
         void guardarEstadiosArchivo();
-        Lista<Estadio> leerEstadiosArchivo();
+        Estadios leerEstadiosArchivo();
         void modificarEstadio(int id, Estadio estadio);
         int getTam(){return tam;}
         
@@ -131,7 +131,7 @@ void Estadios::guardarEstadiosArchivo(){
 }
 
 //Funcion para leer los estadios del archivo y guardarlos en estadios
-Lista<Estadio> Estadios::leerEstadiosArchivo(){ //Nombre o ubiacion del archivo o fichiero
+Estadios Estadios::leerEstadiosArchivo(){ //Nombre o ubiacion del archivo o fichiero
     string nombreArchivo = "estadios.txt";
     ifstream archivo;
     string texto, T;
@@ -186,6 +186,6 @@ Lista<Estadio> Estadios::leerEstadiosArchivo(){ //Nombre o ubiacion del archivo 
             insertarEstadioArchivo(nombre, ciudad, capacidad, idEstadio, numEnLista);
     }	
     archivo.close(); //Cerramos el archivo
-    return estadios;
+    return *this;
 }
 #endif

@@ -119,9 +119,7 @@ void MaestroPrincipal::menu(){
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
             cronograma.guardarPartidosArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
+            
             menu();
             break;
         case 6:
@@ -130,9 +128,7 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
+
             menu();
             break;
         case 7:
@@ -141,9 +137,6 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            mI.guardarPosEquipos();
-            mI.guardarGrupoEquipos();
-            mI.guardarEstadiosIDS();
             
             menu();
             break;
