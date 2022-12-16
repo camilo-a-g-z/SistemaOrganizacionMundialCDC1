@@ -1,6 +1,6 @@
-0*Equipo 0*Confederacion 0*EquipoEntrenadorNombre 0*EquipoEntrenadorApellido 0*EquipoEntrenadorNacion 0*6*2*2*0*0*2*0*0*0*0*1
+0*Argentina*CONMEBOL*Leo*Escaloni*Argentina*3*1*1*0*0*1*0*0*0*0*1
 1*Equipo 1*Confederacion 1*EquipoEntrenadorNombre 1*EquipoEntrenadorApellido 1*EquipoEntrenadorNacion 1*0*1*0*0*1*0*1*0*0*1*2
-2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*1*0*0*1*0*1*0*0*2*3
+2*Equipo 2*Confederacion 2*EquipoEntrenadorNombre 2*EquipoEntrenadorApellido 2*EquipoEntrenadorNacion 2*0*0*0*0*0*0*0*0*0*2*3
 3*Equipo 3*Confederacion 3*EquipoEntrenadorNombre 3*EquipoEntrenadorApellido 3*EquipoEntrenadorNacion 3*0*0*0*0*0*0*0*0*0*3*4
 4*Equipo 4*Confederacion 4*EquipoEntrenadorNombre 4*EquipoEntrenadorApellido 4*EquipoEntrenadorNacion 4*0*0*0*0*0*0*0*0*0*4*5
 5*Equipo 5*Confederacion 5*EquipoEntrenadorNombre 5*EquipoEntrenadorApellido 5*EquipoEntrenadorNacion 5*0*0*0*0*0*0*0*0*0*5*6
