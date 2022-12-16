@@ -72,6 +72,7 @@ class Multilista{
 		void guardarJugadoresArchivo();
 		void guardarCabecerasArchivo();
 		Multilista leerJugadoresArchivo();
+		MultiLista leerCabecerasArchivo();
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
@@ -404,4 +405,13 @@ void Multilista::guardarCabecerasArchivo(){
     archivo.close();      
 }
 		
+//Funcion para leer Cabeceras en archivo
+void Multilista::leerCabecerasArchivo(){
+	ifstream archivo;
+	archivo.open("cabeceras.txt");
+	for(int i=0;i<50;i++){
+		archivo>>cabeceras[i];
+	}
+	archivo.close();
+}
 #endif
