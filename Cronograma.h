@@ -36,7 +36,7 @@ class Cronograma
 
         void guardarPartidosArchivo();
         void insertarPartidoArchivo(int idEstadio, int idEquipo1, int idEquipo2, string fecha, string hora, string etapa, string seccion, int golesEquipo1, int golesEquipo2, int suplementario1, int suplementario2, int penales1, int penales2, int posEnLista);
-        Lista<partido> leerPartidosArchivo();
+        Cronograma leerPartidosArchivo();
 		Lista<partido> obtenerPartidosPorEtapa(string etapa);
         Lista<partido> obtenerPartidos(){return partidos;}
         Lista<partido> obtenerPartidosPorEquipo(int idEquipo);
@@ -221,8 +221,8 @@ void Cronograma::guardarPartidosArchivo(){
 }
 
 //Funcion para leer los partidos del archivo y guardarlos en equipos
-Lista<partido> Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o fichiero
-    string nombreArchivo="Cronograma.txt";
+Cronograma Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archivo o fichiero
+    string nombreArchivo="partidos.txt";
     ifstream archivo;
     string texto, T;
     
@@ -303,7 +303,7 @@ Lista<partido> Cronograma::leerPartidosArchivo(){ //Nombre o ubiacion del archiv
     }
     archivo.close(); //Cerramos el archivo
 
-    return partidos;
+    return *this;
 }
 
 

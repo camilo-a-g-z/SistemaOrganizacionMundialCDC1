@@ -11,19 +11,19 @@ using namespace std;
 
 class MaestroVerificador {
     private:
-        Lista<futbolista> jugadores;
-        Lista<Estadio> estadios;
-        Lista<Equipo> equipos;
-        Lista<partido> partidos;
+        Multilista jugadores;
+    	Estadios estadios;
+        Equipos equipos;
+        Cronograma partidos;
 
     public: 
         void recuperarDatos();
         bool infoArchivo();
         //getters
-        Lista<futbolista> getJugadores(){return jugadores;}
-        Lista<Estadio> getEstadios(){return estadios;}
-        Lista<Equipo> getEquipos(){return equipos;}
-        Lista<partido> getPartidos(){return partidos;}
+        Multilista getJugadores(){return jugadores;}
+        Estadios getEstadios(){return estadios;}
+        Equipos getEquipos(){return equipos;}
+        Cronograma getPartidos(){return partidos;}
 };
 
 void MaestroVerificador::recuperarDatos() {
@@ -43,12 +43,16 @@ void MaestroVerificador::recuperarDatos() {
 //Verifica que los archivos no estan vacios
 bool MaestroVerificador::infoArchivo() {
     ifstream archivoJugadores("jugadores.txt");
-    ifstream archivoPartidos("Cronograma.txt");
+    ifstream archivoPartidos("partidos.txt");
     ifstream archivoEstadios("estadios.txt");
     ifstream archivoEquipos("equipos.txt");
-
-    if (archivoJugadores.is_open() && archivoPartidos.is_open() && archivoEstadios.is_open() && archivoEquipos.is_open()) {
-        if (archivoJugadores.peek() == std::ifstream::traits_type::eof() || archivoPartidos.peek() == std::ifstream::traits_type::eof() || archivoEstadios.peek() == std::ifstream::traits_type::eof() || archivoEquipos.peek() == std::ifstream::traits_type::eof()) {
+    ifstream archivoCabeceras("cabeceras.txt");
+    ifstream archivoEstadiosIDS("estadiosIDS.txt");
+    ifstream archivoGrupoEquipos("grupoEquipos.txt");
+    ifstream archivoPosEquipos("posEquipos.txt");
+   
+    if (archivoJugadores.is_open() && archivoPartidos.is_open() && archivoEstadios.is_open() && archivoEquipos.is_open() && archivoCabeceras.is_open() && archivoEstadiosIDS.is_open() && archivoGrupoEquipos.is_open() && archivoPosEquipos.is_open()) {
+        if (archivoJugadores.peek() == std::ifstream::traits_type::eof() || archivoPartidos.peek() == std::ifstream::traits_type::eof() || archivoEstadios.peek() == std::ifstream::traits_type::eof() || archivoEquipos.peek() == std::ifstream::traits_type::eof() || archivoCabeceras.peek() == std::ifstream::traits_type::eof() || archivoEstadiosIDS.peek() == std::ifstream::traits_type::eof() || archivoGrupoEquipos.peek() == std::ifstream::traits_type::eof() || archivoPosEquipos.peek() == std::ifstream::traits_type::eof()) {
             return false;
         } else {
             return true;

@@ -141,9 +141,9 @@ void MaestroPrincipal::menu(){
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
             jugadores.guardarCabecerasArchivo();
-            //mI.guardarPosEquipos();
-            //mI.guardarGrupoEquipos();
-            //mI.guardarEstadiosIDS();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
             
             menu();
             break;
