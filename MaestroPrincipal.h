@@ -51,6 +51,7 @@ void MaestroPrincipal::inicio(){
         estadios=mV.getEstadios();
         equipos=mV.getEquipos();
         jugadores=mV.getJugadores();
+        jugadores.leerCabecerasArchivo();
         cronograma=mV.getPartidos();
         cout<<"Se ha recuperado la informacion"<<endl;
     }else{

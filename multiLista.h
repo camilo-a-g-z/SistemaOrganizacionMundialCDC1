@@ -72,7 +72,7 @@ class Multilista{
 		void guardarJugadoresArchivo();
 		void guardarCabecerasArchivo();
 		Multilista leerJugadoresArchivo();
-		MultiLista leerCabecerasArchivo();
+		void leerCabecerasArchivo();
 		Lista<futbolista> mostrarEquipo(int equipo);
 		Lista<futbolista> mostrarGolesPorEquipo(int equipo);
 		Lista<futbolista> mostrarGolesGlobal();
