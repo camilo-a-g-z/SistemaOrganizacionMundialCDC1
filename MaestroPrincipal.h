@@ -10,6 +10,7 @@
 #include "Cronograma.h"
 #include "MaestroGenerador.h"
 #include "MaestroInserccion.h"
+#include "MaestroVerificador.h"
 using namespace std;
 
 
@@ -42,7 +43,15 @@ class MaestroPrincipal
 
 void MaestroPrincipal::inicio(){
     //intentamos rescatar los archivos de datos, en caso de estar vacios se dirige a maestro insercion
-    if(false){
+    MaestroVerificador mV;
+
+    if(mV.infoArchivo()){
+        mV.recuperarDatos();
+        estadios=mV.getEstadios();
+        equipos=mV.getEquipos();
+        jugadores=mV.getJugadores();
+        cronograma=mV.getPartidos();
+        cout<<"Se ha recuperado la informacion"<<endl;
 
     }else{
         MaestroInserccion mI;
@@ -108,19 +117,34 @@ void MaestroPrincipal::menu(){
             //se guardan los archivos todo menos estadios
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
+            jugadores.guardarCabecerasArchivo();
             cronograma.guardarPartidosArchivo();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
             menu();
             break;
         case 6:
             modificarEquipo();
-            //se guardan los archivos todo menos estadios, cronograma
+            //se guardan los archivos todo menos estadios, cronograma          
             equipos.guardarEquiposArchivo();
             jugadores.guardarJugadoresArchivo();
+            jugadores.guardarCabecerasArchivo();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
             menu();
             break;
         case 7:
             modificarJugador();
             //se guardan los archivos equipo
+            equipos.guardarEquiposArchivo();
+            jugadores.guardarJugadoresArchivo();
+            jugadores.guardarCabecerasArchivo();
+            mI.guardarPosEquipos();
+            mI.guardarGrupoEquipos();
+            mI.guardarEstadiosIDS();
+            
             menu();
             break;
         case 8:
